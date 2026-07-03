@@ -40,7 +40,13 @@ export function StatusFixerModal({ tasks, updateTask, onClose }: StatusFixerModa
     setIsSaving(true);
     for (const taskId of Object.keys(pendingChanges)) {
       const updates: Partial<Task> = {};
-      if (pendingChanges[taskId].status) updates.status = pendingChanges[taskId].status;
+      if (pendingChanges[taskId].status) {
+        updates.status = pendingChanges[taskId].status;
+        if (updates.status === 'Local Work') {
+          updates.assignedTo = [];
+          updates.officerStatuses = {};
+        }
+      }
       if (pendingChanges[taskId].freq) updates.followUpFrequency = pendingChanges[taskId].freq;
       if (Object.keys(updates).length > 0) {
         await updateTask(taskId, updates);

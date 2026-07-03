@@ -139,6 +139,9 @@ export function TaskDetailsModal({
 
     let finalStatus = editData.status;
     let updatedOfficerStatuses = { ...task.officerStatuses };
+    if (finalStatus === 'Local Work') {
+      updatedOfficerStatuses = {};
+    }
 
     if (task.status === 'Rejected') {
       finalStatus = 'Pending';
