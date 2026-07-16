@@ -395,6 +395,10 @@ export default function App() {
   };
 
   const addTask = useCallback(async (newTask: Task) => { 
+    if (newTask.status === 'Local Work') {
+      newTask.assignedTo = [];
+      newTask.officerStatuses = {};
+    }
     await setDoc(getDocRef('tasks', newTask.id), newTask); 
   }, []);
 
@@ -402,6 +406,13 @@ export default function App() {
     const currentTask = allTasks.find(t => t.id === taskId); 
     if (!currentTask) return;
     const merged = { ...currentTask, ...updates } as Task;
+    
+    // Automatically clear assignments if marked as Local Work
+    if (merged.status === 'Local Work') {
+      merged.assignedTo = [];
+      merged.officerStatuses = {};
+    }
+    
     const wasArchived = currentTask.status === 'Completed' || currentTask.status === 'Unsolved';
     const willBeArchived = merged.status === 'Completed' || merged.status === 'Unsolved';
     
