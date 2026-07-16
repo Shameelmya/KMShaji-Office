@@ -379,16 +379,21 @@ export function TaskDetailsModal({
              {task.isTrashed && canUserEdit && (
                <>
                  <button 
-                   onClick={() => updateTask(task.id, { isTrashed: false })} 
+                   onClick={() => {
+                     triggerConfirm(
+                       "Restore Task",
+                       "Are you sure you want to restore this task from the trash?",
+                       () => updateTask(task.id, { isTrashed: false }),
+                       false,
+                       "Yes, Restore"
+                     );
+                   }} 
                    className="px-3 py-1.5 bg-green-600 hover:bg-green-700 text-white text-xs font-bold rounded-lg transition-colors flex items-center gap-1 shadow-sm"
                  >
                    <CheckCircle size={14}/> Restore
                  </button>
                  <button 
-                   onClick={() => {
-                     deleteTask(task.id);
-                     onClose();
-                   }} 
+                   onClick={() => deleteTask(task.id)} 
                    className="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded-lg transition-colors flex items-center gap-1 shadow-sm"
                  >
                    <Trash2 size={14}/> Delete Forever
