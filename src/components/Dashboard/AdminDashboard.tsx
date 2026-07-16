@@ -61,7 +61,7 @@ interface AdminDashboardProps {
   loadArchive: () => Promise<void>;
 }
 
-const StatCard = ({ title, value, color, icon }: any) => {
+const StatCard = ({ title, value, color, icon, onClick }: any) => {
   const colors = {
     blue: 'bg-blue-50 text-blue-600 border-blue-200',
     indigo: 'bg-indigo-50 text-indigo-600 border-indigo-200',
