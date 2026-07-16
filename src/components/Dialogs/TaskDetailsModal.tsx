@@ -350,7 +350,7 @@ export function TaskDetailsModal({
             </div>
           </div>
           <div className="flex items-center gap-3">
-             {canUserEdit && (
+             {canUserEdit && !task.isTrashed && (
                isEditMode ? (
                  <>
                    <button 
@@ -374,6 +374,26 @@ export function TaskDetailsModal({
                    <Edit size={14}/> Edit Task
                  </button>
                )
+             )}
+             
+             {task.isTrashed && canUserEdit && (
+               <>
+                 <button 
+                   onClick={() => updateTask(task.id, { isTrashed: false })} 
+                   className="px-3 py-1.5 bg-green-600 hover:bg-green-700 text-white text-xs font-bold rounded-lg transition-colors flex items-center gap-1 shadow-sm"
+                 >
+                   <CheckCircle size={14}/> Restore
+                 </button>
+                 <button 
+                   onClick={() => {
+                     deleteTask(task.id);
+                     onClose();
+                   }} 
+                   className="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded-lg transition-colors flex items-center gap-1 shadow-sm"
+                 >
+                   <Trash2 size={14}/> Delete Forever
+                 </button>
+               </>
              )}
              {!isEditMode && (
                <>
@@ -460,12 +480,11 @@ export function TaskDetailsModal({
                    <option value="In Progress">In Progress</option>
                    <option value="Draft">Draft</option>
                    <option value="Completed">Completed</option>
-                   <option value="Partially Completed">Partially Completed</option>
-                   <option value="Unsolved">Unsolved</option>
+                   <option value="D Finished">D Finished</option>
                    <option value="Local Work">Local Work</option>
                  </select>
                ) : (
-                 <span className={`px-3 py-1 rounded font-black text-sm uppercase tracking-wider ${task.status==='Completed'?'bg-green-100 text-green-700':task.status==='Partially Completed'?'bg-emerald-100 text-emerald-700':task.status==='In Progress'?'bg-amber-100 text-amber-700':task.status==='Draft'?'bg-purple-100 text-purple-700':task.status==='Unsolved'?'bg-slate-200 text-slate-500':'bg-red-100 text-red-700'}`}>
+                 <span className={`px-3 py-1 rounded font-black text-sm uppercase tracking-wider ${task.status==='Completed'?'bg-green-100 text-green-700':task.status==='D Finished'?'bg-emerald-100 text-emerald-700':task.status==='In Progress'?'bg-amber-100 text-amber-700':task.status==='Draft'?'bg-purple-100 text-purple-700':task.status==='Unsolved'?'bg-slate-200 text-slate-500':'bg-red-100 text-red-700'}`}>
                    {task.status}
                  </span>
                )}

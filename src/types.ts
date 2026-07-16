@@ -83,6 +83,7 @@ export interface Task {
   isReadByAdmin?: boolean;
   followUpFrequency?: string;
   isWASent?: boolean;
+  isTrashed?: boolean;
 }
 
 export interface GlobalFilters {

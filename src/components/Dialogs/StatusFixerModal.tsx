@@ -114,8 +114,7 @@ export function StatusFixerModal({ tasks, updateTask, onClose }: StatusFixerModa
                       <option value="Pending">Pending</option>
                       <option value="In Progress">In Progress</option>
                       <option value="Completed">Completed</option>
-                      <option value="Partially Completed">Partially Completed</option>
-                      <option value="Unsolved">Unsolved</option>
+                      <option value="D Finished">D Finished</option>
                       <option value="Draft">Draft</option>
                       <option value="Local Work">Local Work</option>
                       <option value="Rejected">Rejected</option>

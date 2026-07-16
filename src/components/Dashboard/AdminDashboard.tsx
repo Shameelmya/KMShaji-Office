@@ -57,6 +57,7 @@ interface AdminDashboardProps {
     inputPlaceholder?: string
   ) => void;
   globalFilters: GlobalFilters;
+  setGlobalFilters: React.Dispatch<React.SetStateAction<GlobalFilters>>;
   loadArchive: () => Promise<void>;
 }
 
@@ -69,7 +70,7 @@ const StatCard = ({ title, value, color, icon }: any) => {
     red: 'bg-red-50 text-red-600 border-red-200',
   };
   return (
-    <div className={`p-4 rounded-xl border flex items-center gap-3 ${colors[color as keyof typeof colors]}`}>
+    <div className={`p-4 rounded-xl border flex items-center gap-3 ${colors[color as keyof typeof colors]} hover:shadow-md transition-shadow cursor-pointer`} onClick={onClick}>
       <div className={`p-2 rounded-lg bg-white/60`}>
         {icon}
       </div>
@@ -113,6 +114,7 @@ export function AdminDashboard({
   triggerCitizenDownload,
   triggerConfirm,
   globalFilters,
+  setGlobalFilters,
   loadArchive
 }: AdminDashboardProps) {
   const [activeTab, setActiveTab] = useState('alerts');
@@ -136,35 +138,27 @@ export function AdminDashboard({
 
   const analyticsTasks = useFilteredTasks(tasks, globalFilters, '', null, null);
   
-  const total = useMemo(() => {
-    return analyticsTasks.filter(t => t.taskType !== 'direct').length;
-  }, [analyticsTasks]);
+  const baseTasks = useMemo(() => tasks.filter(t => !t.isTrashed && t.taskType !== 'direct'), [tasks]);
 
-  const comp = useMemo(() => {
-    return analyticsTasks.filter(t => t.taskType !== 'direct' && (t.status === 'Completed' || t.status === 'Partially Completed')).length;
-  }, [analyticsTasks]);
+  const total = baseTasks.length;
+  const comp = baseTasks.filter(t => t.status === 'Completed').length;
+  const dFinished = baseTasks.filter(t => t.status === 'D Finished').length;
+  const draft = baseTasks.filter(t => t.status === 'Draft').length;
+  const pend = baseTasks.filter(t => t.status === 'Pending').length;
+  const inProg = baseTasks.filter(t => t.status === 'In Progress').length;
+  const localW = baseTasks.filter(t => t.status === 'Local Work').length;
+  const rej = baseTasks.filter(t => t.status === 'Rejected').length;
 
-  const draft = useMemo(() => {
-    return analyticsTasks.filter(t => t.taskType !== 'direct' && t.status === 'Draft').length;
-  }, [analyticsTasks]);
-
-  const pend = useMemo(() => {
-    return analyticsTasks.filter(t => t.taskType !== 'direct' && t.status === 'Pending').length;
-  }, [analyticsTasks]);
-
-  const uniqueVisitors = useMemo(() => {
-    const phones = new Set<string>();
-    analyticsTasks.forEach(t => {
-      if (t.taskType !== 'direct' && !t.isSelfMode && t.personalDetails?.mobileNumber) {
-        phones.add(t.personalDetails.mobileNumber.replace(/\D/g, ''));
-      }
-    });
-    return phones.size;
-  }, [analyticsTasks]);
+  const handleStatClick = (status: string) => {
+    setGlobalFilters(prev => ({ ...prev, status, dateRange: 'all' }));
+    setActiveTab('overview');
+    setGlobalSearch('');
+    setInitialOfficerFilter('');
+  };
 
   // Filter rejected tasks globally so Admin can reassign them
   const adminRejectedTasks = useMemo(() => {
-    return tasks.filter(t => t.status === 'Rejected');
+    return tasks.filter(t => t.status === 'Rejected' && !t.isTrashed);
   }, [tasks]);
 
   return (
@@ -281,12 +275,15 @@ export function AdminDashboard({
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            <StatCard title="Total Inputs" value={total} color="blue" icon={<FileText size={24}/>}/>
-            <StatCard title="Total Citizens" value={uniqueVisitors} color="indigo" icon={<Users size={24}/>}/>
-            <StatCard title="Completed" value={comp} color="green" icon={<CheckCircle size={24}/>}/>
-            <StatCard title="Drafts" value={draft} color="purple" icon={<Paperclip size={24}/>}/>
-            <StatCard title="Pending" value={pend} color="red" icon={<Clock size={24}/>}/>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+            <StatCard title="Total Inputs" value={total} color="blue" icon={<FileText size={24}/>} onClick={() => handleStatClick('All')}/>
+            <StatCard title="Completed" value={comp} color="green" icon={<CheckCircle size={24}/>} onClick={() => handleStatClick('Completed')}/>
+            <StatCard title="D Finished" value={dFinished} color="green" icon={<CheckCircle size={24}/>} onClick={() => handleStatClick('D Finished')}/>
+            <StatCard title="Pending" value={pend} color="red" icon={<Clock size={24}/>} onClick={() => handleStatClick('Pending')}/>
+            <StatCard title="In Progress" value={inProg} color="indigo" icon={<Zap size={24}/>} onClick={() => handleStatClick('In Progress')}/>
+            <StatCard title="Drafts" value={draft} color="purple" icon={<Paperclip size={24}/>} onClick={() => handleStatClick('Draft')}/>
+            <StatCard title="Local Works" value={localW} color="blue" icon={<Database size={24}/>} onClick={() => handleStatClick('Local Work')}/>
+            <StatCard title="Rejected" value={rej} color="red" icon={<Ban size={24}/>} onClick={() => handleStatClick('Rejected')}/>
           </div>
           <AdminGlobalView 
             currentUser={currentUser}
@@ -328,6 +325,11 @@ export function AdminDashboard({
           tasks={tasks} 
           triggerCitizenPrint={triggerCitizenPrint} 
           triggerDownloadPDF={triggerCitizenDownload} 
+          onCitizenClick={(phone) => {
+            setGlobalSearch(phone);
+            setGlobalFilters(prev => ({ ...prev, applicationMode: 'Citizen' }));
+            setActiveTab('overview');
+          }}
         />
       )}
       

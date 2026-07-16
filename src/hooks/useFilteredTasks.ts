@@ -10,10 +10,17 @@ export const useFilteredTasks = (
 ): Task[] => {
   return useMemo(() => {
     let result = allTasks;
-    if (globalFilters.status === 'Active') {
-      result = result.filter(t => t.status !== 'Completed' && t.status !== 'Unsolved' && t.status !== 'Local Work' && t.status !== 'Partially Completed');
-    } else if (globalFilters.status !== 'All') {
-      result = result.filter(t => t.status === globalFilters.status);
+    
+    if (globalFilters.status === 'Trash') {
+      result = result.filter(t => t.isTrashed);
+    } else {
+      result = result.filter(t => !t.isTrashed);
+      
+      if (globalFilters.status === 'Active') {
+        result = result.filter(t => t.status === 'Pending' || t.status === 'In Progress');
+      } else if (globalFilters.status !== 'All') {
+        result = result.filter(t => t.status === globalFilters.status);
+      }
     }
 
     if (globalFilters.dateRange === 'custom') {

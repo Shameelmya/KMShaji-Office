@@ -44,8 +44,30 @@ interface OfficerDashboardProps {
     inputPlaceholder?: string
   ) => void;
   globalFilters: GlobalFilters;
+  setGlobalFilters: React.Dispatch<React.SetStateAction<GlobalFilters>>;
   loadArchive: () => Promise<void>;
 }
+
+const StatCard = ({ title, value, color, icon, onClick }: any) => {
+  const colors = {
+    blue: 'bg-blue-50 text-blue-600 border-blue-200',
+    indigo: 'bg-indigo-50 text-indigo-600 border-indigo-200',
+    green: 'bg-green-50 text-green-600 border-green-200',
+    purple: 'bg-purple-50 text-purple-600 border-purple-200',
+    red: 'bg-red-50 text-red-600 border-red-200',
+  };
+  return (
+    <div className={`p-4 rounded-xl border flex items-center gap-3 ${colors[color as keyof typeof colors]} hover:shadow-md transition-shadow cursor-pointer`} onClick={onClick}>
+      <div className={`p-2 rounded-lg bg-white/60`}>
+        {icon}
+      </div>
+      <div>
+        <h3 className="text-2xl font-black leading-tight">{value}</h3>
+        <p className="text-[10px] font-bold uppercase tracking-wider opacity-80 mt-1">{title}</p>
+      </div>
+    </div>
+  );
+};
 
 export function OfficerDashboard({
   user,
@@ -68,6 +90,7 @@ export function OfficerDashboard({
   isAdminOverride,
   triggerConfirm,
   globalFilters,
+  setGlobalFilters,
   loadArchive
 }: OfficerDashboardProps) {
   // Extract permissions
@@ -91,8 +114,24 @@ export function OfficerDashboard({
 
   // Rejected Tasks created by this inputter (officer) or assigned to them initially
   const rejectedTasks = useMemo(() => {
-    return tasks.filter(t => t.status === 'Rejected' && t.createdByUid === user.id);
+    return tasks.filter(t => t.status === 'Rejected' && t.createdByUid === user.id && !t.isTrashed);
   }, [tasks, user.id]);
+
+  const baseTasks = useMemo(() => tasks.filter(t => !t.isTrashed && t.taskType !== 'direct'), [tasks]);
+  const total = baseTasks.length;
+  const comp = baseTasks.filter(t => t.status === 'Completed').length;
+  const dFinished = baseTasks.filter(t => t.status === 'D Finished').length;
+  const draft = baseTasks.filter(t => t.status === 'Draft').length;
+  const pend = baseTasks.filter(t => t.status === 'Pending').length;
+  const inProg = baseTasks.filter(t => t.status === 'In Progress').length;
+  const localW = baseTasks.filter(t => t.status === 'Local Work').length;
+  const rej = baseTasks.filter(t => t.status === 'Rejected').length;
+
+  const handleStatClick = (status: string) => {
+    setGlobalFilters(prev => ({ ...prev, status, dateRange: 'all' }));
+    setActiveTab('overview');
+    setGlobalSearch('');
+  };
 
   return (
     <div className="space-y-6 animate-in fade-in duration-200">
@@ -223,6 +262,16 @@ export function OfficerDashboard({
               <h2 className="text-lg font-black text-slate-800">Global Overview</h2>
               <p className="text-xs font-semibold text-slate-500">View and print all system-wide inputs based on permissions.</p>
             </div>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+            <StatCard title="Total Inputs" value={total} color="blue" icon={<FileText size={24}/>} onClick={() => handleStatClick('All')}/>
+            <StatCard title="Completed" value={comp} color="green" icon={<CheckCircle size={24}/>} onClick={() => handleStatClick('Completed')}/>
+            <StatCard title="D Finished" value={dFinished} color="green" icon={<CheckCircle size={24}/>} onClick={() => handleStatClick('D Finished')}/>
+            <StatCard title="Pending" value={pend} color="red" icon={<Bell size={24}/>} onClick={() => handleStatClick('Pending')}/>
+            <StatCard title="In Progress" value={inProg} color="indigo" icon={<Activity size={24}/>} onClick={() => handleStatClick('In Progress')}/>
+            <StatCard title="Drafts" value={draft} color="purple" icon={<FileText size={24}/>} onClick={() => handleStatClick('Draft')}/>
+            <StatCard title="Local Works" value={localW} color="blue" icon={<Database size={24}/>} onClick={() => handleStatClick('Local Work')}/>
+            <StatCard title="Rejected" value={rej} color="red" icon={<Ban size={24}/>} onClick={() => handleStatClick('Rejected')}/>
           </div>
           <AdminGlobalView 
             currentUser={user}

@@ -73,8 +73,8 @@ export function WorkerTab({
   const todo = typeFiltered.filter(t => t.status !== 'Unsolved' && (!t.officerStatuses[user.id] || t.officerStatuses[user.id] === 'Pending'));
   const inProg = typeFiltered.filter(t => t.status !== 'Unsolved' && (t.officerStatuses[user.id] === 'Received' || t.officerStatuses[user.id] === 'In Progress'));
   const draft = typeFiltered.filter(t => t.status !== 'Unsolved' && t.officerStatuses[user.id] === 'Draft');
-  const comp = typeFiltered.filter(t => t.status !== 'Unsolved' && (t.officerStatuses[user.id] === 'Completed' || t.officerStatuses[user.id] === 'Partially Completed'));
-  const displayedComp = comp.filter(t => showPartiallyCompleted ? t.officerStatuses[user.id] === 'Partially Completed' : t.officerStatuses[user.id] === 'Completed');
+  const comp = typeFiltered.filter(t => t.status !== 'Unsolved' && (t.officerStatuses[user.id] === 'Completed' || t.officerStatuses[user.id] === 'D Finished'));
+  const displayedComp = comp.filter(t => showPartiallyCompleted ? t.officerStatuses[user.id] === 'D Finished' : t.officerStatuses[user.id] === 'Completed');
   const unsolved = typeFiltered.filter(t => t.status === 'Unsolved');
 
   return (
@@ -133,7 +133,7 @@ export function WorkerTab({
           ))}
         </Column>
         <Column 
-          title={showPartiallyCompleted ? "Partially Completed" : "Completed"} 
+          title={showPartiallyCompleted ? "D Finished" : "Completed"} 
           count={comp.length} 
           color="green"
           onTogglePartially={() => setShowPartiallyCompleted(!showPartiallyCompleted)}
@@ -198,10 +198,10 @@ function Column({ title, count, color, children, onTogglePartially, showPartiall
           {onTogglePartially && (
             <button 
               onClick={onTogglePartially}
-              title="Toggle Partially Completed View"
+              title="Toggle D Finished View"
               className={`text-[9px] px-1.5 py-0.5 rounded font-black border uppercase tracking-wider transition-colors ${showPartially ? 'bg-emerald-100 text-emerald-700 border-emerald-200 hover:bg-emerald-200' : 'bg-slate-100 text-slate-500 border-slate-200 hover:bg-slate-200'}`}
             >
-              PC
+              DF
             </button>
           )}
         </div>
@@ -259,8 +259,8 @@ const WorkerTaskCard = React.memo(({
     const allAssigned = task.assignedTo.map(id => newOffStat[id] || 'Pending');
     let globStat = task.status;
     
-    if (newStatus === 'Completed' || newStatus === 'Partially Completed') {
-      globStat = allAssigned.every(s => s === 'Completed' || s === 'Partially Completed') 
+    if (newStatus === 'Completed' || newStatus === 'D Finished') {
+      globStat = allAssigned.every(s => s === 'Completed' || s === 'D Finished') 
         ? newStatus 
         : allAssigned.some(s => s === 'Draft') 
           ? 'Draft' 
@@ -414,20 +414,20 @@ const WorkerTaskCard = React.memo(({
                 <button 
                   onClick={() => {
                     triggerConfirm(
-                      "Partially Completed?", 
-                      `Mark task ID ${task.id} as Partially Completed?`, 
+                      "D Finished?", 
+                      `Mark task ID ${task.id} as D Finished?`, 
                       (note: string) => {
                         const evs = [];
                         if (note && note.trim()) evs.push({ id: generateUid(), type: 'update', time: getNow(), by: user.name, text: `Partial Note: ${note}` });
-                        evs.push({ id: generateUid(), type: 'partially completed', time: getNow(), by: user.name, text: 'Task marked as Partially Completed.' });
-                        changeStatus('Partially Completed', evs);
+                        evs.push({ id: generateUid(), type: 'd finished', time: getNow(), by: user.name, text: 'Task marked as D Finished.' });
+                        changeStatus('D Finished', evs);
                       }, 
-                      false, "Mark Partially", true, "Optional note..."
+                      false, "Mark D Finished", true, "Optional note..."
                     );
                   }} 
                   className="w-1/2 bg-emerald-600 hover:bg-emerald-700 text-white px-2 py-1.5 rounded-lg text-[10px] font-black transition-colors shadow-sm flex items-center justify-center gap-1 uppercase tracking-wider"
                 >
-                  <CheckCircle size={12}/> PC
+                  <CheckCircle size={12}/> DF
                 </button>
                 <button 
                   onClick={() => {
@@ -450,7 +450,7 @@ const WorkerTaskCard = React.memo(({
               </div>
             </div>
           )}
-          {(status === 'Completed' || status === 'Partially Completed') && (
+          {(status === 'Completed' || status === 'D Finished') && (
             <div className="w-full space-y-2">
                <button 
                  onClick={() => changeStatus('Draft', { id: generateUid(), type: 'reverted', time: getNow(), by: user.name, text: 'Reverted to Draft Box' })} 

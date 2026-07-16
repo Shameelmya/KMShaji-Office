@@ -422,24 +422,54 @@ export default function App() {
     }
   }, [allTasks]);
   
-  const deleteTask = useCallback((taskId: string) => { 
+  const deleteTask = useCallback(async (taskId: string) => { 
+    const currentTask = allTasks.find(t => t.id === taskId);
+    if (!currentTask) return;
+
     const isArchived = archivedTasks.some(t => t.id === taskId); 
-    triggerConfirm(
-      "CRITICAL: Delete Task Input", 
-      "Are you absolutely sure you want to completely delete this task record?", 
-      async () => { 
-        try { 
-          await deleteDoc(getDocRef(isArchived ? 'archived_tasks' : 'tasks', taskId)); 
-          if (isArchived) setArchivedTasks(prev => prev.filter(t => t.id !== taskId)); 
-          setViewingTask(null); 
-        } catch (err) { 
-          console.error("Delete task failed:", err); 
-        } 
-      }, 
-      true, 
-      "Delete Task"
-    ); 
-  }, [archivedTasks, triggerConfirm]);
+    
+    if (!currentTask.isTrashed) {
+      // Soft Delete
+      triggerConfirm(
+        "Move to Trash", 
+        "Are you sure you want to move this task to the trash? It will be hidden from normal views.", 
+        async () => { 
+          try { 
+            const updates = { isTrashed: true };
+            const merged = { ...currentTask, ...updates };
+            await setDoc(getDocRef(isArchived ? 'archived_tasks' : 'tasks', taskId), merged);
+            if (isArchived) {
+              setArchivedTasks(prev => prev.map(t => t.id === taskId ? merged : t));
+            } else {
+              setActiveTasks(prev => prev.map(t => t.id === taskId ? merged : t));
+            }
+            setViewingTask(null); 
+          } catch (err) { 
+            console.error("Move to trash failed:", err); 
+          } 
+        }, 
+        true, 
+        "Move to Trash"
+      ); 
+    } else {
+      // Hard Delete
+      triggerConfirm(
+        "CRITICAL: Permanently Delete Task", 
+        "Are you absolutely sure you want to completely delete this task record? This cannot be undone.", 
+        async () => { 
+          try { 
+            await deleteDoc(getDocRef(isArchived ? 'archived_tasks' : 'tasks', taskId)); 
+            if (isArchived) setArchivedTasks(prev => prev.filter(t => t.id !== taskId)); 
+            setViewingTask(null); 
+          } catch (err) { 
+            console.error("Delete task failed:", err); 
+          } 
+        }, 
+        true, 
+        "Delete Task"
+      );
+    }
+  }, [allTasks, archivedTasks, triggerConfirm]);
 
   const updateUserDoc = async (userId: string, field: string, value: any) => {
     await setDoc(getDocRef('users', userId), { [field]: value }, { merge: true });
@@ -512,11 +542,11 @@ export default function App() {
          <option value="Active">Active Actions</option>
          <option value="Pending">Pending Only</option>
          <option value="In Progress">In Progress Only</option>
-         <option value="Draft">Drafts Only</option>
          <option value="Completed">Completed Only</option>
-         <option value="Partially Completed">Partially Completed Only</option>
-         <option value="Unsolved">Unsolved Only</option>
+         <option value="D Finished">D Finished Only</option>
+         <option value="Draft">Drafts Only</option>
          <option value="Local Work">Local Works Only</option>
+         <option value="Trash">Trash</option>
          <option value="All">All Statuses</option>
        </select>
        <select 
@@ -765,6 +795,7 @@ export default function App() {
               triggerCitizenDownload={setCitizenDirectoryToDownload} 
               triggerConfirm={triggerConfirm} 
               globalFilters={globalFilters} 
+              setGlobalFilters={setGlobalFilters}
               loadArchive={loadArchive} 
             />
           ) : (
@@ -789,6 +820,7 @@ export default function App() {
               isAdminOverride={currentUser!.role === 'admin'} 
               triggerConfirm={triggerConfirm} 
               globalFilters={globalFilters} 
+              setGlobalFilters={setGlobalFilters}
               loadArchive={loadArchive} 
             />
           )}

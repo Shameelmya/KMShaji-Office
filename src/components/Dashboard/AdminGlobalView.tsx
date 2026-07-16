@@ -354,10 +354,9 @@ const AdminTaskCard = React.memo(({
 
   const getStatusColor = (s: string) => {
     if (s === 'Completed') return 'text-green-600';
-    if (s === 'Partially Completed') return 'text-emerald-600';
+    if (s === 'D Finished') return 'text-emerald-600';
     if (s === 'In Progress') return 'text-amber-600';
     if (s === 'Draft') return 'text-purple-600';
-    if (s === 'Unsolved') return 'text-slate-500';
     return 'text-red-600';
   };
 
@@ -432,9 +431,9 @@ const AdminTaskCard = React.memo(({
                   <span className="hidden lg:flex text-red-400 group-hover:text-red-600 group-hover:bg-red-50 p-1 rounded"><Clock size={12}/></span>
                 </button>
               )}
-              {t.status !== 'Partially Completed' && (
-                <button onClick={(e) => { e.stopPropagation(); triggerConfirm('Confirm Action', 'Change status to Partially Completed?', () => { const newOffStat = {...t.officerStatuses}; (t.assignedTo || []).forEach(id => newOffStat[id] = 'Partially Completed'); updateTask(t.id, { status: 'Partially Completed', officerStatuses: newOffStat }); }, false, 'Yes, Change'); }} title="Mark Partially Completed" className="group flex items-center justify-center transition-colors">
-                  <span className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-emerald-300 text-emerald-600 text-[9px] sm:text-[10px] font-black lg:hidden group-hover:bg-emerald-50">PC</span>
+              {t.status !== 'D Finished' && (
+                <button onClick={(e) => { e.stopPropagation(); triggerConfirm('Confirm Action', 'Change status to D Finished?', () => { const newOffStat = {...t.officerStatuses}; (t.assignedTo || []).forEach(id => newOffStat[id] = 'D Finished'); updateTask(t.id, { status: 'D Finished', officerStatuses: newOffStat }); }, false, 'Yes, Change'); }} title="Mark D Finished" className="group flex items-center justify-center transition-colors">
+                  <span className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-emerald-300 text-emerald-600 text-[9px] sm:text-[10px] font-black lg:hidden group-hover:bg-emerald-50">DF</span>
                   <span className="hidden lg:flex text-emerald-400 group-hover:text-emerald-600 group-hover:bg-emerald-50 p-1 rounded"><CheckCircle2 size={12}/></span>
                 </button>
               )}
@@ -583,13 +582,6 @@ const AdminTaskCard = React.memo(({
           className="flex-1 min-w-[70px] bg-slate-800 text-white font-bold py-2 rounded-xl text-xs hover:bg-black transition-colors flex items-center justify-center gap-1"
         >
           <Eye size={14}/> Details
-        </button>
-        <button 
-          onClick={() => toggleUnsolved(t)} 
-          className={`px-3 rounded-xl border flex items-center justify-center transition-colors ${t.status==='Unsolved' ? 'bg-amber-100 text-amber-700 border-amber-200 hover:bg-amber-200' : 'bg-slate-100 text-slate-500 border-slate-200 hover:bg-slate-200'}`} 
-          title={t.status==='Unsolved' ? "Reopen" : "Mark Unsolved"}
-        >
-          {t.status==='Unsolved' ? <Activity size={14}/> : <UserX size={14}/>}
         </button>
         <button 
           onClick={() => deleteTask(t.id)} 

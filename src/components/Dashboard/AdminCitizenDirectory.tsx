@@ -5,8 +5,8 @@ import { formatDate } from '../../utils/formatters';
 
 interface AdminCitizenDirectoryProps {
   tasks: Task[];
-  triggerCitizenPrint: (citizens: any[]) => void;
   triggerDownloadPDF: (citizens: any[]) => void;
+  onCitizenClick?: (phone: string) => void;
 }
 
 interface CitizenEntry extends PersonalDetails {
@@ -17,7 +17,8 @@ interface CitizenEntry extends PersonalDetails {
 export function AdminCitizenDirectory({
   tasks,
   triggerCitizenPrint,
-  triggerDownloadPDF
+  triggerDownloadPDF,
+  onCitizenClick
 }: AdminCitizenDirectoryProps) {
   const [search, setSearch] = useState('');
   const [sortBy, setSortBy] = useState('visits');
@@ -184,7 +185,13 @@ export function AdminCitizenDirectory({
                   {c.wardNumber && <span>(Ward: {c.wardNumber})</span>}
                 </td>
                 <td className="px-4 py-3 text-center">
-                  <span className="bg-slate-800 text-white font-black px-3 py-1 rounded-full">{c.visits}</span>
+                  <button 
+                    onClick={() => onCitizenClick?.(c.mobileNumber)}
+                    className="bg-slate-800 hover:bg-slate-700 hover:scale-105 active:scale-95 transition-all text-white font-black px-3 py-1 rounded-full cursor-pointer shadow-sm"
+                    title="View inputs by this citizen"
+                  >
+                    {c.visits}
+                  </button>
                 </td>
                 <td className="px-4 py-3 text-xs font-bold text-slate-500">{formatDate(c.lastVisit)}</td>
               </tr>
