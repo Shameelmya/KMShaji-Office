@@ -262,6 +262,14 @@ export function OfficerDashboard({
               <h2 className="text-lg font-black text-slate-800">Global Overview</h2>
               <p className="text-xs font-semibold text-slate-500">View and print all system-wide inputs based on permissions.</p>
             </div>
+            {user.canGenerateUpdationReport && (
+              <button 
+                onClick={() => { setUpdationReportModalOpen(true); loadArchive(); }} 
+                className="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-xl text-sm font-black shadow-md flex items-center gap-2 transition-all hover:scale-105 active:scale-95"
+              >
+                <FileOutput size={18}/> Generate Updation Report
+              </button>
+            )}
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
             <StatCard title="Total Inputs" value={total} color="blue" icon={<FileText size={24}/>} onClick={() => handleStatClick('All')}/>
