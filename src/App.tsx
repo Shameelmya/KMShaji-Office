@@ -565,6 +565,8 @@ export default function App() {
          onChange={e => setGlobalFilters(p => ({...p, dateRange: e.target.value}))} 
          className="px-3 py-1.5 border border-slate-300 rounded-lg font-bold text-slate-700 outline-none bg-white focus:border-indigo-500 transition-all font-sans"
        >
+         <option value="today">Today Only</option>
+         <option value="yesterday">Yesterday Only</option>
          <option value="7days">Last 7 Days</option>
          <option value="1month">Last Month</option>
          <option value="6months">Last 6 Months</option>
@@ -577,14 +579,7 @@ export default function App() {
             <input 
               type="date" 
               value={globalFilters.customStartDate || ''} 
-              onChange={e => setGlobalFilters(p => ({...p, customStartDate: e.target.value}))} 
-              className="text-sm font-bold text-slate-700 outline-none bg-transparent" 
-            />
-            <span className="text-xs font-bold text-slate-400">to</span>
-            <input 
-              type="date" 
-              value={globalFilters.customEndDate || ''} 
-              onChange={e => setGlobalFilters(p => ({...p, customEndDate: e.target.value}))} 
+              onChange={e => setGlobalFilters(p => ({...p, customStartDate: e.target.value, customEndDate: e.target.value}))} 
               className="text-sm font-bold text-slate-700 outline-none bg-transparent" 
             />
           </div>

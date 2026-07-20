@@ -36,11 +36,24 @@ export const useFilteredTasks = (
       }
     } else if (globalFilters.dateRange !== 'all') {
       const cutoff = new Date();
-      if (globalFilters.dateRange === '7days') cutoff.setDate(cutoff.getDate() - 7);
-      else if (globalFilters.dateRange === '1month') cutoff.setMonth(cutoff.getMonth() - 1);
-      else if (globalFilters.dateRange === '6months') cutoff.setMonth(cutoff.getMonth() - 6);
-      else if (globalFilters.dateRange === '1year') cutoff.setFullYear(cutoff.getFullYear() - 1);
-      result = result.filter(t => new Date(t.createdAt) >= cutoff);
+      if (globalFilters.dateRange === 'today') {
+        cutoff.setHours(0,0,0,0);
+        result = result.filter(t => new Date(t.createdAt) >= cutoff);
+      } else if (globalFilters.dateRange === 'yesterday') {
+        const start = new Date();
+        start.setDate(start.getDate() - 1);
+        start.setHours(0,0,0,0);
+        const end = new Date();
+        end.setDate(end.getDate() - 1);
+        end.setHours(23,59,59,999);
+        result = result.filter(t => new Date(t.createdAt) >= start && new Date(t.createdAt) <= end);
+      } else {
+        if (globalFilters.dateRange === '7days') cutoff.setDate(cutoff.getDate() - 7);
+        else if (globalFilters.dateRange === '1month') cutoff.setMonth(cutoff.getMonth() - 1);
+        else if (globalFilters.dateRange === '6months') cutoff.setMonth(cutoff.getMonth() - 6);
+        else if (globalFilters.dateRange === '1year') cutoff.setFullYear(cutoff.getFullYear() - 1);
+        result = result.filter(t => new Date(t.createdAt) >= cutoff);
+      }
     }
 
     if (globalFilters.applicationMode === 'Self') {
