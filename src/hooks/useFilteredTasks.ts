@@ -23,7 +23,7 @@ export const useFilteredTasks = (
       }
     }
 
-    if (globalFilters.dateRange === 'custom') {
+    if (globalFilters.dateRange === 'custom' || globalFilters.dateRange === 'custom_range') {
       if (globalFilters.customStartDate) {
         const start = new Date(globalFilters.customStartDate);
         start.setHours(0,0,0,0);

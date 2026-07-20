@@ -572,7 +572,8 @@ export default function App() {
          <option value="6months">Last 6 Months</option>
          <option value="1year">Last Year</option>
          <option value="all">All Time</option>
-         <option value="custom">Custom Date</option>
+         <option value="custom">Custom Single Date</option>
+         <option value="custom_range">Custom Date Range</option>
        </select>
        {globalFilters.dateRange === 'custom' && (
           <div className="flex items-center gap-2 bg-white border border-slate-300 rounded-lg px-2 py-1">
@@ -580,6 +581,23 @@ export default function App() {
               type="date" 
               value={globalFilters.customStartDate || ''} 
               onChange={e => setGlobalFilters(p => ({...p, customStartDate: e.target.value, customEndDate: e.target.value}))} 
+              className="text-sm font-bold text-slate-700 outline-none bg-transparent" 
+            />
+          </div>
+       )}
+       {globalFilters.dateRange === 'custom_range' && (
+          <div className="flex items-center gap-2 bg-white border border-slate-300 rounded-lg px-2 py-1">
+            <input 
+              type="date" 
+              value={globalFilters.customStartDate || ''} 
+              onChange={e => setGlobalFilters(p => ({...p, customStartDate: e.target.value}))} 
+              className="text-sm font-bold text-slate-700 outline-none bg-transparent" 
+            />
+            <span className="text-xs font-bold text-slate-400">to</span>
+            <input 
+              type="date" 
+              value={globalFilters.customEndDate || ''} 
+              onChange={e => setGlobalFilters(p => ({...p, customEndDate: e.target.value}))} 
               className="text-sm font-bold text-slate-700 outline-none bg-transparent" 
             />
           </div>
