@@ -1,12 +1,12 @@
 import { User } from '../types';
 
 export const fallbackConfig = {
-  apiKey: "AIzaSyBG-E6BiZURXhJWYkEPz1VdhyWh7d_5Lqo",
-  authDomain: "mla-office-tanur.firebaseapp.com",
-  projectId: "mla-office-tanur",
-  storageBucket: "mla-office-tanur.firebasestorage.app",
-  messagingSenderId: "281012204033",
-  appId: "1:281012204033:web:c50d355795431123728600"
+  apiKey: "AIzaSyDVGf-1JOJqQIK5TGKjQ_O70KSBrN3uG58",
+  authDomain: "km-shaji-office-a83cc.firebaseapp.com",
+  projectId: "km-shaji-office-a83cc",
+  storageBucket: "km-shaji-office-a83cc.firebasestorage.app",
+  messagingSenderId: "481235909399",
+  appId: "1:481235909399:web:b37bc1693a8fbf61209552"
 };
 
 export const DEFAULT_CATEGORIES = [
@@ -40,12 +40,12 @@ export const INPUT_TYPES = [
 ];
 
 export const LOCAL_BODIES = [
-  'Tanur Municipality',
-  'Tanalur Panchayath',
-  'Ozhur Panchayath',
-  'Cheriyamundam Panchayath',
-  'Ponmundam Panchayath',
-  'Niramaruthur Panchayath',
+  'Vengara Panchayath',
+  'AR Nagar Panchayath',
+  'Kannamangalam Panchayath',
+  'Othukkungal Panchayath',
+  'Parappur Panchayath',
+  'Thennala Panchayath',
   'Other'
 ];
 
@@ -56,12 +56,7 @@ export const EXT_LINKS: Record<string, string> = {
 };
 
 export const DEFAULT_USERS: User[] = [
-  { id: 'admin', name: 'PK Navas (MLA)', role: 'admin', pass: 'Navas@2026', enabled: true, canInput: true, canSeeReports: true, canSeeGlobal: true, canSeeGlobalOverview: true, canSeeDraftsView: true, canEditGlobalOverview: true, canEditOwnInputs: true, canReassign: true, canGenerateUpdationReport: true, canSeeRecentUpdations: true, phone: '', whatsapp: '' },
-  { id: 'off1', name: 'Abdul Shukoor NK', role: 'officer', pass: 'Input@2026', enabled: true, canInput: true, canSeeReports: false, canSeeGlobal: false, phone: '', whatsapp: '' },
-  { id: 'off2', name: 'P Musthafa', role: 'officer', pass: 'Off2@2026', enabled: true, canInput: false, canSeeReports: false, canSeeGlobal: false, phone: '', whatsapp: '' },
-  { id: 'off3', name: 'Sadiq', role: 'officer', pass: 'Off3@2026', enabled: true, canInput: false, canSeeReports: false, canSeeGlobal: false, phone: '', whatsapp: '' },
-  { id: 'off4', name: 'Falah', role: 'officer', pass: 'Off4@2026', enabled: true, canInput: false, canSeeReports: false, canSeeGlobal: false, phone: '', whatsapp: '' },
-  { id: 'off5', name: 'Abhilash', role: 'officer', pass: 'Off5@2026', enabled: true, canInput: false, canSeeReports: false, canSeeGlobal: false, phone: '', whatsapp: '' },
+  { id: 'admin', name: 'KM Shaji (MLA)', role: 'admin', pass: 'KMShaji@2026', enabled: true, canInput: true, canSeeReports: true, canSeeGlobal: true, canSeeGlobalOverview: true, canSeeDraftsView: true, canEditGlobalOverview: true, canEditOwnInputs: true, canReassign: true, canGenerateUpdationReport: true, canSeeRecentUpdations: true, phone: '', whatsapp: '' }
 ];
 
 export const ISLAMIC_QUOTES = [

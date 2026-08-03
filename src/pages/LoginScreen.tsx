@@ -48,10 +48,10 @@ export function LoginScreen({ onLogin, users }: LoginScreenProps) {
   };
 
   return (
-    <div className="min-h-screen bg-[#F3F6FA] flex flex-col justify-start items-center font-sans">
+    <div className="min-h-screen bg-slate-50 flex flex-col justify-start items-center font-sans bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
       
-      {/* Top Header Banner: Islamic scripture & translation with extremely elegant & compact design */}
-      <div className="w-full bg-[#0B1528] pt-10 pb-4 px-4 text-center text-[#94A3B8] border-b border-slate-900 shadow-md select-none">
+      {/* Top Header Banner */}
+      <div className="w-full bg-indigo-950/90 backdrop-blur-xl pt-10 pb-4 px-4 text-center text-indigo-100 border-b border-indigo-900/50 shadow-sm select-none">
         <div className="max-w-4xl mx-auto space-y-1 transition-all duration-500 animate-in fade-in">
           {/* Elegant Arabic verse, small size, matched color with Malaylam translation */}
           <h1 
@@ -71,14 +71,13 @@ export function LoginScreen({ onLogin, users }: LoginScreenProps) {
         </div>
       </div>
 
-      {/* Main Content Area - Stacked perfectly underneath banner */}
       <div className="flex-1 w-full flex items-center justify-center p-4 sm:p-6 md:p-8">
         
         {/* Main Login Card Wrapper */}
-        <div className="bg-white rounded-[24px] shadow-2xl border border-slate-100 max-w-4xl w-full overflow-hidden grid grid-cols-1 md:grid-cols-12 min-h-[300px] transition-all">
+        <div className="bg-white/80 backdrop-blur-2xl rounded-[32px] shadow-2xl shadow-indigo-500/10 border border-white/40 max-w-4xl w-full overflow-hidden grid grid-cols-1 md:grid-cols-12 min-h-[400px] transition-all">
           
-          {/* Left Column: Purple Brand Identity Block (no metrics) */}
-          <div className="md:col-span-5 col-span-1 bg-gradient-to-br from-[#1E256F] to-[#121544] text-white p-6 sm:p-8 md:p-10 flex flex-col justify-between relative overflow-hidden">
+          {/* Left Column: Rich Gradient Brand Identity Block */}
+          <div className="md:col-span-5 col-span-1 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 text-white p-8 sm:p-10 flex flex-col justify-between relative overflow-hidden">
             
             {/* Geometric wireframe layout graphics */}
             <div className="absolute inset-0 opacity-15 pointer-events-none">
@@ -98,7 +97,7 @@ export function LoginScreen({ onLogin, users }: LoginScreenProps) {
                   MLA Office Management
                 </h2>
                 <p className="text-xs sm:text-sm font-semibold text-slate-300/90 tracking-wide">
-                  PK Navas • Tanur Constituency
+                  KM Shaji • Vengara Constituency
                 </p>
               </div>
             </div>
@@ -117,8 +116,8 @@ export function LoginScreen({ onLogin, users }: LoginScreenProps) {
 
           </div>
 
-          {/* Right Column: Profile Selector or Password Entrance */}
-          <div className="md:col-span-7 p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col justify-center bg-[#FAFBFC]">
+          {/* Right Column */}
+          <div className="md:col-span-7 p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col justify-center bg-white/50 backdrop-blur-md">
             <div className="w-full">
               
               {/* Profile Cards Selection Grid */}
@@ -144,15 +143,15 @@ export function LoginScreen({ onLogin, users }: LoginScreenProps) {
                             setPassword('');
                             setError('');
                           }}
-                          className={`w-full p-4 flex items-center gap-3 border rounded-[24px] text-left transition-all duration-300 hover:scale-[1.02] hover:shadow-xl cursor-pointer ${
+                          className={`w-full p-4 flex items-center gap-4 border rounded-3xl text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/10 cursor-pointer ${
                             isAdmin 
-                              ? 'bg-[#EBF5FF] border-[#BFDBFE] hover:bg-[#E1F0FF] hover:border-[#93C5FD]' 
-                              : 'bg-white border-[#E2E8F0] hover:bg-slate-50/50 hover:border-slate-350'
+                              ? 'bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200/50' 
+                              : 'bg-white/60 border-slate-200/60'
                           }`}
                         >
-                          {/* Profile rounded icon area matching exactly */}
-                          <div className={`h-10 w-10 rounded-[16px] flex items-center justify-center shrink-0 shadow-sm ${
-                            isAdmin ? 'bg-blue-600 text-white' : 'bg-[#EBF5FF] text-[#2563EB]'
+                          {/* Profile rounded icon area */}
+                          <div className={`h-12 w-12 rounded-[18px] flex items-center justify-center shrink-0 shadow-sm ${
+                            isAdmin ? 'bg-gradient-to-tr from-blue-600 to-indigo-500 text-white' : 'bg-gradient-to-tr from-slate-100 to-slate-200 text-slate-600'
                           }`}>
                             {isAdmin ? <Shield size={18} /> : <UserIcon size={18} />}
                           </div>
@@ -239,10 +238,9 @@ export function LoginScreen({ onLogin, users }: LoginScreenProps) {
                       )}
                     </div>
 
-                    {/* Submit Login action */}
                     <button 
                       type="submit" 
-                      className="w-full bg-[#0F172A] hover:bg-[#1E293B] active:bg-[#020617] text-white font-extrabold py-3.5 px-6 rounded-xl transition-all flex items-center justify-center gap-1.5 text-xs sm:text-sm uppercase tracking-wider cursor-pointer shadow-md"
+                      className="w-full bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 active:scale-[0.98] text-white font-extrabold py-4 px-6 rounded-[20px] transition-all flex items-center justify-center gap-2 text-sm uppercase tracking-wider cursor-pointer shadow-lg shadow-indigo-500/25"
                     >
                       <span>Secure Login</span>
                       <ChevronRight size={16} />

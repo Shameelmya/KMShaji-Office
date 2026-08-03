@@ -71,13 +71,13 @@ export function AdminDirectAssignments({
       officerStatuses: {},
       isSignedByMLA: false,
       createdAt: getNow(),
-      createdBy: 'PK Navas',
+      createdBy: 'KM Shaji',
       createdByUid: 'admin',
       timeline: [{
         id: generateUid(),
         type: 'created',
         time: getNow(),
-        by: 'PK Navas',
+        by: 'KM Shaji',
         text: 'Direct Assignment Created'
       }]
     };
