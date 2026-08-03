@@ -9,7 +9,7 @@
     cursor: pointer !important;
   }
   body, html {
-    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Noto Serif Malayalam', sans-serif !important;
+    font-family: 'Outfit', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: #f8fafc; /* slate-50 */

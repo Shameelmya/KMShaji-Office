@@ -48,22 +48,30 @@ export function LoginScreen({ onLogin, users }: LoginScreenProps) {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col justify-start items-center font-sans bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
+    <div className="min-h-screen relative overflow-hidden flex flex-col justify-start items-center font-['Outfit'] bg-slate-900 text-slate-100">
       
+      {/* Decorative colorful ambient blobs (Aurora effect) */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-fuchsia-600/30 blur-[120px]"></div>
+        <div className="absolute top-[20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-blue-600/30 blur-[150px]"></div>
+        <div className="absolute bottom-[-20%] left-[20%] w-[60%] h-[60%] rounded-full bg-emerald-500/20 blur-[150px]"></div>
+        <div className="absolute bottom-[10%] right-[10%] w-[30%] h-[30%] rounded-full bg-amber-500/20 blur-[100px]"></div>
+      </div>
+
       {/* Top Header Banner */}
-      <div className="w-full bg-indigo-950/90 backdrop-blur-xl pt-10 pb-4 px-4 text-center text-indigo-100 border-b border-indigo-900/50 shadow-sm select-none">
+      <div className="w-full bg-white/5 backdrop-blur-3xl pt-8 pb-4 px-4 text-center border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] select-none">
         <div className="max-w-4xl mx-auto space-y-1 transition-all duration-500 animate-in fade-in">
           {/* Elegant Arabic verse, small size, matched color with Malaylam translation */}
           <h1 
-            className="text-sm sm:text-base md:text-2xl text-[#94A3B8] leading-relaxed font-normal tracking-wide text-center" 
+            className="text-sm sm:text-base md:text-2xl text-slate-200/90 leading-relaxed font-normal tracking-wide text-center" 
             style={{ fontFamily: "'Scheherazade New', serif", direction: 'rtl' }}
           >
             {ISLAMIC_QUOTES[quoteIdx].arabic}
           </h1>
           
-          {/* Malayalam meaning translation, 'Anek Malayalam' regular and small text */}
+          {/* Malayalam meaning translation */}
           <p 
-            className="text-[10px] sm:text-xs md:text-sm text-[#94A3B8] max-w-2xl mx-auto leading-normal font-normal min-h-[28px] sm:min-h-[18px] flex items-center justify-center mt-2"
+            className="text-[10px] sm:text-xs md:text-sm text-slate-400 max-w-2xl mx-auto leading-normal font-light min-h-[28px] sm:min-h-[18px] flex items-center justify-center mt-3"
             style={{ fontFamily: "'Anek Malayalam', sans-serif" }}
           >
             {ISLAMIC_QUOTES[quoteIdx].malayalam}
@@ -71,13 +79,13 @@ export function LoginScreen({ onLogin, users }: LoginScreenProps) {
         </div>
       </div>
 
-      <div className="flex-1 w-full flex items-center justify-center p-4 sm:p-6 md:p-8">
+      <div className="flex-1 w-full flex items-center justify-center p-4 sm:p-6 md:p-10 z-10">
         
-        {/* Main Login Card Wrapper */}
-        <div className="bg-white/80 backdrop-blur-2xl rounded-[32px] shadow-2xl shadow-indigo-500/10 border border-white/40 max-w-4xl w-full overflow-hidden grid grid-cols-1 md:grid-cols-12 min-h-[400px] transition-all">
+        {/* Main Login Card Wrapper (Glassmorphism) */}
+        <div className="bg-white/10 backdrop-blur-2xl rounded-[40px] shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] border border-white/20 max-w-5xl w-full overflow-hidden grid grid-cols-1 md:grid-cols-12 min-h-[450px] transition-all">
           
           {/* Left Column: Rich Gradient Brand Identity Block */}
-          <div className="md:col-span-5 col-span-1 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 text-white p-8 sm:p-10 flex flex-col justify-between relative overflow-hidden">
+          <div className="md:col-span-5 col-span-1 bg-gradient-to-br from-indigo-500/80 via-purple-500/80 to-pink-500/80 text-white p-10 flex flex-col justify-between relative overflow-hidden backdrop-blur-3xl">
             
             {/* Geometric wireframe layout graphics */}
             <div className="absolute inset-0 opacity-15 pointer-events-none">
@@ -86,48 +94,49 @@ export function LoginScreen({ onLogin, users }: LoginScreenProps) {
               <div className="absolute -bottom-12 -left-12 w-36 h-36 rounded-full border border-white/10"></div>
             </div>
 
-            <div className="relative z-10 space-y-4">
+            <div className="relative z-10 space-y-6">
               {/* Profile icon badge */}
-              <div className="bg-white/10 backdrop-blur-md border border-white/10 h-14 w-14 rounded-2xl flex items-center justify-center shadow-lg">
-                <UserIcon size={26} className="text-[#969FE7]" />
+              <div className="bg-white/20 backdrop-blur-xl border border-white/30 h-16 w-16 rounded-[22px] flex items-center justify-center shadow-2xl shadow-black/20">
+                <Shield size={32} className="text-white" />
               </div>
               
-              <div className="space-y-1">
-                <h2 className="text-2xl sm:text-3xl font-black tracking-tight leading-tight">
-                  MLA Office Management
+              <div className="space-y-2">
+                <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight drop-shadow-sm font-['Outfit']">
+                  E-Office
                 </h2>
-                <p className="text-xs sm:text-sm font-semibold text-slate-300/90 tracking-wide">
+                <div className="h-1 w-12 bg-white/50 rounded-full"></div>
+                <p className="text-sm sm:text-base font-medium text-white/90 tracking-wider">
                   KM Shaji • Vengara Constituency
                 </p>
               </div>
             </div>
 
             {/* Date-time element inside a pill near the bottom */}
-            <div className="relative z-10 my-10">
-              <div className="inline-flex items-center gap-2 bg-black/30 border border-white/10 px-4 py-2.5 rounded-xl font-bold text-xs text-white/95 shadow-inner w-full justify-center">
-                <LiveClock className="text-white font-medium text-xs sm:text-sm flex items-center justify-center gap-2" />
+            <div className="relative z-10 mt-12 mb-8">
+              <div className="inline-flex items-center gap-3 bg-black/20 backdrop-blur-md border border-white/20 px-5 py-3 rounded-2xl font-medium text-sm text-white/95 shadow-xl w-full justify-center transition-all hover:bg-black/30">
+                <LiveClock className="text-white flex items-center justify-center gap-2" />
               </div>
             </div>
 
             {/* Copyright badge at bottom */}
-            <div className="relative z-10 text-[9px] sm:text-[10px] font-black uppercase text-slate-400 tracking-widest border-t border-white/10 pt-4">
+            <div className="relative z-10 text-[10px] font-bold uppercase text-white/60 tracking-[0.2em] border-t border-white/20 pt-5">
               <span>© 2026 SECURE SYSTEM</span>
             </div>
 
           </div>
 
           {/* Right Column */}
-          <div className="md:col-span-7 p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col justify-center bg-white/50 backdrop-blur-md">
-            <div className="w-full">
+          <div className="md:col-span-7 p-8 sm:p-10 md:p-12 flex flex-col justify-center bg-white/5 backdrop-blur-xl">
+            <div className="w-full max-w-md mx-auto">
               
               {/* Profile Cards Selection Grid */}
               {!selectedUser ? (
-                <div className="space-y-6">
-                  {/* Exact header spacing and bold style */}
-                  <div className="mb-6 text-left">
-                    <h3 className="text-2xl font-black text-[#1E293B] tracking-tight leading-tight">
-                      Select Staff Profile
+                <div className="space-y-8">
+                  <div className="mb-8 text-left">
+                    <h3 className="text-3xl font-bold text-white tracking-tight leading-tight">
+                      Sign In
                     </h3>
+                    <p className="text-slate-400 mt-2 text-sm">Select your profile to access the system</p>
                   </div>
 
                   {/* Profile Cards list - exact match with 2-column gap-2 spacing */}
@@ -143,25 +152,25 @@ export function LoginScreen({ onLogin, users }: LoginScreenProps) {
                             setPassword('');
                             setError('');
                           }}
-                          className={`w-full p-4 flex items-center gap-4 border rounded-3xl text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/10 cursor-pointer ${
+                          className={`w-full p-5 flex items-center gap-5 border rounded-[28px] text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl cursor-pointer group ${
                             isAdmin 
-                              ? 'bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200/50' 
-                              : 'bg-white/60 border-slate-200/60'
+                              ? 'bg-white/10 border-white/20 hover:bg-white/20 hover:border-white/40 shadow-[0_4px_24px_0_rgba(0,0,0,0.1)]' 
+                              : 'bg-white/5 border-white/10 hover:bg-white/15'
                           }`}
                         >
                           {/* Profile rounded icon area */}
-                          <div className={`h-12 w-12 rounded-[18px] flex items-center justify-center shrink-0 shadow-sm ${
-                            isAdmin ? 'bg-gradient-to-tr from-blue-600 to-indigo-500 text-white' : 'bg-gradient-to-tr from-slate-100 to-slate-200 text-slate-600'
+                          <div className={`h-14 w-14 rounded-[20px] flex items-center justify-center shrink-0 shadow-inner transition-transform group-hover:scale-110 ${
+                            isAdmin ? 'bg-gradient-to-tr from-cyan-500 to-blue-500 text-white' : 'bg-white/10 text-slate-300'
                           }`}>
-                            {isAdmin ? <Shield size={18} /> : <UserIcon size={18} />}
+                            {isAdmin ? <Shield size={24} /> : <UserIcon size={24} />}
                           </div>
                           
                           {/* Profile name and tag details */}
                           <div className="flex-1 min-w-0">
-                            <p className="text-sm sm:text-base font-extrabold text-[#1E293B] tracking-tight whitespace-normal break-words leading-tight mb-1">
+                            <p className="text-lg font-semibold text-white tracking-tight whitespace-normal break-words leading-tight mb-1.5">
                               {u.name}
                             </p>
-                            <span className="text-[10px] font-bold uppercase text-slate-400 tracking-wider block font-sans">
+                            <span className="text-[11px] font-bold uppercase text-slate-400 tracking-widest block">
                               {isAdmin ? 'Super Admin' : 'Officer Login'}
                             </span>
                           </div>
@@ -183,38 +192,37 @@ export function LoginScreen({ onLogin, users }: LoginScreenProps) {
                         setPassword('');
                         setError('');
                       }}
-                      className="bg-blue-50 text-blue-600 hover:bg-blue-100 transition-all px-3 py-1.5 rounded-lg text-xs font-bold font-sans cursor-pointer tracking-wide border border-blue-100"
+                      className="bg-white/10 hover:bg-white/20 text-white transition-all px-4 py-2 rounded-xl text-xs font-semibold cursor-pointer tracking-wide border border-white/10 backdrop-blur-sm shadow-sm"
                     >
-                      Back to profiles
+                      ← Back
                     </button>
                   </div>
 
                   {/* Profile Indicator Card */}
-                  <div className="bg-white border border-slate-150 p-4 rounded-2xl flex items-center gap-4 shadow-sm">
-                    <div className="h-12 w-12 rounded-xl flex items-center justify-center shrink-0 bg-blue-600 text-white">
-                      {selectedUser.role === 'admin' ? <Shield size={20} /> : <UserIcon size={20} />}
+                  <div className="bg-white/10 border border-white/20 p-5 rounded-[28px] flex items-center gap-5 shadow-lg backdrop-blur-md">
+                    <div className="h-14 w-14 rounded-[20px] flex items-center justify-center shrink-0 bg-gradient-to-tr from-cyan-500 to-blue-500 text-white shadow-inner">
+                      {selectedUser.role === 'admin' ? <Shield size={24} /> : <UserIcon size={24} />}
                     </div>
                     <div className="text-left">
-                      <h4 className="font-extrabold text-slate-800 text-base leading-tight">
+                      <h4 className="font-bold text-white text-lg leading-tight">
                         {selectedUser.name}
                       </h4>
-                      <p className="text-xs font-medium text-slate-400 mt-0.5 font-sans">
-                        Enter your secure passcode
+                      <p className="text-sm font-medium text-slate-300 mt-1">
+                        Enter passcode
                       </p>
                     </div>
                   </div>
 
                   {/* Error Notification Alert */}
                   {error && (
-                    <div className="bg-rose-50 border border-rose-200 text-rose-700 p-3.5 rounded-xl text-xs font-bold leading-normal">
+                    <div className="bg-red-500/10 border border-red-500/30 text-red-200 p-4 rounded-2xl text-sm font-medium leading-normal backdrop-blur-sm shadow-lg">
                       {error}
                     </div>
                   )}
 
                   {/* Password Entry Area */}
                   <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="relative">
-                      {/* Big placeholder bullet code input */}
+                    <div className="relative group">
                       <input 
                         type={showPass ? 'text' : 'password'} 
                         placeholder="••••••••••••" 
@@ -224,14 +232,14 @@ export function LoginScreen({ onLogin, users }: LoginScreenProps) {
                           setError('');
                         }}
                         autoFocus
-                        className="w-full px-5 py-4 bg-blue-50/20 border border-blue-100 rounded-2xl font-bold text-slate-800 outline-none focus:ring-2 focus:ring-[#1E256F] focus:border-[#1E256F] transition-all text-base tracking-widest text-center sm:text-left shadow-sm" 
+                        className="w-full px-6 py-5 bg-white/5 border border-white/20 rounded-[24px] font-bold text-white outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 focus:bg-white/10 transition-all text-lg tracking-widest text-center sm:text-left shadow-inner placeholder:text-white/20 backdrop-blur-sm" 
                       />
                       
                       {password && (
                         <button 
                           type="button" 
                           onClick={() => setShowPass(!showPass)} 
-                          className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-indigo-600 hover:text-indigo-800 outline-none cursor-pointer"
+                          className="absolute right-5 top-1/2 -translate-y-1/2 text-sm font-semibold text-cyan-400 hover:text-cyan-300 outline-none cursor-pointer px-3 py-1 bg-cyan-950/40 rounded-lg"
                         >
                           {showPass ? 'Hide' : 'Show'}
                         </button>
@@ -240,10 +248,10 @@ export function LoginScreen({ onLogin, users }: LoginScreenProps) {
 
                     <button 
                       type="submit" 
-                      className="w-full bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 active:scale-[0.98] text-white font-extrabold py-4 px-6 rounded-[20px] transition-all flex items-center justify-center gap-2 text-sm uppercase tracking-wider cursor-pointer shadow-lg shadow-indigo-500/25"
+                      className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 active:scale-[0.98] text-white font-bold py-5 px-6 rounded-[24px] transition-all flex items-center justify-center gap-2 text-sm uppercase tracking-[0.15em] cursor-pointer shadow-[0_8px_30px_rgb(6,182,212,0.3)] mt-8"
                     >
                       <span>Secure Login</span>
-                      <ChevronRight size={16} />
+                      <ChevronRight size={18} className="text-cyan-100" />
                     </button>
                   </form>
 
