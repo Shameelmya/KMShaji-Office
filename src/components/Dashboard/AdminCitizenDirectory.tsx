@@ -101,7 +101,7 @@ export function AdminCitizenDirectory({
     <div id="admin-citizen-directory" className="bg-white rounded-3xl shadow-sm border border-slate-200 p-8 animate-in fade-in">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
         <div>
-          <h2 className="text-2xl font-black text-slate-800 flex items-center gap-2">
+          <h2 className="text-2xl font-bold text-slate-800 flex items-center gap-2">
             <Users className="text-teal-600"/> Citizen Visit Directory
           </h2>
           <p className="text-slate-500 font-medium mt-1">Track frequency of citizen visits based on registered mobile numbers.</p>
@@ -115,7 +115,7 @@ export function AdminCitizenDirectory({
           </button>
           <button 
             onClick={() => triggerCitizenPrint(citizensData)} 
-            className="bg-slate-800 text-white hover:bg-black px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 transition-colors"
+            className="bg-blue-600 text-white hover:bg-blue-700 shadow-sm px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 transition-colors"
           >
             <Printer size={16}/> Print
           </button>
@@ -127,7 +127,7 @@ export function AdminCitizenDirectory({
           </button>
         </div>
       </div>
-      <div className="flex gap-4 mb-6 bg-slate-50 p-4 rounded-xl border border-slate-200">
+      <div className="flex gap-4 mb-6 bg-[#F4F7FB] p-4 rounded-xl border border-slate-200">
         <div className="relative flex-1">
           <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
           <input 
@@ -150,7 +150,7 @@ export function AdminCitizenDirectory({
       </div>
       <div className="overflow-x-auto">
         <table className="w-full text-left text-sm text-slate-700 whitespace-nowrap">
-          <thead className="bg-slate-100 border-y border-slate-200 text-slate-500 uppercase text-xs tracking-widest font-black">
+          <thead className="bg-slate-100 border-y border-slate-200 text-slate-500 uppercase text-xs tracking-widest font-bold">
             <tr>
               <th className="px-4 py-3">Citizen Name & Desig.</th>
               <th className="px-4 py-3">Contact Info</th>
@@ -161,7 +161,7 @@ export function AdminCitizenDirectory({
           </thead>
           <tbody className="divide-y divide-slate-100">
             {displayed.map((c, i) => (
-              <tr key={i} className="hover:bg-slate-50">
+              <tr key={i} className="hover:bg-[#F4F7FB]">
                 <td className="px-4 py-3">
                   <span className="font-bold text-slate-800 text-base">{c.name}</span>
                   {c.gender && <span className="text-[10px] text-slate-500 ml-2">({c.gender})</span>}
@@ -187,7 +187,7 @@ export function AdminCitizenDirectory({
                 <td className="px-4 py-3 text-center">
                   <button 
                     onClick={() => onCitizenClick?.(c.mobileNumber)}
-                    className="bg-slate-800 hover:bg-slate-700 hover:scale-105 active:scale-95 transition-all text-white font-black px-3 py-1 rounded-full cursor-pointer shadow-sm"
+                    className="bg-blue-600 hover:bg-blue-700 text-white shadow-sm hover:scale-105 active:scale-95 transition-all text-white font-bold px-3 py-1 rounded-full cursor-pointer shadow-sm"
                     title="View inputs by this citizen"
                   >
                     {c.visits}

@@ -62,7 +62,7 @@ const StatCard = ({ title, value, color, icon, onClick }: any) => {
         {icon}
       </div>
       <div>
-        <h3 className="text-2xl font-black leading-tight">{value}</h3>
+        <h3 className="text-2xl font-bold leading-tight">{value}</h3>
         <p className="text-[10px] font-bold uppercase tracking-wider opacity-80 mt-1">{title}</p>
       </div>
     </div>
@@ -139,26 +139,26 @@ export function OfficerDashboard({
       <div className="flex flex-wrap items-center gap-2 bg-white p-1.5 rounded-2xl shadow-sm border border-slate-200 w-full print-hidden">
         <button 
           onClick={() => { setActiveTab('recent'); setGlobalSearch(''); }} 
-          className={`flex-1 px-2 py-2 md:py-3 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-1.5 ${activeTab === 'recent' ? 'bg-[#EF4444] text-white shadow' : 'text-slate-600 hover:bg-slate-50'}`}
+          className={`flex-1 px-2 py-2 md:py-3 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 ${activeTab === 'recent' ? 'bg-[#EF4444] text-white shadow' : 'text-slate-600 hover:bg-[#F4F7FB]'}`}
         >
           <Bell size={15} /> Recent Assignments
         </button>
         <button 
           onClick={() => { setActiveTab('worker'); setGlobalSearch(''); }} 
-          className={`flex-1 px-2 py-2 md:py-3 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-1.5 ${activeTab === 'worker' ? 'bg-[#4F46E5] text-white shadow' : 'text-slate-600 hover:bg-slate-50'}`}
+          className={`flex-1 px-2 py-2 md:py-3 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 ${activeTab === 'worker' ? 'bg-[#4F46E5] text-white shadow' : 'text-slate-600 hover:bg-[#F4F7FB]'}`}
         >
           My Assigned Works
         </button>
         <button 
           onClick={() => { setActiveTab('direct_worker'); setGlobalSearch(''); }} 
-          className={`flex-1 px-2 py-2 md:py-3 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-1.5 ${activeTab === 'direct_worker' ? 'bg-[#6366F1] text-white shadow' : 'text-slate-600 hover:bg-slate-50'}`}
+          className={`flex-1 px-2 py-2 md:py-3 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 ${activeTab === 'direct_worker' ? 'bg-[#6366F1] text-white shadow' : 'text-slate-600 hover:bg-[#F4F7FB]'}`}
         >
           <Zap size={15} /> Assignments from MLA
         </button>
         {hasGlobalOverviewPermission && (
           <button 
             onClick={() => { setActiveTab('overview'); setGlobalSearch(''); }} 
-          className={`flex-1 px-2 py-2 md:py-3 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-1.5 ${activeTab === 'overview' ? 'bg-slate-800 text-white shadow' : 'text-slate-600 hover:bg-slate-50'}`}
+          className={`flex-1 px-2 py-2 md:py-3 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 ${activeTab === 'overview' ? 'bg-blue-600 text-white shadow-md' : 'text-slate-600 hover:bg-[#F4F7FB]'}`}
           >
             <Eye size={15} /> Global Overview
           </button>
@@ -166,27 +166,27 @@ export function OfficerDashboard({
         {user.canSeeRecentUpdations && (
           <button 
             onClick={() => { setActiveTab('recent_updations'); setGlobalSearch(''); loadArchive(); }} 
-            className={`flex-1 px-2 py-2 md:py-3 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-1.5 ${activeTab === 'recent_updations' ? 'bg-amber-500 text-white shadow' : 'text-slate-600 hover:bg-slate-50'}`}
+            className={`flex-1 px-2 py-2 md:py-3 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 ${activeTab === 'recent_updations' ? 'bg-amber-500 text-white shadow' : 'text-slate-600 hover:bg-[#F4F7FB]'}`}
           >
             <Zap size={15} /> Updations
           </button>
         )}
         <button 
           onClick={() => { setActiveTab('input'); setGlobalSearch(''); }} 
-          className={`flex-1 px-2 py-2 md:py-3 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-1.5 ${activeTab === 'input' ? 'bg-[#2563EB] text-white shadow' : 'text-slate-600 hover:bg-slate-50'}`}
+          className={`flex-1 px-2 py-2 md:py-3 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 ${activeTab === 'input' ? 'bg-[#2563EB] text-white shadow' : 'text-slate-600 hover:bg-[#F4F7FB]'}`}
         >
           Register New Input
         </button>
         <button 
           onClick={() => { setActiveTab('history'); setGlobalSearch(''); loadArchive(); }} 
-          className={`flex-1 px-2 py-2 md:py-3 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-1.5 ${activeTab === 'history' ? 'bg-slate-600 text-white shadow' : 'text-slate-600 hover:bg-slate-50'}`}
+          className={`flex-1 px-2 py-2 md:py-3 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 ${activeTab === 'history' ? 'bg-slate-600 text-white shadow' : 'text-slate-600 hover:bg-[#F4F7FB]'}`}
         >
           History & Reports
         </button>
         {rejectedTasks.length > 0 && (
           <button 
             onClick={() => { setActiveTab('rejected'); setGlobalSearch(''); }} 
-            className={`px-3 py-1.5 md:px-4 md:py-2.5 rounded-xl text-xs font-black transition-all flex items-center gap-1 ${activeTab === 'rejected' ? 'bg-orange-600 text-white shadow' : 'text-orange-550 hover:bg-orange-50 text-orange-600 bg-orange-50/60'}`}
+            className={`px-3 py-1.5 md:px-4 md:py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1 ${activeTab === 'rejected' ? 'bg-orange-600 text-white shadow' : 'text-orange-550 hover:bg-orange-50 text-orange-600 bg-orange-50/60'}`}
           >
             <Ban size={13} className="animate-pulse" /> Rejected ({rejectedTasks.length})
           </button>
@@ -198,7 +198,7 @@ export function OfficerDashboard({
         <div className="flex justify-end print-hidden -mt-2">
           <button 
             onClick={() => { setUpdationReportModalOpen(true); loadArchive(); }} 
-            className="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-xl text-sm font-black shadow-md flex items-center gap-2 transition-all hover:scale-105 active:scale-95"
+            className="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-md flex items-center gap-2 transition-all hover:scale-105 active:scale-95"
           >
             <FileOutput size={18}/> Generate Updation Report
           </button>
@@ -259,13 +259,13 @@ export function OfficerDashboard({
         <div className="space-y-6 animate-in fade-in">
           <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex justify-between items-center">
             <div>
-              <h2 className="text-lg font-black text-slate-800">Global Overview</h2>
+              <h2 className="text-lg font-bold text-slate-800">Global Overview</h2>
               <p className="text-xs font-semibold text-slate-500">View and print all system-wide inputs based on permissions.</p>
             </div>
             {user.canGenerateUpdationReport && (
               <button 
                 onClick={() => { setUpdationReportModalOpen(true); loadArchive(); }} 
-                className="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-xl text-sm font-black shadow-md flex items-center gap-2 transition-all hover:scale-105 active:scale-95"
+                className="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-md flex items-center gap-2 transition-all hover:scale-105 active:scale-95"
               >
                 <FileOutput size={18}/> Generate Updation Report
               </button>
@@ -338,7 +338,7 @@ export function OfficerDashboard({
       {activeTab === 'rejected' && (
         <div className="space-y-6 animate-in hover:fade-in duration-200">
           <div className="bg-orange-50 border border-orange-200 rounded-3xl p-6">
-            <h2 className="text-xl font-black text-orange-900 flex items-center gap-2">
+            <h2 className="text-xl font-bold text-orange-900 flex items-center gap-2">
               <AlertCircle size={20} className="text-orange-600 animate-pulse" /> Rejected Cases awaiting Reassignment
             </h2>
             <p className="text-xs font-semibold text-orange-700 mt-1">
@@ -359,7 +359,7 @@ export function OfficerDashboard({
                   <div key={t.id} className="bg-white rounded-[24px] border border-orange-200 shadow-sm p-5 flex flex-col justify-between relative group hover:border-orange-300 hover:shadow-md transition-all">
                     <div>
                       <div className="flex justify-between items-start mb-3">
-                        <span className="bg-orange-100 text-orange-800 text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider">
+                        <span className="bg-orange-100 text-orange-800 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">
                           {t.id}
                         </span>
                         <span className="text-[10px] font-bold text-slate-400">
@@ -367,16 +367,16 @@ export function OfficerDashboard({
                         </span>
                       </div>
                       <h4 className="font-extrabold text-slate-800 text-sm mb-1 leading-snug">{t.subject}</h4>
-                      <p className="text-[11px] font-black text-indigo-600 uppercase tracking-widest">{t.personalDetails.name}</p>
+                      <p className="text-[11px] font-bold text-indigo-600 uppercase tracking-widest">{t.personalDetails.name}</p>
                       <div className="mt-3 bg-red-50 border border-red-100 rounded-xl p-3 text-xs text-red-700 font-medium font-mono whitespace-pre-wrap">
-                        <span className="font-black text-red-800 block mb-1">REJECTION REASON:</span>
+                        <span className="font-bold text-red-800 block mb-1">REJECTION REASON:</span>
                         {reason}
                       </div>
                     </div>
                     <div className="mt-4 pt-4 border-t border-slate-100 flex gap-2 w-full">
                       <button 
                         onClick={() => triggerViewDetails(t)} 
-                        className="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-black py-2.5 rounded-xl text-xs transition-colors flex items-center justify-center gap-1"
+                        className="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 rounded-xl text-xs transition-colors flex items-center justify-center gap-1"
                       >
                         Edit & Reassign <ArrowRight size={14} />
                       </button>

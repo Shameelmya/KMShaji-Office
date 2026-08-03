@@ -313,17 +313,17 @@ export function TaskDetailsModal({
     return [...categories].sort((a, b) => a.localeCompare(b));
   }, [categories]);
 
-  const cardBg = task.isSelfMode ? 'bg-yellow-50/70 border-yellow-200' : 'bg-slate-50 border-slate-200';
+  const cardBg = task.isSelfMode ? 'bg-yellow-50/70 border-yellow-200' : 'bg-[#F4F7FB] border-slate-200';
 
   return (
     <div id="task-details-modal" className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] flex justify-end">
-      <div className="w-full max-w-2xl bg-white h-full overflow-y-auto animate-in slide-in-from-right flex flex-col shadow-2xl custom-scrollbar">
+      <div className="w-full max-w-2xl bg-white h-full overflow-y-auto animate-in slide-in-from-right flex flex-col shadow-md custom-scrollbar">
         <div className="bg-slate-900 p-6 text-white flex justify-between items-center sticky top-0 z-10">
           <div>
-            <h2 className="text-xl font-black flex items-center gap-2">
+            <h2 className="text-xl font-bold flex items-center gap-2">
               <FileText size={20}/> Task Details 
               {task.isSelfMode && (
-                <span className="ml-2 bg-yellow-400 text-yellow-900 text-[10px] px-2 py-0.5 rounded-full uppercase tracking-widest font-black">
+                <span className="ml-2 bg-yellow-400 text-yellow-900 text-[10px] px-2 py-0.5 rounded-full uppercase tracking-widest font-bold">
                   Self Mode
                 </span>
               )}
@@ -404,7 +404,7 @@ export function TaskDetailsModal({
                <>
                  <button 
                    onClick={() => triggerDetailsPrint(task)} 
-                   className="p-2 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors text-slate-300 hover:text-white" 
+                   className="p-2 bg-blue-600 hover:bg-blue-700 text-white shadow-sm rounded-lg transition-colors text-slate-300 hover:text-white" 
                    title="Print Details"
                  >
                    <Printer size={18}/>
@@ -471,9 +471,9 @@ export function TaskDetailsModal({
              </div>
           )}
 
-          <div className="flex flex-wrap gap-4 justify-between items-start bg-slate-50 p-4 rounded-xl border border-slate-200">
+          <div className="flex flex-wrap gap-4 justify-between items-start bg-[#F4F7FB] p-4 rounded-xl border border-slate-200">
              <div>
-               <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">Current Status</p>
+               <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Current Status</p>
                {isEditMode ? (
                  <select 
                    value={editData.status} 
@@ -489,13 +489,13 @@ export function TaskDetailsModal({
                    <option value="Local Work">Local Work</option>
                  </select>
                ) : (
-                 <span className={`px-3 py-1 rounded font-black text-sm uppercase tracking-wider ${task.status==='Completed'?'bg-green-100 text-green-700':task.status==='D Finished'?'bg-emerald-100 text-emerald-700':task.status==='In Progress'?'bg-amber-100 text-amber-700':task.status==='Draft'?'bg-purple-100 text-purple-700':task.status==='Unsolved'?'bg-slate-200 text-slate-500':'bg-red-100 text-red-700'}`}>
+                 <span className={`px-3 py-1 rounded font-bold text-sm uppercase tracking-wider ${task.status==='Completed'?'bg-green-100 text-green-700':task.status==='D Finished'?'bg-emerald-100 text-emerald-700':task.status==='In Progress'?'bg-amber-100 text-amber-700':task.status==='Draft'?'bg-purple-100 text-purple-700':task.status==='Unsolved'?'bg-slate-200 text-slate-500':'bg-red-100 text-red-700'}`}>
                    {task.status}
                  </span>
                )}
              </div>
              <div className="text-right">
-               <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">Created On</p>
+               <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Created On</p>
                <p className="font-bold text-slate-800">{formatDate(task.createdAt)}</p>
                <p className="text-xs font-semibold text-slate-500">{formatTime(task.createdAt)}</p>
              </div>
@@ -503,14 +503,14 @@ export function TaskDetailsModal({
 
           <div className="grid sm:grid-cols-2 gap-8">
             <div className={`p-4 rounded-xl border ${cardBg}`}>
-               <h3 className="text-sm font-black text-slate-800 uppercase tracking-widest border-b border-slate-200 pb-2 mb-4 flex items-center gap-2">
+               <h3 className="text-sm font-bold text-slate-800 uppercase tracking-widest border-b border-slate-200 pb-2 mb-4 flex items-center gap-2">
                  <User size={16} className="text-blue-600"/> {task.isSelfMode ? 'Application Info' : 'Citizen Profile'}
                </h3>
                <div className="space-y-3 text-sm">
                  {isEditMode ? (
                    <div className="space-y-2.5">
                      <div>
-                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-0.5">Citizen Name</label>
+                       <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-0.5">Citizen Name</label>
                        <input
                          type="text"
                          value={editData.personalDetails.name || ''}
@@ -522,7 +522,7 @@ export function TaskDetailsModal({
                        />
                      </div>
                      <div>
-                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-0.5">Designation</label>
+                       <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-0.5">Designation</label>
                        <input
                          type="text"
                          value={editData.personalDetails.designation || ''}
@@ -534,7 +534,7 @@ export function TaskDetailsModal({
                        />
                      </div>
                      <div>
-                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-0.5">Referral Person</label>
+                       <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-0.5">Referral Person</label>
                        <input
                          type="text"
                          value={editData.personalDetails.referralPerson || ''}
@@ -548,7 +548,7 @@ export function TaskDetailsModal({
                      {!task.isSelfMode && (
                        <>
                          <div>
-                           <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-0.5">Mobile Number</label>
+                           <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-0.5">Mobile Number</label>
                            <input
                              type="number"
                              value={editData.personalDetails.mobileNumber || ''}
@@ -560,7 +560,7 @@ export function TaskDetailsModal({
                            />
                          </div>
                          <div>
-                           <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-0.5">WhatsApp Number</label>
+                           <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-0.5">WhatsApp Number</label>
                            <input
                              type="number"
                              value={editData.personalDetails.whatsappNumber || ''}
@@ -574,7 +574,7 @@ export function TaskDetailsModal({
                        </>
                      )}
                      <div>
-                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-0.5">House Name</label>
+                       <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-0.5">House Name</label>
                        <input
                          type="text"
                          value={editData.personalDetails.houseName || ''}
@@ -587,7 +587,7 @@ export function TaskDetailsModal({
                      </div>
                      <div className="grid grid-cols-2 gap-2">
                        <div>
-                         <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-0.5">Place</label>
+                         <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-0.5">Place</label>
                          <input
                            type="text"
                            value={editData.personalDetails.place || ''}
@@ -599,7 +599,7 @@ export function TaskDetailsModal({
                          />
                        </div>
                        <div>
-                         <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-0.5">Ward Number</label>
+                         <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-0.5">Ward Number</label>
                          <input
                            type="text"
                            value={editData.personalDetails.wardNumber || ''}
@@ -613,7 +613,7 @@ export function TaskDetailsModal({
                      </div>
                      <div className="grid grid-cols-2 gap-2">
                        <div>
-                         <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-0.5">Post Office</label>
+                         <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-0.5">Post Office</label>
                          <input
                            type="text"
                            value={editData.personalDetails.postOffice || ''}
@@ -625,7 +625,7 @@ export function TaskDetailsModal({
                          />
                        </div>
                        <div>
-                         <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-0.5">Pin Code</label>
+                         <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-0.5">Pin Code</label>
                          <input
                            type="text"
                            value={editData.personalDetails.pinCode || ''}
@@ -651,7 +651,7 @@ export function TaskDetailsModal({
                </div>
             </div>
             <div>
-               <h3 className="text-sm font-black text-slate-800 uppercase tracking-widest border-b border-slate-200 pb-2 mb-4 flex items-center gap-2">
+               <h3 className="text-sm font-bold text-slate-800 uppercase tracking-widest border-b border-slate-200 pb-2 mb-4 flex items-center gap-2">
                  <FileText size={16} className="text-indigo-600"/> Task Details
                </h3>
                <div className="space-y-3 text-sm">
@@ -691,7 +691,7 @@ export function TaskDetailsModal({
                  <div className="pt-2">
                    <span className="font-bold text-slate-500 block mb-1">Assigned Officers:</span>
                    {isEditMode ? (
-                     <div className="grid grid-cols-2 gap-2 mt-2 bg-slate-50 p-2 rounded border border-slate-200">
+                     <div className="grid grid-cols-2 gap-2 mt-2 bg-[#F4F7FB] p-2 rounded border border-slate-200">
                        {users.map(u => (
                          <label key={u.id} className="flex items-center gap-1 text-xs cursor-pointer font-bold text-slate-700">
                            <input 
@@ -715,9 +715,9 @@ export function TaskDetailsModal({
                           const name = users.find(u => u.id === id)?.name || id;
                           const stat = task.officerStatuses[id] || 'Pending';
                           return (
-                            <div key={id} className="flex justify-between items-center bg-slate-50 px-2 py-1 rounded text-xs">
+                            <div key={id} className="flex justify-between items-center bg-[#F4F7FB] px-2 py-1 rounded text-xs">
                               <span className="font-bold">{name}</span>
-                              <span className={`font-black uppercase tracking-wider ${stat==='Completed'?'text-green-600':stat==='Partially Completed'?'text-emerald-600':stat==='In Progress'?'text-amber-600':stat==='Draft'?'text-purple-600':'text-red-500'}`}>
+                              <span className={`font-bold uppercase tracking-wider ${stat==='Completed'?'text-green-600':stat==='Partially Completed'?'text-emerald-600':stat==='In Progress'?'text-amber-600':stat==='Draft'?'text-purple-600':'text-red-500'}`}>
                                 {stat}
                               </span>
                             </div>
@@ -743,7 +743,7 @@ export function TaskDetailsModal({
                         )}
                         {showReassign && (
                           <div className="mt-2 bg-slate-100 p-2 rounded-lg border border-slate-200">
-                            <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">Select Officers for Re-assignment</p>
+                            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">Select Officers for Re-assignment</p>
                             <div className="max-h-32 overflow-y-auto custom-scrollbar flex flex-col gap-1 mb-2">
                               {users.map(u => (
                                 <label key={u.id} className="flex items-center gap-1 text-xs cursor-pointer font-bold text-slate-700">
@@ -776,7 +776,7 @@ export function TaskDetailsModal({
           </div>
 
           <div>
-             <h3 className="text-sm font-black text-slate-800 uppercase tracking-widest border-b border-slate-200 pb-2 mb-4 flex justify-between items-center">
+             <h3 className="text-sm font-bold text-slate-800 uppercase tracking-widest border-b border-slate-200 pb-2 mb-4 flex justify-between items-center">
                <span>Subject & Description</span>
                <div className="flex gap-2 flex-wrap">
                  {task.attachment && (
@@ -808,10 +808,10 @@ export function TaskDetailsModal({
                    type="text" 
                    value={editData.subject} 
                    onChange={e => setEditData({...editData, subject: e.target.value})} 
-                   className="w-full font-black text-lg text-slate-800 border border-slate-300 rounded p-2 outline-none focus:border-indigo-500 bg-white" 
+                   className="w-full font-bold text-lg text-slate-800 border border-slate-300 rounded p-2 outline-none focus:border-indigo-500 bg-white" 
                  />
                  <div className="bg-indigo-50/50 p-3 rounded-lg border border-indigo-100">
-                   <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">Add Document / Link (Edit Mode)</p>
+                   <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">Add Document / Link (Edit Mode)</p>
                    <FileUploadButton 
                      onUploadSuccess={(att) => {
                        const newAtts = [...(editData.attachments || []), att];
@@ -839,7 +839,7 @@ export function TaskDetailsModal({
                                href={att.url} 
                                target="_blank" 
                                rel="noreferrer" 
-                               className="text-white bg-indigo-500 hover:bg-indigo-600 px-2 py-1 rounded text-[10px] font-black uppercase tracking-wider transition-colors"
+                               className="text-white bg-indigo-500 hover:bg-indigo-600 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider transition-colors"
                              >
                                View
                              </a>
@@ -857,7 +857,7 @@ export function TaskDetailsModal({
                                    "Remove"
                                  );
                                }}
-                               className="text-white bg-red-500 hover:bg-red-600 px-2 py-1 rounded text-[10px] font-black uppercase tracking-wider transition-colors"
+                               className="text-white bg-red-500 hover:bg-red-600 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider transition-colors"
                              >
                                Remove
                              </button>
@@ -869,17 +869,17 @@ export function TaskDetailsModal({
                  </div>
                </div>
              ) : (
-               <p className="font-black text-lg text-slate-800 mb-2">{task.subject}</p>
+               <p className="font-bold text-lg text-slate-800 mb-2">{task.subject}</p>
              )}
              {isEditMode ? (
                <textarea 
                  value={editData.description} 
                  onChange={e => setEditData({...editData, description: e.target.value})} 
-                 className="w-full bg-slate-50 p-4 rounded-xl border border-slate-300 text-sm font-medium text-slate-700 whitespace-pre-wrap outline-none focus:border-indigo-500 h-32" 
+                 className="w-full bg-[#F4F7FB] p-4 rounded-xl border border-slate-300 text-sm font-medium text-slate-700 whitespace-pre-wrap outline-none focus:border-indigo-500 h-32" 
                />
              ) : (
                task.description && (
-                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm font-medium text-slate-700 whitespace-pre-wrap">
+                 <div className="bg-[#F4F7FB] p-4 rounded-xl border border-slate-200 text-sm font-medium text-slate-700 whitespace-pre-wrap">
                    {task.description}
                  </div>
                )
@@ -888,7 +888,7 @@ export function TaskDetailsModal({
 
           {!isPendingForCurrentUser && (
             <div>
-               <h3 className="text-sm font-black text-slate-800 uppercase tracking-widest border-b border-slate-200 pb-2 mb-4 flex items-center gap-2">
+               <h3 className="text-sm font-bold text-slate-800 uppercase tracking-widest border-b border-slate-200 pb-2 mb-4 flex items-center gap-2">
                  <Activity size={16} className="text-green-600"/> Progress Timeline
                </h3>
                <div className="space-y-4 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
@@ -899,7 +899,7 @@ export function TaskDetailsModal({
                     </div>
                     <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-2xl border border-slate-200 bg-white shadow-sm transition-all hover:shadow-md relative">
                       <div className="flex items-center justify-between space-x-2 mb-2">
-                         <div className="font-black text-slate-800 text-sm">{item.by}</div>
+                         <div className="font-bold text-slate-800 text-sm">{item.by}</div>
                          <div className="flex items-center gap-2">
                            <div className="text-[10px] font-bold text-slate-400">{formatDate(item.time)} {formatTime(item.time)}</div>
                            {(item.type === 'update' || item.type === 'completed' || item.type === 'draft') && !task.isSelfMode && (
@@ -1025,7 +1025,7 @@ export function TaskDetailsModal({
               <h4 className="font-bold text-blue-900 mb-3 flex items-center gap-2"><MessageSquare size={16}/> Add Progress Note</h4>
               <div className="flex flex-col gap-3">
                 <div className="flex justify-between items-center mb-1.5">
-                  <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest block">Update Message</label>
+                  <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block">Update Message</label>
                   {templates && templates.length > 0 && (
                     <select 
                       className="text-[10px] bg-slate-100 border border-slate-200 text-slate-700 rounded px-2 py-0.5 outline-none focus:border-indigo-400 font-bold max-w-[150px]"
@@ -1063,14 +1063,14 @@ export function TaskDetailsModal({
                 </div>
                 
                 <div className="space-y-2 mt-1">
-                  <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest block">Attach Documents</span>
+                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block">Attach Documents</span>
                   <div className="space-y-2">
                     {newUpdateLinks.map((lnk, idx) => {
                       const isString = typeof lnk === 'string';
                       const name = isString ? `Link ${idx + 1}` : lnk.name;
                       const url = isString ? lnk : lnk.url;
                       return (
-                        <div key={idx} className="flex items-center justify-between p-2 bg-slate-50 border border-slate-200 rounded-xl">
+                        <div key={idx} className="flex items-center justify-between p-2 bg-[#F4F7FB] border border-slate-200 rounded-xl">
                           <span className="text-xs font-medium text-slate-700 truncate max-w-[60%]">{name}</span>
                           <div className="flex gap-2">
                             <a href={url} target="_blank" rel="noreferrer" className="p-1.5 text-blue-600 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors">
@@ -1135,7 +1135,7 @@ export function TaskDetailsModal({
                     "Yes, I Confirm"
                   );
                 }}
-                className="flex-1 bg-slate-800 text-white px-4 py-3 rounded-xl font-black uppercase tracking-widest hover:bg-black transition-colors shadow-sm"
+                className="flex-1 bg-slate-800 text-white px-4 py-3 rounded-xl font-bold uppercase tracking-widest hover:bg-black transition-colors shadow-sm"
               >
                 Receive Task
               </button>
@@ -1170,7 +1170,7 @@ export function TaskDetailsModal({
                     "Reason for rejection..."
                   );
                 }}
-                className="flex-1 bg-red-100 hover:bg-red-200 text-red-600 px-4 py-3 rounded-xl font-black uppercase tracking-widest transition-colors shadow-sm"
+                className="flex-1 bg-red-100 hover:bg-red-200 text-red-600 px-4 py-3 rounded-xl font-bold uppercase tracking-widest transition-colors shadow-sm"
               >
                 Reject Task
               </button>

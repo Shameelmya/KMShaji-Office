@@ -544,7 +544,7 @@ export default function App() {
 
   const GlobalFilterBar = () => (
     <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex flex-wrap gap-3 items-center w-fit mb-6 text-sm">
-       <span className="font-black text-slate-800 flex items-center gap-1.5">&#x1F50E; View Mode:</span>
+       <span className="font-bold text-slate-800 flex items-center gap-1.5">&#x1F50E; View Mode:</span>
        <select 
          value={globalFilters.status} 
          onChange={e => setGlobalFilters(p => ({...p, status: e.target.value}))} 
@@ -710,13 +710,13 @@ export default function App() {
 
       {confirmModal.isOpen && (
         <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[99999] flex items-center justify-center p-4 print-hidden">
-          <div className="bg-white rounded-3xl shadow-2xl border border-slate-200 max-w-md w-full overflow-hidden animate-in zoom-in-95 duration-150">
+          <div className="bg-white rounded-3xl shadow-md border border-slate-200 max-w-md w-full overflow-hidden animate-in zoom-in-95 duration-150">
             <div className="p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className={`p-3 rounded-full shrink-0 ${confirmModal.isDanger ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-600'}`}>
                   {confirmModal.isDanger ? <AlertTriangle size={24} /> : <CheckCircle size={24} />}
                 </div>
-                <h3 className="text-xl font-black text-slate-800 leading-tight">{confirmModal.title}</h3>
+                <h3 className="text-xl font-bold text-slate-800 leading-tight">{confirmModal.title}</h3>
               </div>
               <p className="text-sm font-medium text-slate-600 mb-6 leading-relaxed">{confirmModal.message}</p>
               {confirmModal.showInput && ( 
@@ -849,7 +849,7 @@ export default function App() {
             />
           )}
         </main>
-        <footer className="pb-6 pt-2 text-center text-[10px] font-black text-slate-400 tracking-widest uppercase">&copy; {new Date().getFullYear()} KM Shaji MLA Office Management System. All Rights Reserved.</footer>
+        <footer className="pb-6 pt-2 text-center text-[10px] font-bold text-slate-400 tracking-widest uppercase">&copy; {new Date().getFullYear()} KM Shaji MLA Office Management System. All Rights Reserved.</footer>
       </div>
     </>
   );

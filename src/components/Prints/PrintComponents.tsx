@@ -36,7 +36,7 @@ export function PrintAcknowledgeSlip({ task }: PrintAcknowledgeSlipProps) {
           </div>
           <div className="text-right">
             <p><span className="font-bold text-gray-600">Date:</span> {formatLetterSendingDate()}</p>
-            <p><span className="font-bold text-gray-600">Ref ID:</span> <span className="font-black">{task.id}</span></p>
+            <p><span className="font-bold text-gray-600">Ref ID:</span> <span className="font-bold">{task.id}</span></p>
           </div>
         </div>
         <div className="mb-8 text-base font-semibold" style={{ fontFamily: "'Noto Serif Malayalam', serif" }}>
@@ -87,7 +87,7 @@ export function PrintCompletionLetter({ task }: PrintCompletionLetterProps) {
     >
       {!isVerified && (
         <div className="absolute inset-0 z-[0] flex items-center justify-center pointer-events-none opacity-20">
-          <div className="transform -rotate-45 text-red-500 font-black tracking-widest border-8 border-red-500 p-8 rounded-3xl" style={{ fontSize: '100px' }}>
+          <div className="transform -rotate-45 text-red-500 font-bold tracking-widest border-8 border-red-500 p-8 rounded-3xl" style={{ fontSize: '100px' }}>
             NOT VERIFIED
           </div>
         </div>
@@ -103,7 +103,7 @@ export function PrintCompletionLetter({ task }: PrintCompletionLetterProps) {
           </div>
           <div className="text-right">
             <p><span className="font-bold text-gray-600">Date:</span> {formatLetterSendingDate()}</p>
-            <p><span className="font-bold text-gray-600">Ref ID:</span> <span className="font-black">{task.id}</span></p>
+            <p><span className="font-bold text-gray-600">Ref ID:</span> <span className="font-bold">{task.id}</span></p>
           </div>
         </div>
         <div className="mb-8 text-base font-semibold" style={{ fontFamily: "'Noto Serif Malayalam', serif" }}>
@@ -692,7 +692,7 @@ export function PrintRecentUpdationsReport({ config }: PrintRecentUpdationsRepor
           
           <div className="border-b-2 border-black pb-2 mb-4 shrink-0 flex items-end justify-between">
             <div>
-              <h1 className="text-2xl font-black uppercase tracking-widest text-black">KM Shaji MLA</h1>
+              <h1 className="text-2xl font-bold uppercase tracking-widest text-black">KM Shaji MLA</h1>
               <p className="text-xs font-bold uppercase tracking-widest text-gray-500">MLA Office, Vengara Constituency</p>
             </div>
             <div className="text-right">
@@ -706,11 +706,11 @@ export function PrintRecentUpdationsReport({ config }: PrintRecentUpdationsRepor
               <div key={idx} className="border border-black p-3 break-inside-avoid shadow-sm bg-white text-black">
                 <div className="flex justify-between items-start border-b border-gray-300 pb-2 mb-2">
                   <div className="flex gap-2 items-center">
-                    <span className="font-black text-[12px] uppercase">{item.taskId}</span>
+                    <span className="font-bold text-[12px] uppercase">{item.taskId}</span>
                     <span className="text-[11px] font-bold text-gray-700 truncate max-w-[200px]">{item.taskSubject}</span>
                   </div>
                   <div className="text-right">
-                    <span className="block text-[11px] font-black">{formatDate(item.updation.time)} {formatTime(item.updation.time)}</span>
+                    <span className="block text-[11px] font-bold">{formatDate(item.updation.time)} {formatTime(item.updation.time)}</span>
                   </div>
                 </div>
 
@@ -720,7 +720,7 @@ export function PrintRecentUpdationsReport({ config }: PrintRecentUpdationsRepor
 
                 <div className="flex justify-between items-end pt-1 border-t border-gray-200">
                   <div>
-                    <span className="block text-[11px] font-black">{item.personName} {item.mobileNumber && `(${item.mobileNumber})`}</span>
+                    <span className="block text-[11px] font-bold">{item.personName} {item.mobileNumber && `(${item.mobileNumber})`}</span>
                   </div>
                   <div className="text-[9px] font-bold uppercase text-gray-500 text-right">
                     By {item.updation.by} <span className="lowercase text-gray-400 px-1">for</span> {item.assignedToNames || 'None'}

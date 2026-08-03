@@ -99,7 +99,7 @@ export function AdminSettings({
   return (
     <div id="admin-settings" className="bg-white rounded-3xl shadow-sm border border-slate-200 p-8 animate-in fade-in">
       <div className="mb-8 border-b border-slate-100 pb-6">
-        <h2 className="text-2xl font-black text-slate-800 flex items-center gap-2">
+        <h2 className="text-2xl font-bold text-slate-800 flex items-center gap-2">
           <Users className="text-indigo-600"/> Manage Officers & Permissions
         </h2>
       </div>
@@ -107,21 +107,21 @@ export function AdminSettings({
         {users.map(u => (
           <div 
             key={u.id} 
-            className={`p-6 rounded-2xl border transition-all relative ${!u.enabled ? 'bg-slate-50 border-slate-200 opacity-60' : 'bg-white border-slate-200 hover:border-indigo-300'}`}
+            className={`p-6 rounded-2xl border transition-all relative ${!u.enabled ? 'bg-[#F4F7FB] border-slate-200 opacity-60' : 'bg-white border-slate-200 hover:border-indigo-300'}`}
           >
             {u.role === 'admin' && (
-              <div className="absolute top-4 right-4 bg-indigo-100 text-indigo-800 text-[10px] font-black px-2 py-1 rounded uppercase">
+              <div className="absolute top-4 right-4 bg-indigo-100 text-indigo-800 text-[10px] font-bold px-2 py-1 rounded uppercase">
                 ADMIN
               </div>
             )}
             <div className="flex flex-col lg:flex-row gap-6 justify-between items-start">
               <div className="flex-1 space-y-4 w-full">
                 <div className="flex items-center justify-between">
-                  <span className="font-black text-lg text-slate-800">{u.name}</span>
+                  <span className="font-bold text-lg text-slate-800">{u.name}</span>
                   {u.role !== 'admin' && (
                     <button 
                       onClick={() => handleToggle(u.id, 'enabled')} 
-                      className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest border ${u.enabled ? 'bg-red-50 text-red-600 border-red-200' : 'bg-green-50 text-green-600 border-green-200'}`}
+                      className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-widest border ${u.enabled ? 'bg-red-50 text-red-600 border-red-200' : 'bg-green-50 text-green-600 border-green-200'}`}
                     >
                       {u.enabled ? 'Disable' : 'Enable'}
                     </button>
@@ -129,7 +129,7 @@ export function AdminSettings({
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 block">Display Name</label>
+                    <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1 block">Display Name</label>
                     <input 
                       type="text" 
                       value={u.name} 
@@ -139,7 +139,7 @@ export function AdminSettings({
                     />
                   </div>
                   <div>
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 block">Password</label>
+                    <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1 block">Password</label>
                     <input 
                       type="text" 
                       value={u.pass} 
@@ -149,7 +149,7 @@ export function AdminSettings({
                     />
                   </div>
                   <div>
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 block">Phone Number</label>
+                    <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1 block">Phone Number</label>
                     <input 
                       type="text" 
                       value={u.phone} 
@@ -159,7 +159,7 @@ export function AdminSettings({
                     />
                   </div>
                   <div>
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 block">WhatsApp Number</label>
+                    <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1 block">WhatsApp Number</label>
                     <input 
                       type="text" 
                       value={u.whatsapp} 
@@ -171,9 +171,9 @@ export function AdminSettings({
                 </div>
               </div>
               <div className="flex-1 w-full lg:w-auto flex flex-col gap-4">
-                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div className="bg-[#F4F7FB] p-4 rounded-xl border border-slate-200 grid grid-cols-1 md:grid-cols-2 gap-3">
                   <div className="col-span-1 md:col-span-2 border-b border-slate-200 pb-2">
-                    <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Capabilities & Permissions</h4>
+                    <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Capabilities & Permissions</h4>
                   </div>
                   <label className="flex items-center justify-between cursor-pointer p-1">
                     <span className="text-xs font-bold text-slate-700">Can Register input</span>
@@ -238,7 +238,7 @@ export function AdminSettings({
                       className="w-4 h-4 disabled:opacity-50"
                     />
                   </label>
-                  <label className="flex items-center gap-2 cursor-pointer bg-slate-50 p-2 rounded-lg border border-slate-200">
+                  <label className="flex items-center gap-2 cursor-pointer bg-[#F4F7FB] p-2 rounded-lg border border-slate-200">
                     <input 
                       type="checkbox" 
                       checked={!!u.canGenerateUpdationReport} 
@@ -247,7 +247,7 @@ export function AdminSettings({
                     />
                     <span className="text-xs font-bold text-slate-700">Updation Report Access</span>
                   </label>
-                  <label className="flex items-center gap-2 cursor-pointer bg-slate-50 p-2 rounded-lg border border-slate-200">
+                  <label className="flex items-center gap-2 cursor-pointer bg-[#F4F7FB] p-2 rounded-lg border border-slate-200">
                     <input 
                       type="checkbox" 
                       checked={!!u.canSeeRecentUpdations} 
@@ -261,21 +261,21 @@ export function AdminSettings({
                    {u.role !== 'admin' && (
                      <button 
                        onClick={() => setImpersonatedUser(u)} 
-                       className="flex-1 text-[10px] font-black uppercase tracking-widest text-indigo-600 bg-indigo-50 py-2 border border-indigo-200 rounded-lg hover:bg-indigo-100 transition-colors"
+                       className="flex-1 text-[10px] font-bold uppercase tracking-widest text-indigo-600 bg-indigo-50 py-2 border border-indigo-200 rounded-lg hover:bg-indigo-100 transition-colors"
                      >
                        Enter Profile
                      </button>
                    )}
                    <button 
                      onClick={() => { loadArchive(); setOfficerModalOpen(u); }} 
-                     className="flex-1 text-[10px] font-black uppercase tracking-widest text-slate-700 bg-slate-100 border border-slate-300 py-2 rounded-lg hover:bg-slate-200 transition-colors flex items-center justify-center gap-1"
+                     className="flex-1 text-[10px] font-bold uppercase tracking-widest text-slate-700 bg-slate-100 border border-slate-300 py-2 rounded-lg hover:bg-slate-200 transition-colors flex items-center justify-center gap-1"
                    >
                      <FileOutput size={12}/> Report
                    </button>
                    {u.role !== 'admin' && (
                      <button 
                        onClick={() => deleteUser(u.id)} 
-                       className="flex-1 text-[10px] font-black uppercase tracking-widest text-red-600 bg-red-50 border border-red-200 py-2 rounded-lg hover:bg-red-100 transition-colors flex items-center justify-center gap-1"
+                       className="flex-1 text-[10px] font-bold uppercase tracking-widest text-red-600 bg-red-50 border border-red-200 py-2 rounded-lg hover:bg-red-100 transition-colors flex items-center justify-center gap-1"
                      >
                        <Trash2 size={12}/> Delete
                      </button>
@@ -287,7 +287,7 @@ export function AdminSettings({
         ))}
       </div>
       <div className="bg-indigo-50 border border-indigo-200 p-6 rounded-2xl">
-        <h3 className="text-lg font-black text-indigo-900 mb-4 flex items-center gap-2"><Plus size={18}/> Create New Officer</h3>
+        <h3 className="text-lg font-bold text-indigo-900 mb-4 flex items-center gap-2"><Plus size={18}/> Create New Officer</h3>
         <form onSubmit={handleAddOfficer} className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
           <div className="col-span-1 md:col-span-1">
             <label className="text-[10px] font-bold text-indigo-700 uppercase block mb-1">Display Name</label>

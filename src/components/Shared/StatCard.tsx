@@ -23,8 +23,8 @@ export const StatCard = React.memo(({ title, value, color, icon }: StatCardProps
       <div className="absolute -right-4 -top-4 opacity-10 scale-150">{icon}</div>
       <div className="bg-white/60 w-fit p-3 rounded-xl backdrop-blur-sm mb-4 shadow-sm">{icon}</div>
       <div>
-        <p className="text-4xl font-black tracking-tight">{value}</p>
-        <p className="text-xs font-black uppercase tracking-widest mt-1 opacity-80">{title}</p>
+        <p className="text-4xl font-bold tracking-tight">{value}</p>
+        <p className="text-xs font-bold uppercase tracking-widest mt-1 opacity-80">{title}</p>
       </div>
     </div>
   );

@@ -58,9 +58,9 @@ export function StatusFixerModal({ tasks, updateTask, onClose }: StatusFixerModa
 
   return (
     <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl w-full max-w-5xl max-h-[90vh] flex flex-col shadow-2xl animate-in zoom-in-95 duration-200">
-        <div className="p-4 border-b border-slate-100 flex justify-between items-center bg-slate-50 rounded-t-2xl">
-          <h2 className="text-xl font-black text-slate-800">Quick Status</h2>
+      <div className="bg-white rounded-2xl w-full max-w-5xl max-h-[90vh] flex flex-col shadow-md animate-in zoom-in-95 duration-200">
+        <div className="p-4 border-b border-slate-100 flex justify-between items-center bg-[#F4F7FB] rounded-t-2xl">
+          <h2 className="text-xl font-bold text-slate-800">Quick Status</h2>
           <div className="flex items-center gap-4">
             {Object.keys(pendingChanges).length > 0 && (
               <button 
@@ -94,15 +94,15 @@ export function StatusFixerModal({ tasks, updateTask, onClose }: StatusFixerModa
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="border-b border-slate-200">
-                <th className="pb-3 text-xs font-black text-slate-500 uppercase w-32">Task ID</th>
-                <th className="pb-3 text-xs font-black text-slate-500 uppercase">Subject</th>
-                <th className="pb-3 text-xs font-black text-slate-500 uppercase w-48">Status</th>
-                <th className="pb-3 text-xs font-black text-slate-500 uppercase">Follow-up Freq</th>
+                <th className="pb-3 text-xs font-bold text-slate-500 uppercase w-32">Task ID</th>
+                <th className="pb-3 text-xs font-bold text-slate-500 uppercase">Subject</th>
+                <th className="pb-3 text-xs font-bold text-slate-500 uppercase w-48">Status</th>
+                <th className="pb-3 text-xs font-bold text-slate-500 uppercase">Follow-up Freq</th>
               </tr>
             </thead>
             <tbody>
               {filteredTasks.map(t => (
-                <tr key={t.id} className="border-b border-slate-100 hover:bg-slate-50">
+                <tr key={t.id} className="border-b border-slate-100 hover:bg-[#F4F7FB]">
                   <td className="py-3 text-xs font-bold text-slate-600">{t.id}</td>
                   <td className="py-3 text-[11px] font-bold text-slate-800 pr-4 leading-tight">{t.subject}</td>
                   <td className="py-3 pr-4">

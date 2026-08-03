@@ -33,7 +33,7 @@ export function PDFCaptureWrapper({ id, children, progress }: PDFCaptureWrapperP
             </>
           )}
         </div>
-        <div className="shadow-2xl rounded-sm overflow-hidden bg-white mx-auto flex justify-center relative">
+        <div className="shadow-md rounded-sm overflow-hidden bg-white mx-auto flex justify-center relative">
           <div id={id} className="bg-white text-black text-left" style={{ width: '794px', margin: '0 auto' }}>
             <div className="font-sans">{children}</div>
           </div>

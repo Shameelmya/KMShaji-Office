@@ -54,7 +54,7 @@ export function AttachmentRenderer({ attachment, currentUser, onDeleteSuccess, i
           href={url} 
           target="_blank" 
           rel="noreferrer" 
-          className="text-white bg-indigo-600 hover:bg-indigo-700 px-2 py-1 rounded text-[10px] font-black uppercase tracking-wider transition-colors flex items-center gap-1"
+          className="text-white bg-indigo-600 hover:bg-indigo-700 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider transition-colors flex items-center gap-1"
           title="View"
         >
           <Eye size={10} /> View
@@ -63,7 +63,7 @@ export function AttachmentRenderer({ attachment, currentUser, onDeleteSuccess, i
           <button 
             type="button"
             onClick={handleDelete}
-            className="text-white bg-red-500 hover:bg-red-600 px-2 py-1 rounded text-[10px] font-black uppercase tracking-wider transition-colors flex items-center gap-1"
+            className="text-white bg-red-500 hover:bg-red-600 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider transition-colors flex items-center gap-1"
             title="Delete File"
           >
             <Trash2 size={10} />

@@ -191,7 +191,7 @@ function Column({ title, count, color, children, onTogglePartially, showPartiall
     purple: 'border-purple-200 text-purple-700 bg-purple-100' 
   };
   return (
-    <div className="bg-slate-50 rounded-xl p-3 border border-slate-200 flex flex-col h-[800px] overflow-hidden">
+    <div className="bg-[#F4F7FB] rounded-xl p-3 border border-slate-200 flex flex-col h-[800px] overflow-hidden">
       <h3 className="font-bold text-base mb-4 flex items-center justify-between pb-3 border-b border-slate-200">
         <div className="flex items-center gap-2">
           <span className="text-slate-800">{title}</span>
@@ -199,13 +199,13 @@ function Column({ title, count, color, children, onTogglePartially, showPartiall
             <button 
               onClick={onTogglePartially}
               title="Toggle D Finished View"
-              className={`text-[9px] px-1.5 py-0.5 rounded font-black border uppercase tracking-wider transition-colors ${showPartially ? 'bg-emerald-100 text-emerald-700 border-emerald-200 hover:bg-emerald-200' : 'bg-slate-100 text-slate-500 border-slate-200 hover:bg-slate-200'}`}
+              className={`text-[9px] px-1.5 py-0.5 rounded font-bold border uppercase tracking-wider transition-colors ${showPartially ? 'bg-emerald-100 text-emerald-700 border-emerald-200 hover:bg-emerald-200' : 'bg-slate-100 text-slate-500 border-slate-200 hover:bg-slate-200'}`}
             >
               DF
             </button>
           )}
         </div>
-        <span className={`text-xs px-2.5 py-1 rounded-full font-black border ${colorMap[color]}`}>
+        <span className={`text-xs px-2.5 py-1 rounded-full font-bold border ${colorMap[color]}`}>
           {count}
         </span>
       </h3>
@@ -328,17 +328,17 @@ const WorkerTaskCard = React.memo(({
   const cardBgColor = task.isSelfMode ? 'bg-yellow-50/70' : 'bg-white';
 
   return (
-    <div className={`${cardBgColor} p-4 rounded-2xl shadow-sm border ${isUnsolved ? 'border-slate-300 opacity-60 bg-slate-50 grayscale' : status === 'Pending' ? 'border-red-200' : task.isSelfMode ? 'border-yellow-300' : 'border-slate-200'} relative`}>
+    <div className={`${cardBgColor} p-4 rounded-2xl shadow-sm border ${isUnsolved ? 'border-slate-300 opacity-60 bg-[#F4F7FB] grayscale' : status === 'Pending' ? 'border-red-200' : task.isSelfMode ? 'border-yellow-300' : 'border-slate-200'} relative`}>
       <div className="flex justify-between items-start mb-3">
         <div className="flex flex-wrap gap-2">
-          <span className="bg-slate-800 text-white text-[10px] font-black px-2 py-0.5 rounded shadow-sm uppercase tracking-wider">
+          <span className="bg-slate-800 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm uppercase tracking-wider">
             {task.id}
           </span>
-          <span className={`${task.taskType==='direct'?'bg-indigo-50 text-indigo-800 border-indigo-200':'bg-blue-50 text-blue-800 border-blue-200'} text-[10px] font-black px-2 py-0.5 rounded border uppercase tracking-wide truncate max-w-[90px]`}>
+          <span className={`${task.taskType==='direct'?'bg-indigo-50 text-indigo-800 border-indigo-200':'bg-blue-50 text-blue-800 border-blue-200'} text-[10px] font-bold px-2 py-0.5 rounded border uppercase tracking-wide truncate max-w-[90px]`}>
             {task.category}
           </span>
           {task.isSelfMode && (
-            <span className="bg-yellow-400 text-yellow-900 text-[10px] font-black px-2 py-0.5 rounded shadow-sm uppercase tracking-wider">
+            <span className="bg-yellow-400 text-yellow-900 text-[10px] font-bold px-2 py-0.5 rounded shadow-sm uppercase tracking-wider">
               Self
             </span>
           )}
@@ -346,11 +346,11 @@ const WorkerTaskCard = React.memo(({
         <span className="text-[10px] font-bold text-slate-400">{formatDate(task.createdAt)}</span>
       </div>
       <h4 className="font-bold text-slate-800 text-sm mb-1 line-clamp-2">{task.subject || task.personalDetails.name}</h4>
-      <p className="text-[10px] font-black text-indigo-600 mb-2 uppercase tracking-widest">{task.personalDetails.name} {task.personalDetails.referralPerson && `(Ref: ${task.personalDetails.referralPerson})`}</p>
+      <p className="text-[10px] font-bold text-indigo-600 mb-2 uppercase tracking-widest">{task.personalDetails.name} {task.personalDetails.referralPerson && `(Ref: ${task.personalDetails.referralPerson})`}</p>
       <p className="text-[10px] font-medium text-slate-500 mb-3">{task.personalDetails.mobileNumber} • {task.personalDetails.place || 'No place'}</p>
       {task.description && (
         <div 
-          className="bg-slate-50/50 p-2 rounded-lg text-xs font-medium text-slate-700 line-clamp-3 border border-slate-100 mb-3 whitespace-pre-wrap" 
+          className="bg-[#F4F7FB]/50 p-2 rounded-lg text-xs font-medium text-slate-700 line-clamp-3 border border-slate-100 mb-3 whitespace-pre-wrap" 
           title={task.description}
         >
           {task.description}
@@ -398,14 +398,14 @@ const WorkerTaskCard = React.memo(({
             <div className="w-full space-y-2">
               <button 
                 onClick={() => setShowProgressModal(true)} 
-                className="w-full bg-blue-600 text-white px-3 py-1.5 rounded-lg text-xs font-black hover:bg-blue-700 transition-colors shadow-sm flex items-center justify-center gap-2"
+                className="w-full bg-blue-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-blue-700 transition-colors shadow-sm flex items-center justify-center gap-2"
               >
                 <Activity size={14}/> {status === 'Received' ? 'Start Progress' : 'Add Update'}
               </button>
               {status !== 'Draft' && (
                 <button 
                   onClick={() => changeStatus('Draft')} 
-                  className="w-full bg-purple-100 text-purple-700 border border-purple-300 px-3 py-1.5 rounded-lg text-xs font-black hover:bg-purple-200 transition-colors shadow-sm flex items-center justify-center gap-2"
+                  className="w-full bg-purple-100 text-purple-700 border border-purple-300 px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-purple-200 transition-colors shadow-sm flex items-center justify-center gap-2"
                 >
                   <Paperclip size={14}/> Send to Draft
                 </button>
@@ -425,7 +425,7 @@ const WorkerTaskCard = React.memo(({
                       false, "Mark D Finished", true, "Optional note..."
                     );
                   }} 
-                  className="w-1/2 bg-emerald-600 hover:bg-emerald-700 text-white px-2 py-1.5 rounded-lg text-[10px] font-black transition-colors shadow-sm flex items-center justify-center gap-1 uppercase tracking-wider"
+                  className="w-1/2 bg-emerald-600 hover:bg-emerald-700 text-white px-2 py-1.5 rounded-lg text-[10px] font-bold transition-colors shadow-sm flex items-center justify-center gap-1 uppercase tracking-wider"
                 >
                   <CheckCircle size={12}/> DF
                 </button>
@@ -443,7 +443,7 @@ const WorkerTaskCard = React.memo(({
                       false, "Mark Completed", true, "Enter optional completion note here..."
                     );
                   }} 
-                  className="w-1/2 bg-green-600 hover:bg-green-700 text-white px-2 py-1.5 rounded-lg text-[10px] font-black transition-colors shadow-sm flex items-center justify-center gap-1 uppercase tracking-wider"
+                  className="w-1/2 bg-green-600 hover:bg-green-700 text-white px-2 py-1.5 rounded-lg text-[10px] font-bold transition-colors shadow-sm flex items-center justify-center gap-1 uppercase tracking-wider"
                 >
                   <CheckCircle size={12}/> Complete
                 </button>
@@ -454,13 +454,13 @@ const WorkerTaskCard = React.memo(({
             <div className="w-full space-y-2">
                <button 
                  onClick={() => changeStatus('Draft', { id: generateUid(), type: 'reverted', time: getNow(), by: user.name, text: 'Reverted to Draft Box' })} 
-                 className="w-full bg-purple-50 text-purple-700 border border-purple-200 px-2 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-purple-100 transition-colors flex items-center justify-center gap-1"
+                 className="w-full bg-purple-50 text-purple-700 border border-purple-200 px-2 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-purple-100 transition-colors flex items-center justify-center gap-1"
                >
                  <Paperclip size={12}/> Revert to Draft
                </button>
                <button 
                  onClick={() => changeStatus('In Progress', { id: generateUid(), type: 'reverted', time: getNow(), by: user.name, text: 'Reverted to Progress' })} 
-                 className="w-full bg-orange-50 text-orange-700 border border-orange-200 px-2 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-orange-100 transition-colors flex items-center justify-center gap-1"
+                 className="w-full bg-orange-50 text-orange-700 border border-orange-200 px-2 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-orange-100 transition-colors flex items-center justify-center gap-1"
                >
                  <ArrowDownUp size={12}/> Revert to Progress
                </button>
@@ -480,7 +480,7 @@ const WorkerTaskCard = React.memo(({
 
       {myUpdates.length > 0 && (
         <div className="mt-4 pt-3 border-t border-[#F1F5F9] space-y-3">
-          <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">My Progress Updates</p>
+          <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">My Progress Updates</p>
           {myUpdates.slice(0, 2).map(up => (
             <div key={up.id} className="bg-amber-50/70 p-2 rounded-lg border border-amber-100 relative group">
               <div className="text-[10px] font-medium text-slate-700 pr-10">
@@ -519,9 +519,9 @@ const WorkerTaskCard = React.memo(({
       )}
       {showProgressModal && (
         <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[200] flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-xl w-full max-w-lg overflow-hidden animate-in zoom-in-95 duration-150">
+          <div className="bg-white rounded-2xl shadow-sm w-full max-w-lg overflow-hidden animate-in zoom-in-95 duration-150">
             <div className="bg-blue-600 p-4 text-white flex justify-between items-center">
-              <h3 className="font-black text-lg">Enter Progress Update</h3>
+              <h3 className="font-bold text-lg">Enter Progress Update</h3>
               <button onClick={() => setShowProgressModal(false)} className="text-white hover:text-blue-100 transition-colors"><X size={20}/></button>
             </div>
             <div className="p-6">
@@ -553,7 +553,7 @@ const WorkerTaskCard = React.memo(({
                )}
                <button 
                  onClick={handleSaveUpdate} 
-                 className="w-full bg-blue-600 text-white font-black py-3 rounded-xl hover:bg-blue-700 transition-colors shadow"
+                 className="w-full bg-blue-600 text-white font-bold py-3 rounded-xl hover:bg-blue-700 transition-colors shadow"
                >
                  Save Update
                </button>

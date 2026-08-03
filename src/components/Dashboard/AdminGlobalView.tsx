@@ -138,7 +138,7 @@ export function AdminGlobalView({
               placeholder="Search entries by Subject, Name, ID, Mobile..." 
               value={search} 
               onChange={e => setSearch(e.target.value)} 
-              className="w-full pl-12 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl font-medium outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 bg-white" 
+              className="w-full pl-12 pr-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-xl font-medium outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 bg-white" 
             />
           </div>
           {categories && (
@@ -204,7 +204,7 @@ export function AdminGlobalView({
       ) : (
         <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-x-auto">
           <table className="w-full text-left text-sm text-slate-700 whitespace-nowrap">
-            <thead className="bg-slate-50 border-b border-slate-200 text-slate-500 uppercase text-xs tracking-widest font-black">
+            <thead className="bg-[#F4F7FB] border-b border-slate-200 text-slate-500 uppercase text-xs tracking-widest font-bold">
               <tr>
                 <th className="px-4 py-3">ID & Date</th>
                 <th className="px-4 py-3">Subject & Citizen</th>
@@ -215,9 +215,9 @@ export function AdminGlobalView({
             </thead>
             <tbody className="divide-y divide-slate-100">
               {displayed.map((t, idx) => (
-                <tr key={`${t.id}-${idx}`} className={`hover:bg-slate-50 font-medium ${t.isSelfMode ? 'bg-yellow-50/40' : ''}`}>
+                <tr key={`${t.id}-${idx}`} className={`hover:bg-[#F4F7FB] font-medium ${t.isSelfMode ? 'bg-yellow-50/40' : ''}`}>
                   <td className="px-4 py-3">
-                    <span className="font-black text-slate-800">{t.id}</span> 
+                    <span className="font-bold text-slate-800">{t.id}</span> 
                     {t.isSelfMode && (
                       <span className="bg-yellow-300 text-yellow-900 px-1 py-0.5 rounded text-[8px] font-bold ml-1 uppercase">
                         Self
@@ -234,7 +234,7 @@ export function AdminGlobalView({
                     <span className="bg-slate-100 px-2 py-0.5 rounded text-xs text-slate-700">{t.category}</span>
                   </td>
                   <td className="px-4 py-3">
-                    <span className={`px-2 py-1 rounded text-xs font-black uppercase ${t.status==='Completed'?'bg-green-100 text-green-700':t.status==='Partially Completed'?'bg-emerald-100 text-emerald-700':t.status==='In Progress'?'bg-amber-100 text-amber-700':t.status==='Draft'?'bg-purple-100 text-purple-700':t.status==='Unsolved'?'bg-slate-200 text-slate-500':'bg-red-100 text-red-700'}`}>
+                    <span className={`px-2 py-1 rounded text-xs font-bold uppercase ${t.status==='Completed'?'bg-green-100 text-green-700':t.status==='Partially Completed'?'bg-emerald-100 text-emerald-700':t.status==='In Progress'?'bg-amber-100 text-amber-700':t.status==='Draft'?'bg-purple-100 text-purple-700':t.status==='Unsolved'?'bg-slate-200 text-slate-500':'bg-red-100 text-red-700'}`}>
                       {t.status}
                     </span>
                   </td>
@@ -310,7 +310,7 @@ export function AdminGlobalView({
          <div className="py-4 text-center">
             <button 
               onClick={() => setVisibleCount(v => v + 50)} 
-              className="px-6 py-2 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-full font-bold text-sm transition-colors shadow-sm"
+              className="px-6 py-2 bg-white border border-slate-200 hover:bg-[#F4F7FB] text-slate-700 rounded-full font-bold text-sm transition-colors shadow-sm"
             >
               Load More ({filtered.length - visibleCount} remaining)
             </button>
@@ -385,7 +385,7 @@ const AdminTaskCard = React.memo(({
 
   return (
     <div 
-      className={`${cardBg} rounded-2xl p-5 border shadow-sm flex flex-col transition-all relative overflow-hidden ${t.status === 'Unsolved' ? 'border-slate-300 bg-slate-50 opacity-75 grayscale' : 'hover:shadow-md hover:border-blue-300'}`}
+      className={`${cardBg} rounded-2xl p-5 border shadow-sm flex flex-col transition-all relative overflow-hidden ${t.status === 'Unsolved' ? 'border-slate-300 bg-[#F4F7FB] opacity-75 grayscale' : 'hover:shadow-md hover:border-blue-300'}`}
       onContextMenu={(e) => {
         e.preventDefault();
         if (t.isReadByAdmin) updateTask(t.id, { isReadByAdmin: false });
@@ -395,17 +395,17 @@ const AdminTaskCard = React.memo(({
       onPointerLeave={clearPress}
     >
       {t.status === 'Unsolved' && (
-        <div className="absolute top-4 right-4 bg-slate-800 text-white text-[10px] font-black px-2 py-1 rounded shadow-sm uppercase z-10">
+        <div className="absolute top-4 right-4 bg-slate-800 text-white text-[10px] font-bold px-2 py-1 rounded shadow-sm uppercase z-10">
           <Lock size={10} className="inline mr-1"/>Unsolved
         </div>
       )}
       <div className="flex justify-between items-start mb-2">
         <div className="flex flex-wrap gap-2">
-          <span className={`text-[10px] font-black px-2 py-1 rounded uppercase tracking-widest ${t.taskType === 'direct' ? 'bg-indigo-100 text-indigo-800' : 'bg-blue-50 text-blue-800'}`}>
+          <span className={`text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest ${t.taskType === 'direct' ? 'bg-indigo-100 text-indigo-800' : 'bg-blue-50 text-blue-800'}`}>
             {t.id}
           </span>
           {t.isSelfMode && (
-            <span className="bg-yellow-400 text-yellow-900 text-[10px] font-black px-2 py-1 rounded shadow-sm uppercase tracking-widest">
+            <span className="bg-yellow-400 text-yellow-900 text-[10px] font-bold px-2 py-1 rounded shadow-sm uppercase tracking-widest">
               Self Mode
             </span>
           )}
@@ -415,25 +415,25 @@ const AdminTaskCard = React.memo(({
             <div className="flex gap-3 lg:gap-1 items-center">
               {t.status !== 'Draft' && (
                 <button onClick={(e) => { e.stopPropagation(); triggerConfirm('Confirm Action', 'Change status to Draft?', () => { const newOffStat = {...t.officerStatuses}; (t.assignedTo || []).forEach(id => newOffStat[id] = 'Draft'); updateTask(t.id, { status: 'Draft', officerStatuses: newOffStat }); }, false, 'Yes, Change'); }} title="Mark as Draft" className="group flex items-center justify-center transition-colors">
-                  <span className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-purple-300 text-purple-600 text-[9px] sm:text-[10px] font-black lg:hidden group-hover:bg-purple-50">DR</span>
+                  <span className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-purple-300 text-purple-600 text-[9px] sm:text-[10px] font-bold lg:hidden group-hover:bg-purple-50">DR</span>
                   <span className="hidden lg:flex text-purple-400 group-hover:text-purple-600 group-hover:bg-purple-50 p-1 rounded"><FileEdit size={12}/></span>
                 </button>
               )}
               {t.status !== 'Local Work' && (
                 <button onClick={(e) => { e.stopPropagation(); triggerConfirm('Confirm Action', 'Change status to Local Work?', () => updateTask(t.id, { status: 'Local Work', assignedTo: [], officerStatuses: {} }), false, 'Yes, Change'); }} title="Mark as Local Work" className="group flex items-center justify-center transition-colors">
-                  <span className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-slate-300 text-slate-600 text-[9px] sm:text-[10px] font-black lg:hidden group-hover:bg-slate-50">LW</span>
+                  <span className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-slate-300 text-slate-600 text-[9px] sm:text-[10px] font-bold lg:hidden group-hover:bg-[#F4F7FB]">LW</span>
                   <span className="hidden lg:flex text-slate-400 group-hover:text-slate-600 group-hover:bg-slate-100 p-1 rounded"><MapPin size={12}/></span>
                 </button>
               )}
               {t.status !== 'Pending' && (
                 <button onClick={(e) => { e.stopPropagation(); triggerConfirm('Confirm Action', 'Change status to Pending?', () => { const newOffStat = {...t.officerStatuses}; (t.assignedTo || []).forEach(id => newOffStat[id] = 'Pending'); updateTask(t.id, { status: 'Pending', officerStatuses: newOffStat }); }, false, 'Yes, Change'); }} title="Mark as Pending" className="group flex items-center justify-center transition-colors">
-                  <span className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-red-300 text-red-600 text-[9px] sm:text-[10px] font-black lg:hidden group-hover:bg-red-50">PD</span>
+                  <span className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-red-300 text-red-600 text-[9px] sm:text-[10px] font-bold lg:hidden group-hover:bg-red-50">PD</span>
                   <span className="hidden lg:flex text-red-400 group-hover:text-red-600 group-hover:bg-red-50 p-1 rounded"><Clock size={12}/></span>
                 </button>
               )}
               {t.status !== 'D Finished' && (
                 <button onClick={(e) => { e.stopPropagation(); triggerConfirm('Confirm Action', 'Change status to D Finished?', () => { const newOffStat = {...t.officerStatuses}; (t.assignedTo || []).forEach(id => newOffStat[id] = 'D Finished'); updateTask(t.id, { status: 'D Finished', officerStatuses: newOffStat }); }, false, 'Yes, Change'); }} title="Mark D Finished" className="group flex items-center justify-center transition-colors">
-                  <span className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-emerald-300 text-emerald-600 text-[9px] sm:text-[10px] font-black lg:hidden group-hover:bg-emerald-50">DF</span>
+                  <span className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-emerald-300 text-emerald-600 text-[9px] sm:text-[10px] font-bold lg:hidden group-hover:bg-emerald-50">DF</span>
                   <span className="hidden lg:flex text-emerald-400 group-hover:text-emerald-600 group-hover:bg-emerald-50 p-1 rounded"><CheckCircle2 size={12}/></span>
                 </button>
               )}
@@ -443,7 +443,7 @@ const AdminTaskCard = React.memo(({
                   title="Quick Mark as Completed" 
                   className="group flex items-center justify-center transition-colors"
                 >
-                  <span className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-green-400 text-green-600 text-[9px] sm:text-[10px] font-black lg:hidden group-hover:bg-green-50"><CheckSquare size={14}/></span>
+                  <span className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-green-400 text-green-600 text-[9px] sm:text-[10px] font-bold lg:hidden group-hover:bg-green-50"><CheckSquare size={14}/></span>
                   <span className="hidden lg:flex text-green-500 group-hover:text-green-700 group-hover:bg-green-50 p-1 rounded ml-0.5"><CheckSquare size={16}/></span>
                 </button>
               )}
@@ -460,7 +460,7 @@ const AdminTaskCard = React.memo(({
                 <button 
                   key={f}
                   onClick={(e) => { e.stopPropagation(); triggerConfirm('Confirm Action', `Change Follow-up to ${f}?`, () => updateTask(t.id, { followUpFrequency: f === 'None' ? '' : f }), false, 'Yes, Change'); }}
-                  className={`px-3 py-1.5 lg:px-1 lg:py-0.5 rounded text-[10px] lg:text-[7px] font-black transition-colors ${isSelected ? 'text-indigo-600 bg-indigo-50 border border-indigo-200' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-50 border border-transparent'}`}
+                  className={`px-3 py-1.5 lg:px-1 lg:py-0.5 rounded text-[10px] lg:text-[7px] font-bold transition-colors ${isSelected ? 'text-indigo-600 bg-indigo-50 border border-indigo-200' : 'text-slate-400 hover:text-slate-600 hover:bg-[#F4F7FB] border border-transparent'}`}
                 >
                   {f}
                 </button>
@@ -471,7 +471,7 @@ const AdminTaskCard = React.memo(({
 
       </div>
       <div className="mb-2 border-b border-slate-100/50 pb-2 mt-1">
-        <h3 className="font-black text-slate-800 text-base leading-tight mb-1">{t.personalDetails?.name || 'Unknown'}</h3>
+        <h3 className="font-bold text-slate-800 text-base leading-tight mb-1">{t.personalDetails?.name || 'Unknown'}</h3>
         {t.personalDetails?.designation && (
           <p className="text-[10px] font-bold text-indigo-600 uppercase tracking-wider">{t.personalDetails.designation}</p>
         )}
@@ -551,23 +551,23 @@ const AdminTaskCard = React.memo(({
           </div>
         </div>
       )}
-      <div className={`mb-4 ${t.isSelfMode ? 'bg-yellow-105/50' : 'bg-slate-50'} p-3 rounded-lg border border-slate-100/50 flex flex-col gap-2 mt-auto`}>
+      <div className={`mb-4 ${t.isSelfMode ? 'bg-yellow-105/50' : 'bg-[#F4F7FB]'} p-3 rounded-lg border border-slate-100/50 flex flex-col gap-2 mt-auto`}>
         <div className="flex justify-between items-center text-xs">
           <span className="text-slate-500 font-bold">Assigned:</span>
-          <span className="font-black text-slate-700 text-right truncate max-w-[120px]" title={(t.assignedTo || []).map(id => users.find(u => u.id === id)?.name || id).join(', ')}>
+          <span className="font-bold text-slate-700 text-right truncate max-w-[120px]" title={(t.assignedTo || []).map(id => users.find(u => u.id === id)?.name || id).join(', ')}>
             {(t.assignedTo || []).map(id => users.find(u => u.id === id)?.name || id).join(', ')}
           </span>
         </div>
         <div className="flex justify-between items-center text-xs">
           <span className="text-slate-500 font-bold">Status:</span>
-          <span className={`font-black uppercase tracking-wider ${getStatusColor(t.status)}`}>{t.status}</span>
+          <span className={`font-bold uppercase tracking-wider ${getStatusColor(t.status)}`}>{t.status}</span>
         </div>
         <div className="flex justify-between items-center text-xs">
           <span className="text-slate-500 font-bold">Priority:</span>
           <button 
             type="button" 
             onClick={() => togglePriority(t)} 
-            className={`font-black uppercase tracking-wider px-2 py-0.5 rounded transition-colors ${getPriorityColor(t.priority || 'Medium')}`}
+            className={`font-bold uppercase tracking-wider px-2 py-0.5 rounded transition-colors ${getPriorityColor(t.priority || 'Medium')}`}
           >
             {t.priority || 'Medium'}
           </button>

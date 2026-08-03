@@ -54,7 +54,7 @@ export function FileUploadButton({ onUploadSuccess, onManualLinkAdd, uploaderId 
   if (useManualFallback) {
     return (
       <div className="bg-red-50/50 p-3 rounded-xl border border-red-100 flex flex-col gap-2">
-        <div className="flex items-center gap-2 text-red-600 text-[10px] font-black uppercase tracking-widest">
+        <div className="flex items-center gap-2 text-red-600 text-[10px] font-bold uppercase tracking-widest">
           <AlertCircle size={14}/> 
           Plan B: Manual Link Input
         </div>
@@ -103,7 +103,7 @@ export function FileUploadButton({ onUploadSuccess, onManualLinkAdd, uploaderId 
           className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 border-2 border-dashed rounded-xl font-bold text-sm transition-all ${
             isUploading 
               ? 'border-blue-300 bg-blue-50 text-blue-500 cursor-wait' 
-              : 'border-slate-300 hover:border-blue-400 hover:bg-blue-50 text-slate-600 hover:text-blue-600 bg-slate-50/50'
+              : 'border-slate-300 hover:border-blue-400 hover:bg-blue-50 text-slate-600 hover:text-blue-600 bg-[#F4F7FB]/50'
           }`}
         >
           {isUploading ? (
@@ -123,7 +123,7 @@ export function FileUploadButton({ onUploadSuccess, onManualLinkAdd, uploaderId 
         </button>
       </div>
       <p className="text-[10px] font-medium text-slate-500 px-1 leading-relaxed">
-        Supports Images (JPEG/PNG) and PDFs. <strong className="text-indigo-600 font-black">Max size: 2MB</strong>. Images are automatically compressed.
+        Supports Images (JPEG/PNG) and PDFs. <strong className="text-indigo-600 font-bold">Max size: 2MB</strong>. Images are automatically compressed.
       </p>
     </div>
   );

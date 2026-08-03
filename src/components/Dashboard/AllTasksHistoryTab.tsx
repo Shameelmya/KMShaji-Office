@@ -80,7 +80,7 @@ export function AllTasksHistoryTab({
       </div>
       <div className="overflow-x-auto">
         <table className="w-full text-left text-sm text-slate-700 whitespace-nowrap">
-          <thead className="bg-slate-50 border-y border-slate-200 text-slate-500 uppercase text-xs tracking-widest font-black">
+          <thead className="bg-[#F4F7FB] border-y border-slate-200 text-slate-500 uppercase text-xs tracking-widest font-bold">
             <tr>
               <th className="px-4 py-3">ID & Date</th>
               <th className="px-4 py-3">Subject & Citizen</th>
@@ -91,9 +91,9 @@ export function AllTasksHistoryTab({
           </thead>
           <tbody className="divide-y divide-slate-100">
             {displayed.map((t, idx) => (
-              <tr key={`${t.id}-${idx}`} className={`hover:bg-slate-50 font-medium ${t.isSelfMode ? 'bg-yellow-50/40' : ''}`}>
+              <tr key={`${t.id}-${idx}`} className={`hover:bg-[#F4F7FB] font-medium ${t.isSelfMode ? 'bg-yellow-50/40' : ''}`}>
                 <td className="px-4 py-3">
-                  <span className="font-black text-slate-800">{t.id}</span> 
+                  <span className="font-bold text-slate-800">{t.id}</span> 
                   {t.isSelfMode && (
                     <span className="bg-yellow-300 text-yellow-900 px-1 py-0.5 rounded text-[8px] font-bold ml-1 uppercase">
                       Self
@@ -110,7 +110,7 @@ export function AllTasksHistoryTab({
                   <span className="bg-slate-100 px-2 py-0.5 rounded text-xs text-slate-700">{t.category}</span>
                 </td>
                 <td className="px-4 py-3">
-                  <span className={`px-2 py-1 rounded text-xs font-black uppercase ${t.status==='Completed'?'bg-green-100 text-green-700':t.status==='In Progress'?'bg-amber-100 text-amber-700':t.status==='Draft'?'bg-purple-100 text-purple-700':t.status==='Unsolved'?'bg-slate-200 text-slate-500':'bg-red-100 text-red-700'}`}>
+                  <span className={`px-2 py-1 rounded text-xs font-bold uppercase ${t.status==='Completed'?'bg-green-100 text-green-700':t.status==='In Progress'?'bg-amber-100 text-amber-700':t.status==='Draft'?'bg-purple-100 text-purple-700':t.status==='Unsolved'?'bg-slate-200 text-slate-500':'bg-red-100 text-red-700'}`}>
                     {t.status}
                   </span>
                 </td>

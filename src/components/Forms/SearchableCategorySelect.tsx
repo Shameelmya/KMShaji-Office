@@ -46,8 +46,8 @@ export const SearchableCategorySelect = React.memo(({
         <Filter size={16} className="text-slate-400" />
       </div>
       {isOpen && (
-        <div className="absolute z-50 mt-1 w-full bg-white border border-slate-200 rounded-xl shadow-xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-100">
-          <div className="p-2 border-b border-slate-100 bg-slate-50">
+        <div className="absolute z-50 mt-1 w-full bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden animate-in fade-in slide-in-from-top-2 duration-100">
+          <div className="p-2 border-b border-slate-100 bg-[#F4F7FB]">
             <input 
               type="text" 
               value={search} 
@@ -78,7 +78,7 @@ export const SearchableCategorySelect = React.memo(({
               </div>
             )}
           </div>
-          <div className="p-2 border-t border-slate-100 bg-slate-50 flex justify-center">
+          <div className="p-2 border-t border-slate-100 bg-[#F4F7FB] flex justify-center">
             <button 
               type="button" 
               onClick={(e) => { 

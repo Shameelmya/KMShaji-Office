@@ -16,7 +16,7 @@ export const AwarenessGraph = React.memo(({ total, completed, drafted }: Awarene
   return (
     <div id="awareness-graph" className="w-full bg-white p-4 rounded-xl border border-slate-200 shadow-sm mb-6">
       <div className="flex justify-between items-center mb-2">
-        <span className="text-xs font-black text-slate-500 uppercase tracking-widest">My Progress Overview</span>
+        <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">My Progress Overview</span>
         <div className="flex gap-4">
           <span className="text-xs font-bold text-green-600 flex items-center gap-1">
             <CheckCircle size={12}/> Completed: {completed}
