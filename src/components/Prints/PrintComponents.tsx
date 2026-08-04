@@ -163,7 +163,7 @@ export function PrintTaskDetailsReport({ task, users }: PrintTaskDetailsReportPr
   return (
     <div className="w-full bg-white text-black font-sans p-10 box-border text-[12px]">
       <div className="text-center border-b-2 border-black pb-4 mb-6">
-        <h1 className="text-2xl font-bold uppercase tracking-widest mb-1 text-black">KM Shaji MLA Office</h1>
+        <h1 className="text-2xl font-bold uppercase tracking-widest mb-1 text-black">MLA Squad</h1>
         <h2 className="text-lg font-semibold text-gray-700 uppercase tracking-widest">Detailed Task Report</h2>
       </div>
       <div className="flex justify-between items-center mb-6 pb-4 border-b border-gray-300">
@@ -265,7 +265,7 @@ export function PrintMasterReport({ config, tasks, users, categories }: PrintMas
   return (
     <div className="w-full bg-white text-black font-sans p-10 box-border text-[12px]">
       <div className="text-center border-b-2 border-black pb-4 mb-6">
-        <h1 className="text-2xl font-bold uppercase tracking-widest mb-1 text-black">KM Shaji MLA Office</h1>
+        <h1 className="text-2xl font-bold uppercase tracking-widest mb-1 text-black">MLA Squad</h1>
         <h2 className="text-xl font-bold text-gray-800 uppercase tracking-widest">Master Performance Report</h2>
         <p className="mt-2 text-sm text-gray-600 font-bold">
           Period: {config.range === 'all' ? 'All Time' : config.range === '1week' ? 'Last 7 Days' : config.range === '1month' ? 'Last 30 Days' : config.range === '6months' ? 'Last 6 Months' : `${formatDate(config.customStart)} to ${formatDate(config.customEnd)}`}
@@ -387,7 +387,7 @@ export function PrintOfficerReport({ config, tasks }: PrintOfficerReportProps) {
   return (
     <div className="w-full bg-white text-black font-sans p-10 box-border text-[12px]">
       <div className="text-center border-b-2 border-black pb-4 mb-6">
-        <h1 className="text-2xl font-bold uppercase tracking-widest mb-1 text-black">KM Shaji MLA Office</h1>
+        <h1 className="text-2xl font-bold uppercase tracking-widest mb-1 text-black">MLA Squad</h1>
         <h2 className="text-lg font-semibold text-gray-700 uppercase tracking-widest">Officer Performance Report</h2>
         <h3 className="text-xl font-bold mt-1 text-black">{officer.name}</h3>
         <p className="mt-1 text-sm text-gray-600 font-bold">
@@ -452,7 +452,7 @@ export function PrintCitizenDirectory({ citizens }: PrintCitizenDirectoryProps) 
   return (
     <div className="w-full bg-white text-black font-sans p-10 box-border text-[12px]">
       <div className="text-center border-b-2 border-black pb-4 mb-6">
-        <h1 className="text-2xl font-bold uppercase tracking-widest mb-1 text-black">KM Shaji MLA Office</h1>
+        <h1 className="text-2xl font-bold uppercase tracking-widest mb-1 text-black">MLA Squad</h1>
         <h2 className="text-lg font-bold text-gray-700 uppercase tracking-widest">Citizen Directory & Visit Log</h2>
         <p className="mt-1 text-xs text-gray-600 font-bold">Generated: {new Date().toLocaleString('en-IN')}</p>
       </div>
@@ -560,7 +560,7 @@ export function PrintUpdationReport({ config, tasks, users }: PrintUpdationRepor
         <div key={pageIdx} className="pdf-page-chunk bg-white p-8 box-border flex flex-col" style={{ width: '794px', height: '1123px', fontFamily: "'Noto Serif Malayalam', serif" }}>
           {pageIdx === 0 ? (
             <div className="text-center border-b-2 border-black pb-3 mb-4 shrink-0">
-              <h1 className="text-xl font-bold uppercase tracking-widest mb-1">KM Shaji MLA Office</h1>
+              <h1 className="text-xl font-bold uppercase tracking-widest mb-1">MLA Squad</h1>
               <h2 className="text-base font-bold text-gray-700 uppercase tracking-widest">Updation Report</h2>
               <p className="mt-1 text-[10px] font-bold text-gray-500 uppercase">
                 Status: {config.status} | Period: {config.dateRange === 'all' ? 'All Time' : config.dateRange === 'custom' ? `${config.customStartDate ? new Date(config.customStartDate).toLocaleDateString('en-GB') : 'Start'} to ${config.customEndDate ? new Date(config.customEndDate).toLocaleDateString('en-GB') : 'End'}` : config.dateRange === '7days' ? 'Last 7 Days' : config.dateRange === '1month' ? 'Last 1 Month' : config.dateRange === '6months' ? 'Last 6 Months' : 'Last 1 Year'}{config.followUpFrequency && config.followUpFrequency !== 'All' ? ` | Follow-up: ${config.followUpFrequency}` : ''}
@@ -657,7 +657,7 @@ export function PrintUpdationReport({ config, tasks, users }: PrintUpdationRepor
           </div>
 
           <div className="mt-auto border-t border-gray-300 pt-2 text-right text-[9px] font-bold text-gray-400 uppercase tracking-widest shrink-0">
-            Generated on {new Date().toLocaleString('en-IN')} | KM Shaji MLA Office
+            Generated on {new Date().toLocaleString('en-IN')} | MLA Squad
           </div>
         </div>
       ))}
@@ -734,7 +734,7 @@ export function PrintRecentUpdationsReport({ config }: PrintRecentUpdationsRepor
           </div>
 
           <div className="mt-auto border-t border-gray-300 pt-2 text-right text-[9px] font-bold text-gray-400 uppercase tracking-widest shrink-0">
-            Generated on {new Date().toLocaleString('en-IN')} | KM Shaji MLA Office
+            Generated on {new Date().toLocaleString('en-IN')} | MLA Squad
           </div>
         </div>
       ))}

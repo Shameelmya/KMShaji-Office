@@ -753,7 +753,7 @@ export default function App() {
                 {isImpersonating ? <Shield size={20} className="text-white animate-pulse" /> : <User size={20} className="text-white" />}
               </div>
               <div>
-                <h1 className="font-bold text-lg leading-tight tracking-wide">KM Shaji MLA Office</h1>
+                <h1 className="font-bold text-lg leading-tight tracking-wide">MLA Squad</h1>
                 <p className="text-xs text-blue-100 font-medium tracking-wider uppercase">
                   {isImpersonating ? `ACTING AS: ${activeUser.name}` : activeUser.name}
                 </p>
@@ -847,7 +847,7 @@ export default function App() {
             />
           )}
         </main>
-        <footer className="pb-6 pt-2 text-center text-[10px] font-bold text-slate-400 tracking-widest uppercase">&copy; {new Date().getFullYear()} KM Shaji MLA Office Management System. All Rights Reserved.</footer>
+        <footer className="pb-6 pt-2 text-center text-[10px] font-bold text-slate-400 tracking-widest uppercase">&copy; {new Date().getFullYear()} MLA Squad Management System. All Rights Reserved.</footer>
       </div>
     </>
   );
