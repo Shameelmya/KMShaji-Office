@@ -354,7 +354,7 @@ export function InputFormTab({
               onChange={(e) => setForm(f => ({ ...f, isLocalWork: e.target.checked }))} 
               className="w-4 h-4 text-green-500 rounded focus:ring-green-500 bg-slate-900" 
             />
-            <span className="font-bold text-sm text-green-400">Local Work</span>
+            <span className="font-bold text-sm text-white">Local Work</span>
           </label>
           <label className="flex items-center gap-2 cursor-pointer transition-all duration-300 hover:bg-slate-50 bg-purple-600 hover:bg-purple-700 hover:-translate-y-0.5 transition-all duration-300 text-white shadow-sm px-4 py-2 rounded-2xl border border-slate-600 transition-colors">
             <input 
@@ -363,7 +363,7 @@ export function InputFormTab({
               onChange={(e) => setForm(f => ({ ...f, isSelfMode: e.target.checked }))} 
               className="w-4 h-4 text-yellow-500 rounded focus:ring-yellow-500 bg-slate-900" 
             />
-            <span className="font-bold text-sm text-yellow-400">Self Application Mode (No Citizen Contact)</span>
+            <span className="font-bold text-sm text-white">Self Application Mode (No Citizen Contact)</span>
           </label>
         </div>
       </div>
