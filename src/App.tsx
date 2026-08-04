@@ -748,7 +748,7 @@ export default function App() {
       )}
 
       <div className={`min-h-screen bg-slate-100 font-sans text-slate-800 flex-col print-hidden relative z-10 ${taskToPrint ? 'hidden' : 'flex'}`}>
-        <header className={`${isImpersonating ? 'bg-gradient-to-r from-red-900 to-orange-800' : 'bg-gradient-to-r from-[#2E1610] via-[#52291E] to-[#7A4031]'} text-white shadow-sm transition-colors`}>
+        <header className={`${isImpersonating ? 'bg-gradient-to-r from-red-900 to-orange-800' : 'bg-gradient-to-r from-indigo-900 via-purple-900 to-fuchsia-900'} text-white shadow-sm transition-colors`}>
           <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="bg-white/20 p-2 rounded-lg backdrop-blur-sm shadow-inner">
