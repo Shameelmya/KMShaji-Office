@@ -148,20 +148,20 @@ export function RecentUpdationsTab({ tasks, users, triggerRecentUpdationsDownloa
 
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
-      <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex flex-col md:flex-row gap-4 items-center justify-between">
+      <div className="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 flex flex-col md:flex-row gap-5 items-center justify-between">
         <div>
           <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2"><Zap className="text-amber-500" /> Recent Updations</h2>
           <p className="text-xs font-bold text-slate-500 mt-1">Timeline updates compiled across all tasks for easy follow-up.</p>
         </div>
         <button 
           onClick={handleDownloadPDF} 
-          className="bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-md flex items-center gap-2 transition-all hover:scale-105 active:scale-95 whitespace-nowrap"
+          className="bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 rounded-2xl text-sm font-bold shadow-md flex items-center gap-2 transition-all hover:scale-105 active:scale-95 whitespace-nowrap"
         >
           <Download size={18}/> Export PDF
         </button>
       </div>
 
-      <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex flex-wrap gap-4 items-end">
+      <div className="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 flex flex-wrap gap-5 items-end">
         <div className="flex-1 min-w-[200px]">
           <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1 flex items-center gap-1"><Search size={12}/> Search</label>
           <input 
@@ -211,7 +211,7 @@ export function RecentUpdationsTab({ tasks, users, triggerRecentUpdationsDownloa
             <select 
               value={officerFilter}
               onChange={e => setOfficerFilter(e.target.value)}
-              className="w-full md:w-1/2 px-3 py-2 border border-slate-200 rounded-xl font-bold text-sm text-slate-700 bg-[#F4F7FB] focus:bg-white focus:border-indigo-500 outline-none"
+              className="w-full md:w-1/2 px-3 py-2 border border-slate-200 rounded-2xl font-bold text-sm text-slate-700 bg-[#F4F7FB] focus:bg-white focus:border-indigo-500 outline-none"
             >
               <option value="All">All Assigned Officers</option>
               {users.map(u => <option key={u.id} value={u.id}>{u.name}</option>)}
@@ -220,7 +220,7 @@ export function RecentUpdationsTab({ tasks, users, triggerRecentUpdationsDownloa
             <select
               value={msgFilter}
               onChange={e => setMsgFilter(e.target.value)}
-              className="w-full md:w-1/2 px-3 py-2 border border-slate-200 rounded-xl font-bold text-sm text-slate-700 bg-[#F4F7FB] focus:bg-white focus:border-indigo-500 outline-none"
+              className="w-full md:w-1/2 px-3 py-2 border border-slate-200 rounded-2xl font-bold text-sm text-slate-700 bg-[#F4F7FB] focus:bg-white focus:border-indigo-500 outline-none"
             >
               <option value="All">All Messages</option>
               <option value="Sent">Message Sent</option>
@@ -229,12 +229,12 @@ export function RecentUpdationsTab({ tasks, users, triggerRecentUpdationsDownloa
           </div>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
         <div className="max-h-[600px] overflow-y-auto custom-scrollbar p-2">
           {filteredUpdations.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 p-2">
               {filteredUpdations.map((item, idx) => (
-                <div key={`${item.taskId}-${item.updation.id}-${idx}`} className="border border-slate-200 rounded-xl p-4 bg-[#F4F7FB] hover:border-amber-300 hover:shadow-md transition-all group flex flex-col h-full">
+                <div key={`${item.taskId}-${item.updation.id}-${idx}`} className="border border-slate-200 rounded-2xl p-5 bg-[#F4F7FB] hover:border-amber-300 hover:shadow-md transition-all group flex flex-col h-full">
                   
                   <div className="flex justify-between items-start mb-2">
                     <div className="flex items-center gap-2">
@@ -268,7 +268,7 @@ export function RecentUpdationsTab({ tasks, users, triggerRecentUpdationsDownloa
                         onSend={() => handleSendWA(item)}
                         isSent={!!item.updation.whatsappSent}
                         onReset={() => handleResetWA(item)}
-                        className="p-2 rounded-xl shadow-sm border border-slate-200"
+                        className="p-2 rounded-2xl shadow-sm border border-slate-200"
                         iconSize={16}
                       />
                     )}
@@ -280,7 +280,7 @@ export function RecentUpdationsTab({ tasks, users, triggerRecentUpdationsDownloa
           ) : (
             <div className="py-20 text-center flex flex-col items-center">
               <Database size={48} className="text-slate-200 mb-4" />
-              <p className="text-slate-500 font-bold text-lg">No recent updations found.</p>
+              <p className="text-slate-500 font-semibold uppercase tracking-wider text-[11px] text-lg">No recent updations found.</p>
               <p className="text-slate-400 font-medium text-sm mt-1">Try expanding your date range or removing filters.</p>
             </div>
           )}

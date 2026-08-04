@@ -59,19 +59,19 @@ export function AllTasksHistoryTab({
   };
 
   return (
-    <div id="all-tasks-history-tab" className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 space-y-6">
-      <div className="flex gap-4 flex-wrap">
+    <div id="all-tasks-history-tab" className="bg-white rounded-[20px] shadow-sm border border-slate-200 p-8 space-y-6">
+      <div className="flex gap-5 flex-wrap">
         <input 
           type="text" 
           placeholder="Search history by Subject, Name, ID, Mobile..." 
           value={search} 
           onChange={e => setSearch(e.target.value)} 
-          className="flex-1 min-w-[250px] px-4 py-2 border border-slate-300 rounded-xl font-medium outline-none focus:border-blue-500 bg-white text-slate-800" 
+          className="flex-1 min-w-[250px] px-4 py-2 border border-slate-300 rounded-2xl font-medium outline-none focus:border-blue-500 bg-white text-slate-800" 
         />
         <select 
           value={catFilter} 
           onChange={e => setCatFilter(e.target.value)} 
-          className="px-4 py-2 border border-slate-300 rounded-xl font-medium outline-none bg-white font-bold text-slate-700"
+          className="px-4 py-2 border border-slate-300 rounded-2xl font-medium outline-none bg-white font-bold text-slate-700"
         >
           <option value="All">All Categories</option>
           {sortedCategories.map(c => <option key={c} value={c}>{c}</option>)}

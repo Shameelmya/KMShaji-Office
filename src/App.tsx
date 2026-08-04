@@ -543,7 +543,7 @@ export default function App() {
   if (!activeUser) return <LoginScreen onLogin={handleLogin} users={users} />;
 
   const GlobalFilterBar = () => (
-    <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex flex-wrap gap-3 items-center w-fit mb-6 text-sm">
+    <div className="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm flex flex-wrap gap-3 items-center w-fit mb-6 text-sm">
        <span className="font-bold text-slate-800 flex items-center gap-1.5">&#x1F50E; View Mode:</span>
        <select 
          value={globalFilters.status} 
@@ -709,9 +709,9 @@ export default function App() {
       )}
 
       {confirmModal.isOpen && (
-        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[99999] flex items-center justify-center p-4 print-hidden">
+        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[99999] flex items-center justify-center p-5 print-hidden">
           <div className="bg-white rounded-3xl shadow-md border border-slate-200 max-w-md w-full overflow-hidden animate-in zoom-in-95 duration-150">
-            <div className="p-6">
+            <div className="p-8">
               <div className="flex items-center gap-3 mb-4">
                 <div className={`p-3 rounded-full shrink-0 ${confirmModal.isDanger ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-600'}`}>
                   {confirmModal.isDanger ? <AlertTriangle size={24} /> : <CheckCircle size={24} />}
@@ -725,19 +725,19 @@ export default function App() {
                   value={confirmModal.inputValue} 
                   onChange={(e) => setConfirmModal(prev => ({ ...prev, inputValue: e.target.value }))} 
                   placeholder={confirmModal.inputPlaceholder} 
-                  className="w-full px-4 py-3 border border-slate-300 rounded-xl font-medium outline-none focus:border-indigo-500 h-24 mb-6 text-sm bg-white text-slate-800"
+                  className="w-full px-4 py-3 border border-slate-300 rounded-2xl font-medium outline-none focus:border-indigo-500 h-24 mb-6 text-sm bg-white text-slate-800"
                 ></textarea> 
               )}
               <div className="flex gap-3 justify-end">
                 <button 
                   onClick={() => setConfirmModal(prev => ({ ...prev, isOpen: false }))} 
-                  className="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-bold rounded-xl transition-colors"
+                  className="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-bold rounded-2xl transition-colors"
                 >
                   {confirmModal.cancelText || 'Cancel'}
                 </button>
                 <button 
                   onClick={() => confirmModal.onConfirm!(confirmModal.inputValue)} 
-                  className={`px-5 py-2.5 text-white text-sm font-bold rounded-xl transition-colors ${confirmModal.isDanger ? 'bg-red-600 hover:bg-red-700' : 'bg-green-600 hover:bg-green-700'}`}
+                  className={`px-5 py-2.5 text-white text-sm font-bold rounded-2xl transition-colors ${confirmModal.isDanger ? 'bg-red-600 hover:bg-red-700' : 'bg-green-600 hover:bg-green-700'}`}
                 >
                   {confirmModal.confirmText || 'Confirm'}
                 </button>
@@ -761,7 +761,7 @@ export default function App() {
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-5">
               {isImpersonating && (
                 <button 
                   onClick={() => setImpersonatedUser(null)} 

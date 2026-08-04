@@ -14,10 +14,10 @@ export const AwarenessGraph = React.memo(({ total, completed, drafted }: Awarene
   const pendPercent = total === 0 ? 0 : (pending / total) * 100;
 
   return (
-    <div id="awareness-graph" className="w-full bg-white p-4 rounded-xl border border-slate-200 shadow-sm mb-6">
+    <div id="awareness-graph" className="w-full bg-white p-5 rounded-2xl border border-slate-200 shadow-sm mb-6">
       <div className="flex justify-between items-center mb-2">
         <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">My Progress Overview</span>
-        <div className="flex gap-4">
+        <div className="flex gap-5">
           <span className="text-xs font-bold text-green-600 flex items-center gap-1">
             <CheckCircle size={12}/> Completed: {completed}
           </span>

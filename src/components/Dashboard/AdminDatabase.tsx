@@ -130,19 +130,19 @@ export function AdminDatabase({
             <select 
               value={backupTarget} 
               onChange={e => setBackupTarget(e.target.value)} 
-              className="w-full px-4 py-3 bg-[#F4F7FB] border border-slate-200 rounded-xl font-bold text-slate-700 outline-none focus:ring-2 focus:ring-blue-500 mb-4 bg-white"
+              className="w-full px-4 py-3 bg-[#F4F7FB] border border-slate-200 rounded-2xl font-bold text-slate-700 outline-none focus:ring-2 focus:ring-blue-500 mb-4 bg-white"
             >
               <option value="all">Entire Database (All Officers & Admin)</option>
               {users.map(u => <option key={u.id} value={u.id}>Only {u.name}'s Data</option>)}
             </select>
             <button 
               onClick={handleBackup} 
-              className="bg-blue-600 text-white font-bold py-3 px-6 rounded-xl hover:bg-blue-700 flex items-center gap-2 shadow transition-colors"
+              className="bg-blue-600 text-white font-bold py-3 px-6 rounded-2xl hover:bg-blue-700 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2 shadow transition-colors"
             >
               <Download size={18}/> Generate & Download JSON
             </button>
           </div>
-          <div className="bg-blue-50 p-4 rounded-xl border border-blue-100 h-full flex flex-col justify-center">
+          <div className="bg-blue-50 p-5 rounded-2xl border border-blue-100 h-full flex flex-col justify-center">
             <p className="text-[10px] font-bold text-blue-400 uppercase tracking-widest mb-1">Last Backup Information</p>
             {backupMeta?.lastBackup ? (
               <>
@@ -166,13 +166,13 @@ export function AdminDatabase({
               type="file" 
               accept=".json" 
               onChange={handleImport} 
-              className="w-full px-4 py-3 bg-[#F4F7FB] border border-slate-200 rounded-xl font-bold text-slate-700 outline-none focus:ring-2 focus:ring-indigo-500 mb-4 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-bold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 bg-white" 
+              className="w-full px-4 py-3 bg-[#F4F7FB] border border-slate-200 rounded-2xl font-bold text-slate-700 outline-none focus:ring-2 focus:ring-indigo-500 mb-4 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-bold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 bg-white" 
             />
             <p className="text-xs font-medium text-slate-500 flex items-center gap-1">
               <AlertTriangle size={12}/> If importing duplicated IDs, existing records will be perfectly overwritten without loss of new data.
             </p>
           </div>
-          <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100 h-full flex flex-col justify-center">
+          <div className="bg-indigo-50 p-5 rounded-2xl border border-indigo-100 h-full flex flex-col justify-center">
             <p className="text-[10px] font-bold text-indigo-400 uppercase tracking-widest mb-1">Last Import Information</p>
             {backupMeta?.lastImport ? (
               <>
@@ -192,12 +192,12 @@ export function AdminDatabase({
         <h2 className="text-2xl font-bold text-red-700 flex items-center gap-2 mb-6 relative z-10">
           <AlertOctagon className="text-red-600"/> Danger Zone: System Erase
         </h2>
-        <div className="bg-red-50 p-6 rounded-2xl border border-red-100 relative z-10">
+        <div className="bg-red-50 p-8 rounded-[20px] border border-red-100 relative z-10">
           <label className="text-xs font-bold text-red-500 uppercase tracking-widest block mb-2">Select Data to Delete Permanently</label>
           <select 
             value={resetTarget} 
             onChange={e => setResetTarget(e.target.value)} 
-            className="w-full px-4 py-3 bg-white border border-red-200 rounded-xl font-bold text-red-900 outline-none focus:ring-2 focus:ring-red-500 mb-6 text-red-800"
+            className="w-full px-4 py-3 bg-white border border-red-200 rounded-2xl font-bold text-red-900 outline-none focus:ring-2 focus:ring-red-500 mb-6 text-red-800"
           >
             <option value="all">Entire Database (All Officers & Admin)</option>
             {users.map(u => <option key={u.id} value={u.id}>Only {u.name}'s Data</option>)}
@@ -210,11 +210,11 @@ export function AdminDatabase({
             value={resetText} 
             onChange={e => setResetText(e.target.value)} 
             placeholder="Strict verification text..." 
-            className="w-full px-4 py-3 bg-white border border-red-200 rounded-xl font-bold text-red-900 outline-none focus:ring-2 focus:ring-red-500 mb-4 text-red-800 bg-white" 
+            className="w-full px-4 py-3 bg-white border border-red-200 rounded-2xl font-bold text-red-900 outline-none focus:ring-2 focus:ring-red-500 mb-4 text-red-800 bg-white" 
           />
           <button 
             onClick={handleReset} 
-            className="w-full bg-red-600 text-white font-bold py-3 px-6 rounded-xl hover:bg-red-700 flex items-center justify-center gap-2 shadow transition-colors"
+            className="w-full bg-red-600 text-white font-bold py-3 px-6 rounded-2xl hover:bg-red-700 flex items-center justify-center gap-2 shadow transition-colors"
           >
             <Trash2 size={18}/> PERMANENTLY DELETE DATA
           </button>

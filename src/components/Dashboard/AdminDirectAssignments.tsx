@@ -88,21 +88,21 @@ export function AdminDirectAssignments({
 
   return (
     <div id="admin-direct-assignments" className="space-y-6">
-      <form onSubmit={handleAssign} className="bg-indigo-50 border border-indigo-200 p-6 rounded-2xl shadow-sm">
+      <form onSubmit={handleAssign} className="bg-indigo-50 border border-indigo-200 p-8 rounded-[20px] shadow-sm">
         <h3 className="text-xl font-bold text-indigo-900 mb-4 flex items-center gap-2"><Zap size={20}/> Create Direct Assignment</h3>
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-8">
           <textarea 
             required 
             value={desc} 
             onChange={e => setDesc(e.target.value)} 
             placeholder="Write details of the assignment..." 
-            className="w-full p-4 rounded-xl border border-indigo-300 outline-none focus:ring-2 focus:ring-indigo-500 h-32 font-medium bg-white text-slate-800"
+            className="w-full p-5 rounded-2xl border border-indigo-300 outline-none focus:ring-2 focus:ring-indigo-500 h-32 font-medium bg-white text-slate-800"
           ></textarea>
           <div>
             <p className="text-sm font-bold text-indigo-800 uppercase mb-3">Assign To Officers:</p>
             <div className="grid grid-cols-2 gap-2 mb-4">
               {users.map(u => (
-                <label key={u.id} className="flex items-center gap-2 bg-white p-2 rounded-lg border border-indigo-100 cursor-pointer text-sm font-bold text-indigo-900">
+                <label key={u.id} className="flex items-center gap-2 bg-white p-2 rounded-lg border border-indigo-100 cursor-pointer transition-all duration-300 hover:bg-slate-50 text-sm font-bold text-indigo-900">
                   <input 
                     type="checkbox" 
                     checked={assignedTo.includes(u.id)} 
@@ -113,7 +113,7 @@ export function AdminDirectAssignments({
                 </label>
               ))}
             </div>
-            <button type="submit" className="w-full bg-indigo-600 text-white font-bold py-3 rounded-xl shadow hover:bg-indigo-700 transition-colors">
+            <button type="submit" className="w-full bg-indigo-600 text-white font-bold py-3 rounded-2xl shadow hover:bg-indigo-700 transition-colors">
               Assign Work
             </button>
           </div>

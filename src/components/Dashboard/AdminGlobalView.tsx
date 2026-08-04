@@ -129,8 +129,8 @@ export function AdminGlobalView({
 
   return (
     <div className="space-y-6">
-      <div className="flex gap-4 flex-wrap bg-white p-4 rounded-2xl border border-slate-200 shadow-sm justify-between">
-        <div className="flex flex-wrap gap-4 flex-1">
+      <div className="flex gap-5 flex-wrap bg-white p-5 rounded-[20px] border border-slate-200 shadow-sm justify-between">
+        <div className="flex flex-wrap gap-5 flex-1">
           <div className="relative flex-1 min-w-[200px]">
             <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
             <input 
@@ -138,14 +138,14 @@ export function AdminGlobalView({
               placeholder="Search entries by Subject, Name, ID, Mobile..." 
               value={search} 
               onChange={e => setSearch(e.target.value)} 
-              className="w-full pl-12 pr-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-xl font-medium outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 bg-white" 
+              className="w-full pl-12 pr-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-2xl font-medium outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 bg-white" 
             />
           </div>
           {categories && (
             <select 
               value={catFilter} 
               onChange={e => setCatFilter(e.target.value)} 
-              className="px-4 py-2.5 border border-slate-300 rounded-xl font-medium outline-none bg-white focus:ring-2 focus:ring-blue-500 min-w-[150px] font-bold text-slate-700"
+              className="px-4 py-2.5 border border-slate-300 rounded-2xl font-medium outline-none bg-white focus:ring-2 focus:ring-blue-500 min-w-[150px] font-bold text-slate-700"
             >
               <option value="All">All Categories</option>
               {sortedCategories.map(c => <option key={c} value={c}>{c}</option>)}
@@ -154,13 +154,13 @@ export function AdminGlobalView({
           <select 
             value={officerFilter} 
             onChange={e => setOfficerFilter(e.target.value)} 
-            className="px-4 py-2.5 border border-slate-300 rounded-xl font-medium outline-none bg-white focus:ring-2 focus:ring-blue-500 min-w-[150px] font-bold text-slate-700"
+            className="px-4 py-2.5 border border-slate-300 rounded-2xl font-medium outline-none bg-white focus:ring-2 focus:ring-blue-500 min-w-[150px] font-bold text-slate-700"
           >
             <option value="All">All Assigned Officers</option>
             {users.map(u => <option key={u.id} value={u.id}>{u.name}</option>)}
           </select>
         </div>
-        <div className="flex bg-slate-100 p-1 rounded-xl border border-slate-200 h-fit">
+        <div className="flex bg-slate-100 p-1 rounded-2xl border border-slate-200 h-fit">
           <button 
             onClick={() => setViewMode('grid')} 
             className={`p-2 rounded-lg transition-colors ${viewMode === 'grid' ? 'bg-white shadow-sm text-blue-600' : 'text-slate-500 hover:text-slate-700'}`} 
@@ -179,7 +179,7 @@ export function AdminGlobalView({
       </div>
       
       {viewMode === 'grid' ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {displayed.map((t, i) => (
             <AdminTaskCard 
               key={`${t.id}-${i}`} 
@@ -196,13 +196,13 @@ export function AdminGlobalView({
             />
           ))}
           {displayed.length === 0 && (
-            <div className="col-span-full py-10 text-center text-slate-500 font-bold bg-white rounded-2xl border border-slate-200">
+            <div className="col-span-full py-10 text-center text-slate-500 font-semibold uppercase tracking-wider text-[11px] bg-white rounded-[20px] border border-slate-200">
               No records found.
             </div>
           )}
         </div>
       ) : (
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-x-auto">
+        <div className="bg-white rounded-[20px] shadow-sm border border-slate-200 overflow-x-auto">
           <table className="w-full text-left text-sm text-slate-700 whitespace-nowrap">
             <thead className="bg-[#F4F7FB] border-b border-slate-200 text-slate-500 uppercase text-xs tracking-widest font-bold">
               <tr>
@@ -385,7 +385,7 @@ const AdminTaskCard = React.memo(({
 
   return (
     <div 
-      className={`${cardBg} rounded-2xl p-5 border shadow-sm flex flex-col transition-all relative overflow-hidden ${t.status === 'Unsolved' ? 'border-slate-300 bg-[#F4F7FB] opacity-75 grayscale' : 'hover:shadow-md hover:border-blue-300'}`}
+      className={`${cardBg} rounded-[20px] p-5 border shadow-sm flex flex-col transition-all relative overflow-hidden ${t.status === 'Unsolved' ? 'border-slate-300 bg-[#F4F7FB] opacity-75 grayscale' : 'hover:shadow-md hover:border-blue-300'}`}
       onContextMenu={(e) => {
         e.preventDefault();
         if (t.isReadByAdmin) updateTask(t.id, { isReadByAdmin: false });
@@ -395,7 +395,7 @@ const AdminTaskCard = React.memo(({
       onPointerLeave={clearPress}
     >
       {t.status === 'Unsolved' && (
-        <div className="absolute top-4 right-4 bg-slate-800 text-white text-[10px] font-bold px-2 py-1 rounded shadow-sm uppercase z-10">
+        <div className="absolute top-5 right-4 bg-slate-800 text-white text-[10px] font-bold px-2 py-1 rounded shadow-sm uppercase z-10">
           <Lock size={10} className="inline mr-1"/>Unsolved
         </div>
       )}
@@ -519,7 +519,7 @@ const AdminTaskCard = React.memo(({
         <p className="text-[10px] font-bold text-slate-500 uppercase mt-0.5">{t.category}</p>
       </div>
       {(t.attachment || (t.attachments && t.attachments.length > 0)) && (
-        <div className="mb-3 bg-indigo-50 border border-indigo-100 rounded-xl p-3 flex flex-col gap-2">
+        <div className="mb-3 bg-indigo-50 border border-indigo-100 rounded-2xl p-3 flex flex-col gap-2">
           <div className="flex items-center gap-2 text-indigo-900 truncate">
             <ExternalLink size={14} className="shrink-0 text-indigo-600" />
             <span className="text-xs font-bold truncate" title={t.attachments && t.attachments.length > 0 ? `${t.attachments.length} Attached Docs` : t.attachment?.name}>
@@ -553,17 +553,17 @@ const AdminTaskCard = React.memo(({
       )}
       <div className={`mb-4 ${t.isSelfMode ? 'bg-yellow-105/50' : 'bg-[#F4F7FB]'} p-3 rounded-lg border border-slate-100/50 flex flex-col gap-2 mt-auto`}>
         <div className="flex justify-between items-center text-xs">
-          <span className="text-slate-500 font-bold">Assigned:</span>
+          <span className="text-slate-500 font-semibold uppercase tracking-wider text-[11px]">Assigned:</span>
           <span className="font-bold text-slate-700 text-right truncate max-w-[120px]" title={(t.assignedTo || []).map(id => users.find(u => u.id === id)?.name || id).join(', ')}>
             {(t.assignedTo || []).map(id => users.find(u => u.id === id)?.name || id).join(', ')}
           </span>
         </div>
         <div className="flex justify-between items-center text-xs">
-          <span className="text-slate-500 font-bold">Status:</span>
+          <span className="text-slate-500 font-semibold uppercase tracking-wider text-[11px]">Status:</span>
           <span className={`font-bold uppercase tracking-wider ${getStatusColor(t.status)}`}>{t.status}</span>
         </div>
         <div className="flex justify-between items-center text-xs">
-          <span className="text-slate-500 font-bold">Priority:</span>
+          <span className="text-slate-500 font-semibold uppercase tracking-wider text-[11px]">Priority:</span>
           <button 
             type="button" 
             onClick={() => togglePriority(t)} 
@@ -579,13 +579,13 @@ const AdminTaskCard = React.memo(({
             updateTask(t.id, { isReadByAdmin: true });
             triggerViewDetails(t);
           }} 
-          className="flex-1 min-w-[70px] bg-slate-800 text-white font-bold py-2 rounded-xl text-xs hover:bg-black transition-colors flex items-center justify-center gap-1"
+          className="flex-1 min-w-[70px] bg-slate-800 text-white font-bold py-2 rounded-2xl text-xs hover:bg-black transition-colors flex items-center justify-center gap-1"
         >
           <Eye size={14}/> Details
         </button>
         <button 
           onClick={() => deleteTask(t.id)} 
-          className="px-3 rounded-xl border border-red-200 bg-red-50 text-red-600 hover:bg-red-100 transition-colors" 
+          className="px-3 rounded-2xl border border-red-200 bg-red-50 text-red-600 hover:bg-red-100 transition-colors" 
           title="Delete Permanent"
         >
           <Trash2 size={14}/>

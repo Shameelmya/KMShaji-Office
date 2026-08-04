@@ -99,7 +99,7 @@ export function AdminCitizenDirectory({
 
   return (
     <div id="admin-citizen-directory" className="bg-white rounded-3xl shadow-sm border border-slate-200 p-8 animate-in fade-in">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-5">
         <div>
           <h2 className="text-2xl font-bold text-slate-800 flex items-center gap-2">
             <Users className="text-teal-600"/> Citizen Visit Directory
@@ -109,25 +109,25 @@ export function AdminCitizenDirectory({
         <div className="flex gap-2">
           <button 
             onClick={handleDownloadCSV} 
-            className="bg-teal-50 text-teal-700 hover:bg-teal-100 px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 transition-colors border border-teal-200"
+            className="bg-teal-50 text-teal-700 hover:bg-teal-100 px-4 py-2 rounded-2xl text-sm font-bold flex items-center gap-2 transition-colors border border-teal-200"
           >
             <List size={16}/> Export CSV
           </button>
           <button 
             onClick={() => triggerCitizenPrint(citizensData)} 
-            className="bg-blue-600 text-white hover:bg-blue-700 shadow-sm px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 transition-colors"
+            className="bg-blue-600 text-white hover:bg-blue-700 hover:-translate-y-0.5 transition-all duration-300 shadow-sm px-4 py-2 rounded-2xl text-sm font-bold flex items-center gap-2 transition-colors"
           >
             <Printer size={16}/> Print
           </button>
           <button 
             onClick={() => triggerDownloadPDF(citizensData)} 
-            className="bg-indigo-600 text-white hover:bg-indigo-700 px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 transition-colors"
+            className="bg-indigo-600 text-white hover:bg-indigo-700 px-4 py-2 rounded-2xl text-sm font-bold flex items-center gap-2 transition-colors"
           >
             <Download size={16}/> PDF
           </button>
         </div>
       </div>
-      <div className="flex gap-4 mb-6 bg-[#F4F7FB] p-4 rounded-xl border border-slate-200">
+      <div className="flex gap-5 mb-6 bg-[#F4F7FB] p-5 rounded-2xl border border-slate-200">
         <div className="relative flex-1">
           <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
           <input 
@@ -187,7 +187,7 @@ export function AdminCitizenDirectory({
                 <td className="px-4 py-3 text-center">
                   <button 
                     onClick={() => onCitizenClick?.(c.mobileNumber)}
-                    className="bg-blue-600 hover:bg-blue-700 text-white shadow-sm hover:scale-105 active:scale-95 transition-all text-white font-bold px-3 py-1 rounded-full cursor-pointer shadow-sm"
+                    className="bg-blue-600 hover:bg-blue-700 hover:-translate-y-0.5 transition-all duration-300 text-white shadow-sm hover:scale-105 active:scale-95 transition-all text-white font-bold px-3 py-1 rounded-full cursor-pointer transition-all duration-300 hover:bg-slate-50 shadow-sm"
                     title="View inputs by this citizen"
                   >
                     {c.visits}

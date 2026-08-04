@@ -19,9 +19,9 @@ export const StatCard = React.memo(({ title, value, color, icon }: StatCardProps
   };
 
   return (
-    <div className={`p-6 rounded-2xl border ${cMap[color]} relative overflow-hidden shadow-sm flex flex-col justify-between`}>
-      <div className="absolute -right-4 -top-4 opacity-10 scale-150">{icon}</div>
-      <div className="bg-white/60 w-fit p-3 rounded-xl backdrop-blur-sm mb-4 shadow-sm">{icon}</div>
+    <div className={`p-8 rounded-[20px] border ${cMap[color]} relative overflow-hidden shadow-sm flex flex-col justify-between`}>
+      <div className="absolute -right-4 -top-5 opacity-10 scale-150">{icon}</div>
+      <div className="bg-white/60 w-fit p-3 rounded-2xl backdrop-blur-sm mb-4 shadow-sm">{icon}</div>
       <div>
         <p className="text-4xl font-bold tracking-tight">{value}</p>
         <p className="text-xs font-bold uppercase tracking-widest mt-1 opacity-80">{title}</p>

@@ -25,19 +25,19 @@ export function ReportConfigModal({ onClose, onGenerate, triggerDownloadPDF, loa
   };
 
   return (
-    <div id="report-config-modal" className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-md w-full max-w-md overflow-hidden">
-        <div className="bg-slate-900 p-4 text-white flex justify-between items-center">
+    <div id="report-config-modal" className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[100] flex items-center justify-center p-5">
+      <div className="bg-white rounded-[20px] shadow-md w-full max-w-md overflow-hidden">
+        <div className="bg-slate-900 p-5 text-white flex justify-between items-center">
           <h3 className="font-bold text-lg flex items-center gap-2"><FileOutput size={20}/> Generate Master Report</h3>
           <button onClick={onClose} className="text-white hover:text-slate-350 transition-colors"><X size={20}/></button>
         </div>
-        <div className="p-6 space-y-6">
+        <div className="p-8 space-y-6">
           <div>
             <label className="text-xs font-bold text-slate-500 uppercase tracking-widest block mb-2">Time Duration</label>
             <select 
               value={range} 
               onChange={e => setRange(e.target.value)} 
-              className="w-full px-4 py-3 bg-[#F4F7FB] border border-slate-200 rounded-xl font-bold text-slate-700 outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-4 py-3 bg-[#F4F7FB] border border-slate-200 rounded-2xl font-bold text-slate-700 outline-none focus:ring-2 focus:ring-indigo-500"
             >
               <option value="all">All Time</option>
               <option value="1week">Last 1 Week</option>
@@ -47,7 +47,7 @@ export function ReportConfigModal({ onClose, onGenerate, triggerDownloadPDF, loa
             </select>
           </div>
           {range === 'custom' && (
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-5">
               <div>
                 <label className="text-[10px] font-bold text-slate-500 uppercase">From</label>
                 <input 
@@ -71,13 +71,13 @@ export function ReportConfigModal({ onClose, onGenerate, triggerDownloadPDF, loa
           <div className="flex gap-3">
             <button 
               onClick={() => handleGenerate(false)} 
-              className="flex-1 bg-indigo-600 text-white font-bold py-3 rounded-xl hover:bg-indigo-700 flex items-center justify-center gap-2 shadow transition-colors"
+              className="flex-1 bg-indigo-600 text-white font-bold py-3 rounded-2xl hover:bg-indigo-700 flex items-center justify-center gap-2 shadow transition-colors"
             >
               <Printer size={18}/> Print
             </button>
             <button 
               onClick={() => handleGenerate(true)} 
-              className="flex-1 bg-slate-800 text-white font-bold py-3 rounded-xl hover:bg-black flex items-center justify-center gap-2 shadow transition-colors"
+              className="flex-1 bg-slate-800 text-white font-bold py-3 rounded-2xl hover:bg-black flex items-center justify-center gap-2 shadow transition-colors"
             >
               <Download size={18}/> PDF
             </button>
@@ -111,19 +111,19 @@ export function OfficerReportConfigModal({ officer, onClose, onGenerate, trigger
   };
 
   return (
-    <div id="officer-report-config-modal" className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-md w-full max-w-md overflow-hidden">
-        <div className="bg-slate-900 p-4 text-white flex justify-between items-center">
+    <div id="officer-report-config-modal" className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[100] flex items-center justify-center p-5">
+      <div className="bg-white rounded-[20px] shadow-md w-full max-w-md overflow-hidden">
+        <div className="bg-slate-900 p-5 text-white flex justify-between items-center">
           <h3 className="font-bold text-lg flex items-center gap-2"><FileOutput size={20}/> Officer Report: {officer.name}</h3>
           <button onClick={onClose} className="text-white hover:text-slate-350 transition-colors"><X size={20}/></button>
         </div>
-        <div className="p-6 space-y-6">
+        <div className="p-8 space-y-6">
           <div>
             <label className="text-xs font-bold text-slate-500 uppercase tracking-widest block mb-2">Time Duration</label>
             <select 
               value={range} 
               onChange={e => setRange(e.target.value)} 
-              className="w-full px-4 py-3 bg-[#F4F7FB] border border-slate-200 rounded-xl font-bold text-slate-700 outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-4 py-3 bg-[#F4F7FB] border border-slate-200 rounded-2xl font-bold text-slate-700 outline-none focus:ring-2 focus:ring-indigo-500"
             >
               <option value="all">All Time</option>
               <option value="1week">Last 1 Week</option>
@@ -133,7 +133,7 @@ export function OfficerReportConfigModal({ officer, onClose, onGenerate, trigger
             </select>
           </div>
           {range === 'custom' && (
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-5">
               <div>
                 <label className="text-[10px] font-bold text-slate-500 uppercase">From</label>
                 <input 
@@ -157,13 +157,13 @@ export function OfficerReportConfigModal({ officer, onClose, onGenerate, trigger
           <div className="flex gap-3">
             <button 
               onClick={() => handleGenerate(false)} 
-              className="flex-1 bg-indigo-600 text-white font-bold py-3 rounded-xl hover:bg-indigo-700 flex items-center justify-center gap-2 shadow transition-colors"
+              className="flex-1 bg-indigo-600 text-white font-bold py-3 rounded-2xl hover:bg-indigo-700 flex items-center justify-center gap-2 shadow transition-colors"
             >
               <Printer size={18}/> Print
             </button>
             <button 
               onClick={() => handleGenerate(true)} 
-              className="flex-1 bg-slate-800 text-white font-bold py-3 rounded-xl hover:bg-black flex items-center justify-center gap-2 shadow transition-colors"
+              className="flex-1 bg-slate-800 text-white font-bold py-3 rounded-2xl hover:bg-black flex items-center justify-center gap-2 shadow transition-colors"
             >
               <Download size={18}/> PDF
             </button>
@@ -206,13 +206,13 @@ export function UpdationReportConfigModal({ onClose, onGenerate, users }: Updati
   };
 
   return (
-    <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-md w-full max-w-md overflow-hidden">
-        <div className="bg-emerald-900 p-4 text-white flex justify-between items-center">
+    <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[100] flex items-center justify-center p-5">
+      <div className="bg-white rounded-[20px] shadow-md w-full max-w-md overflow-hidden">
+        <div className="bg-emerald-900 p-5 text-white flex justify-between items-center">
           <h3 className="font-bold text-lg flex items-center gap-2"><FileOutput size={20}/> Updation Report Configuration</h3>
           <button onClick={onClose} className="text-white hover:text-slate-350 transition-colors"><X size={20}/></button>
         </div>
-        <div className="p-6 space-y-4">
+        <div className="p-8 space-y-4">
           <div>
             <label className="text-xs font-bold text-slate-500 uppercase tracking-widest block mb-1">Status</label>
             <select 
@@ -247,7 +247,7 @@ export function UpdationReportConfigModal({ onClose, onGenerate, users }: Updati
             </select>
           </div>
           {dateRange === 'custom' && (
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-5">
               <div>
                 <label className="text-xs font-bold text-slate-500 uppercase tracking-widest block mb-1">From Date</label>
                 <input type="date" value={customStartDate} onChange={e => setCustomStartDate(e.target.value)} className="w-full px-3 py-2 bg-[#F4F7FB] border border-slate-200 rounded-lg font-bold text-slate-700 outline-none focus:ring-2 focus:ring-emerald-500"/>
@@ -271,7 +271,7 @@ export function UpdationReportConfigModal({ onClose, onGenerate, users }: Updati
               ))}
             </select>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-5">
             <div>
               <label className="text-xs font-bold text-slate-500 uppercase tracking-widest block mb-1">Follow-up Freq</label>
               <select 
@@ -289,7 +289,7 @@ export function UpdationReportConfigModal({ onClose, onGenerate, users }: Updati
             </div>
           </div>
           {status !== 'Local Work' && (
-            <div className="flex gap-4 items-center justify-between border-t border-slate-100 pt-4">
+            <div className="flex gap-5 items-center justify-between border-t border-slate-100 pt-4">
               <div className="flex items-center gap-2 mb-2">
                 <input 
                   type="checkbox" 
@@ -298,7 +298,7 @@ export function UpdationReportConfigModal({ onClose, onGenerate, users }: Updati
                   onChange={e => setAddUpdations(e.target.checked)} 
                   className="w-4 h-4 text-emerald-600 rounded"
                 />
-                <label htmlFor="addUpdationsCheck" className="text-sm font-bold text-slate-700 cursor-pointer">Add Updations</label>
+                <label htmlFor="addUpdationsCheck" className="text-sm font-bold text-slate-700 cursor-pointer transition-all duration-300 hover:bg-slate-50">Add Updations</label>
               </div>
               {addUpdations && (
               <div className="pl-6">
@@ -325,14 +325,14 @@ export function UpdationReportConfigModal({ onClose, onGenerate, users }: Updati
                 onChange={e => setAddDescriptions(e.target.checked)} 
                 className="w-4 h-4 text-emerald-600 rounded"
               />
-              <label htmlFor="addDescriptionsCheck" className="text-sm font-bold text-slate-700 cursor-pointer">Add Descriptions</label>
+              <label htmlFor="addDescriptionsCheck" className="text-sm font-bold text-slate-700 cursor-pointer transition-all duration-300 hover:bg-slate-50">Add Descriptions</label>
             </div>
           </div>
 
           <div className="flex pt-4">
             <button 
               onClick={handleGenerate} 
-              className="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl hover:bg-emerald-700 flex items-center justify-center gap-2 shadow transition-colors"
+              className="w-full bg-emerald-600 text-white font-bold py-3 rounded-2xl hover:bg-emerald-700 flex items-center justify-center gap-2 shadow transition-colors"
             >
               <Download size={18}/> Generate Report PDF
             </button>

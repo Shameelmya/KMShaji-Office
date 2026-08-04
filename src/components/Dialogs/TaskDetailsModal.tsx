@@ -318,7 +318,7 @@ export function TaskDetailsModal({
   return (
     <div id="task-details-modal" className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] flex justify-end">
       <div className="w-full max-w-2xl bg-white h-full overflow-y-auto animate-in slide-in-from-right flex flex-col shadow-md custom-scrollbar">
-        <div className="bg-slate-900 p-6 text-white flex justify-between items-center sticky top-0 z-10">
+        <div className="bg-slate-900 p-8 text-white flex justify-between items-center sticky top-0 z-10">
           <div>
             <h2 className="text-xl font-bold flex items-center gap-2">
               <FileText size={20}/> Task Details 
@@ -336,7 +336,7 @@ export function TaskDetailsModal({
                   <select
                     value={task.followUpFrequency || ''}
                     onChange={(e) => updateTask(task.id, { followUpFrequency: e.target.value })}
-                    className="bg-slate-800 text-white text-xs font-bold rounded px-1.5 py-0.5 border border-slate-700 outline-none cursor-pointer"
+                    className="bg-slate-800 text-white text-xs font-bold rounded px-1.5 py-0.5 border border-slate-700 outline-none cursor-pointer transition-all duration-300 hover:bg-slate-50"
                   >
                     <option value="">None</option>
                     <option value="1W">1W</option>
@@ -404,7 +404,7 @@ export function TaskDetailsModal({
                <>
                  <button 
                    onClick={() => triggerDetailsPrint(task)} 
-                   className="p-2 bg-blue-600 hover:bg-blue-700 text-white shadow-sm rounded-lg transition-colors text-slate-300 hover:text-white" 
+                   className="p-2 bg-blue-600 hover:bg-blue-700 hover:-translate-y-0.5 transition-all duration-300 text-white shadow-sm rounded-lg transition-colors text-slate-300 hover:text-white" 
                    title="Print Details"
                  >
                    <Printer size={18}/>
@@ -427,9 +427,9 @@ export function TaskDetailsModal({
           </div>
         </div>
 
-        <div className="p-6 space-y-8 flex-1">
+        <div className="p-8 space-y-8 flex-1">
           {(task.status === 'Completed' || task.status === 'Partially Completed') && (
-             <div className={`${task.status === 'Completed' ? 'bg-green-50 border-green-200' : 'bg-emerald-50 border-emerald-200'} border p-4 rounded-xl flex flex-wrap justify-between items-center gap-4`}>
+             <div className={`${task.status === 'Completed' ? 'bg-green-50 border-green-200' : 'bg-emerald-50 border-emerald-200'} border p-5 rounded-2xl flex flex-wrap justify-between items-center gap-5`}>
                 <div>
                   <h4 className={`font-bold ${task.status === 'Completed' ? 'text-green-900' : 'text-emerald-900'} flex items-center gap-2`}><CheckCircle size={18}/> {task.status === 'Completed' ? 'Task is Completed' : 'Task is Partially Completed'}</h4>
                   <p className={`text-xs ${task.status === 'Completed' ? 'text-green-700' : 'text-emerald-700'} font-medium mt-1`}>This issue has been {task.status === 'Completed' ? 'successfully resolved.' : 'partially resolved.'}</p>
@@ -456,7 +456,7 @@ export function TaskDetailsModal({
                            );
                          }
                        }} 
-                       className={`px-4 py-2 text-white text-sm font-bold rounded-lg shadow-sm flex items-center gap-2 ${task.isSignedByMLA ? 'bg-orange-600 hover:bg-orange-700' : 'bg-blue-600 hover:bg-blue-700'}`}
+                       className={`px-4 py-2 text-white text-sm font-bold rounded-lg shadow-sm flex items-center gap-2 ${task.isSignedByMLA ? 'bg-orange-600 hover:bg-orange-700' : 'bg-blue-600 hover:bg-blue-700 hover:-translate-y-0.5 transition-all duration-300'}`}
                      >
                        <PenTool size={16}/> {task.isSignedByMLA ? 'Remove MLA Signature' : 'Sign Completion Letter'}
                      </button>
@@ -471,7 +471,7 @@ export function TaskDetailsModal({
              </div>
           )}
 
-          <div className="flex flex-wrap gap-4 justify-between items-start bg-[#F4F7FB] p-4 rounded-xl border border-slate-200">
+          <div className="flex flex-wrap gap-5 justify-between items-start bg-[#F4F7FB] p-5 rounded-2xl border border-slate-200">
              <div>
                <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Current Status</p>
                {isEditMode ? (
@@ -502,7 +502,7 @@ export function TaskDetailsModal({
           </div>
 
           <div className="grid sm:grid-cols-2 gap-8">
-            <div className={`p-4 rounded-xl border ${cardBg}`}>
+            <div className={`p-5 rounded-2xl border ${cardBg}`}>
                <h3 className="text-sm font-bold text-slate-800 uppercase tracking-widest border-b border-slate-200 pb-2 mb-4 flex items-center gap-2">
                  <User size={16} className="text-blue-600"/> {task.isSelfMode ? 'Application Info' : 'Citizen Profile'}
                </h3>
@@ -693,7 +693,7 @@ export function TaskDetailsModal({
                    {isEditMode ? (
                      <div className="grid grid-cols-2 gap-2 mt-2 bg-[#F4F7FB] p-2 rounded border border-slate-200">
                        {users.map(u => (
-                         <label key={u.id} className="flex items-center gap-1 text-xs cursor-pointer font-bold text-slate-700">
+                         <label key={u.id} className="flex items-center gap-1 text-xs cursor-pointer transition-all duration-300 hover:bg-slate-50 font-bold text-slate-700">
                            <input 
                              type="checkbox" 
                              checked={editData.assignedTo.includes(u.id)} 
@@ -746,7 +746,7 @@ export function TaskDetailsModal({
                             <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">Select Officers for Re-assignment</p>
                             <div className="max-h-32 overflow-y-auto custom-scrollbar flex flex-col gap-1 mb-2">
                               {users.map(u => (
-                                <label key={u.id} className="flex items-center gap-1 text-xs cursor-pointer font-bold text-slate-700">
+                                <label key={u.id} className="flex items-center gap-1 text-xs cursor-pointer transition-all duration-300 hover:bg-slate-50 font-bold text-slate-700">
                                   <input 
                                     type="checkbox" 
                                     checked={reassignAssignedTo.includes(u.id)} 
@@ -827,7 +827,7 @@ export function TaskDetailsModal({
                        setEditData({...editData, attachments: newAtts});
                      }}
                      buttonText="Add Document / Link"
-                     className="w-full text-xs font-bold py-2 border-2 border-dashed border-indigo-200 rounded-xl hover:border-indigo-400 hover:bg-indigo-100 text-indigo-600 transition-colors bg-white"
+                     className="w-full text-xs font-bold py-2 border-2 border-dashed border-indigo-200 rounded-2xl hover:border-indigo-400 hover:bg-indigo-100 text-indigo-600 transition-colors bg-white"
                    />
                    {editData.attachments && editData.attachments.length > 0 && (
                      <div className="mt-3 flex flex-col gap-2">
@@ -875,11 +875,11 @@ export function TaskDetailsModal({
                <textarea 
                  value={editData.description} 
                  onChange={e => setEditData({...editData, description: e.target.value})} 
-                 className="w-full bg-[#F4F7FB] p-4 rounded-xl border border-slate-300 text-sm font-medium text-slate-700 whitespace-pre-wrap outline-none focus:border-indigo-500 h-32" 
+                 className="w-full bg-[#F4F7FB] p-5 rounded-2xl border border-slate-300 text-sm font-medium text-slate-700 whitespace-pre-wrap outline-none focus:border-indigo-500 h-32" 
                />
              ) : (
                task.description && (
-                 <div className="bg-[#F4F7FB] p-4 rounded-xl border border-slate-200 text-sm font-medium text-slate-700 whitespace-pre-wrap">
+                 <div className="bg-[#F4F7FB] p-5 rounded-2xl border border-slate-200 text-sm font-medium text-slate-700 whitespace-pre-wrap">
                    {task.description}
                  </div>
                )
@@ -897,7 +897,7 @@ export function TaskDetailsModal({
                     <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-slate-100 text-slate-500 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-sm relative z-10">
                       <TimelineIcon type={item.type} />
                     </div>
-                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-2xl border border-slate-200 bg-white shadow-sm transition-all hover:shadow-md relative">
+                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-5 rounded-[20px] border border-slate-200 bg-white shadow-sm transition-all hover:shadow-md relative">
                       <div className="flex items-center justify-between space-x-2 mb-2">
                          <div className="font-bold text-slate-800 text-sm">{item.by}</div>
                          <div className="flex items-center gap-2">
@@ -1021,7 +1021,7 @@ export function TaskDetailsModal({
             </div>
           )}
           {!isPendingForCurrentUser && ((isAssigned && task.status !== 'Completed' && task.status !== 'Partially Completed' && task.status !== 'Unsolved') || canUserEdit) && !isEditMode && (
-            <div className="bg-blue-50 border border-blue-200 p-4 rounded-xl mt-8">
+            <div className="bg-blue-50 border border-blue-200 p-5 rounded-2xl mt-8">
               <h4 className="font-bold text-blue-900 mb-3 flex items-center gap-2"><MessageSquare size={16}/> Add Progress Note</h4>
               <div className="flex flex-col gap-3">
                 <div className="flex justify-between items-center mb-1.5">
@@ -1047,7 +1047,7 @@ export function TaskDetailsModal({
                   value={newUpdate} 
                   onChange={e => setNewUpdate(e.target.value)} 
                   placeholder="Type progress update or response here..." 
-                  className="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm font-medium bg-white text-slate-800 outline-none focus:border-indigo-500 h-28 resize-none mb-3"
+                  className="w-full border border-slate-300 rounded-2xl px-4 py-3 text-sm font-medium bg-white text-slate-800 outline-none focus:border-indigo-500 h-28 resize-none mb-3"
                 />
                 <div className="flex items-center gap-2 mb-3 px-1">
                   <input 
@@ -1057,7 +1057,7 @@ export function TaskDetailsModal({
                     onChange={(e) => setSaveAsTemplate(e.target.checked)}
                     className="rounded text-indigo-600 w-3.5 h-3.5"
                   />
-                  <label htmlFor="saveAsTemplate" className="text-[10px] font-bold text-slate-600 cursor-pointer uppercase tracking-wide">
+                  <label htmlFor="saveAsTemplate" className="text-[10px] font-bold text-slate-600 cursor-pointer transition-all duration-300 hover:bg-slate-50 uppercase tracking-wide">
                     Save as Template
                   </label>
                 </div>
@@ -1070,7 +1070,7 @@ export function TaskDetailsModal({
                       const name = isString ? `Link ${idx + 1}` : lnk.name;
                       const url = isString ? lnk : lnk.url;
                       return (
-                        <div key={idx} className="flex items-center justify-between p-2 bg-[#F4F7FB] border border-slate-200 rounded-xl">
+                        <div key={idx} className="flex items-center justify-between p-2 bg-[#F4F7FB] border border-slate-200 rounded-2xl">
                           <span className="text-xs font-medium text-slate-700 truncate max-w-[60%]">{name}</span>
                           <div className="flex gap-2">
                             <a href={url} target="_blank" rel="noreferrer" className="p-1.5 text-blue-600 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors">
@@ -1104,7 +1104,7 @@ export function TaskDetailsModal({
                 <div className="flex justify-end pt-2 border-t border-blue-150 mt-1">
                   <button 
                     onClick={handleAddUpdate} 
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-bold transition-colors shadow-sm text-sm"
+                    className="bg-blue-600 hover:bg-blue-700 hover:-translate-y-0.5 transition-all duration-300 text-white px-6 py-2 rounded-lg font-bold transition-colors shadow-sm text-sm"
                   >
                     Post Update
                   </button>
@@ -1113,7 +1113,7 @@ export function TaskDetailsModal({
             </div>
           )}
           {task.assignedTo.includes(currentUser.id) && currentUser.id !== task.createdByUid && (task.officerStatuses[currentUser.id] || 'Pending') === 'Pending' && (
-            <div className="mt-6 pt-4 border-t border-slate-200 flex gap-4">
+            <div className="mt-6 pt-4 border-t border-slate-200 flex gap-5">
               <button 
                 onClick={() => {
                   triggerConfirm(
@@ -1135,7 +1135,7 @@ export function TaskDetailsModal({
                     "Yes, I Confirm"
                   );
                 }}
-                className="flex-1 bg-slate-800 text-white px-4 py-3 rounded-xl font-bold uppercase tracking-widest hover:bg-black transition-colors shadow-sm"
+                className="flex-1 bg-slate-800 text-white px-4 py-3 rounded-2xl font-bold uppercase tracking-widest hover:bg-black transition-colors shadow-sm"
               >
                 Receive Task
               </button>
@@ -1170,7 +1170,7 @@ export function TaskDetailsModal({
                     "Reason for rejection..."
                   );
                 }}
-                className="flex-1 bg-red-100 hover:bg-red-200 text-red-600 px-4 py-3 rounded-xl font-bold uppercase tracking-widest transition-colors shadow-sm"
+                className="flex-1 bg-red-100 hover:bg-red-200 text-red-600 px-4 py-3 rounded-2xl font-bold uppercase tracking-widest transition-colors shadow-sm"
               >
                 Reject Task
               </button>

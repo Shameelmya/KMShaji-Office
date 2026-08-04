@@ -78,7 +78,7 @@ export function RecentAlertsTab({ user, tasks, jumpToTask, users, setImpersonate
   };
 
   return (
-    <div id="recent-alerts-tab" className="bg-[#FFF5F5] border border-[#FECDD3] rounded-[32px] p-6 md:p-8 shadow-sm relative overflow-hidden animate-in fade-in duration-200">
+    <div id="recent-alerts-tab" className="bg-[#FFF5F5] border border-[#FECDD3] rounded-[32px] p-8 md:p-8 shadow-sm relative overflow-hidden animate-in fade-in duration-200">
       <div className="flex items-center gap-2 mb-6">
         <Bell className="text-[#DC2626] shrink-0 fill-current animate-pulse" size={24} />
         <h2 className="text-[#991B1B] font-bold tracking-tight text-xl sm:text-2xl uppercase">
@@ -87,7 +87,7 @@ export function RecentAlertsTab({ user, tasks, jumpToTask, users, setImpersonate
       </div>
 
       {user.role === 'admin' && users && setImpersonatedUser ? (
-        <div className="flex flex-col md:flex-row gap-6 mb-8 w-full justify-center items-center">
+        <div className="flex flex-col md:flex-row gap-8 mb-8 w-full justify-center items-center">
           {/* Big Active Box */}
           <div className="bg-white border border-[#FEE2E2] rounded-[24px] py-4 px-4 md:py-6 md:px-8 shadow-sm flex flex-col items-center justify-center shrink-0 max-w-[280px] w-full">
             <div className="text-5xl md:text-6xl font-bold text-[#EF4444] tracking-tight leading-none mb-2">
@@ -96,7 +96,7 @@ export function RecentAlertsTab({ user, tasks, jumpToTask, users, setImpersonate
             <div className="text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-widest mb-3 text-center">
               ACTIVE ACTIONS
             </div>
-            <div className="flex flex-col md:flex-row items-center gap-1 md:gap-4 text-xs md:text-sm font-bold mt-1">
+            <div className="flex flex-col md:flex-row items-center gap-1 md:gap-5 text-xs md:text-sm font-bold mt-1">
               <span className="text-red-500 whitespace-nowrap">{pendingCount} Pending</span>
               <span className="text-orange-500 whitespace-nowrap">{inProgressCount} In Progress</span>
             </div>
@@ -130,7 +130,7 @@ export function RecentAlertsTab({ user, tasks, jumpToTask, users, setImpersonate
                       setImpersonatedUser(u);
                     }
                   }}
-                  className="flex flex-col items-stretch justify-center gap-1 md:gap-1.5 p-2 md:p-3 bg-white rounded-xl border border-slate-200 hover:border-indigo-300 hover:bg-indigo-50 transition-all shadow-sm group cursor-pointer w-full min-w-0"
+                  className="flex flex-col items-stretch justify-center gap-1 md:gap-1.5 p-2 md:p-3 bg-white rounded-2xl border border-slate-200 hover:border-indigo-300 hover:bg-indigo-50 transition-all shadow-sm group cursor-pointer transition-all duration-300 hover:bg-slate-50 w-full min-w-0"
                 >
                   <div className="flex items-start md:items-center justify-between gap-1 md:gap-3 w-full">
                     <div className="text-[9px] md:text-xs font-bold text-slate-800 truncate text-left">{u.name}</div>
@@ -148,7 +148,7 @@ export function RecentAlertsTab({ user, tasks, jumpToTask, users, setImpersonate
           </div>
         </div>
       ) : (
-        <div className="max-w-md mx-auto bg-white border border-[#FEE2E2] rounded-[24px] p-6 shadow-sm text-center mb-8">
+        <div className="max-w-md mx-auto bg-white border border-[#FEE2E2] rounded-[24px] p-8 shadow-sm text-center mb-8">
           <div className="text-6xl font-bold text-[#EF4444] tracking-tight mb-2">
             {activeTasks.length}
           </div>
@@ -171,7 +171,7 @@ export function RecentAlertsTab({ user, tasks, jumpToTask, users, setImpersonate
       )}
 
       {activeTasks.length === 0 ? (
-        <div className="text-slate-500 font-medium py-12 text-center bg-white/60 rounded-2xl border border-red-100/50">
+        <div className="text-slate-500 font-medium py-12 text-center bg-white/60 rounded-[20px] border border-red-100/50">
           No active assignments found in this view.
         </div>
       ) : (
@@ -233,7 +233,7 @@ export function RecentAlertsTab({ user, tasks, jumpToTask, users, setImpersonate
                       <td className="px-6 py-4 text-right whitespace-nowrap">
                         <button
                           onClick={() => handleShowTask(t)}
-                          className="px-5 py-2 bg-[#FEE2E2] hover:bg-red-200 text-[#EF4444] rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-sm inline-flex items-center gap-1 cursor-pointer"
+                          className="px-5 py-2 bg-[#FEE2E2] hover:bg-red-200 text-[#EF4444] rounded-2xl text-xs font-bold uppercase tracking-wider transition-all shadow-sm inline-flex items-center gap-1 cursor-pointer transition-all duration-300 hover:bg-slate-50"
                         >
                           SHOW TASK <ChevronRight size={14} />
                         </button>
@@ -252,7 +252,7 @@ export function RecentAlertsTab({ user, tasks, jumpToTask, users, setImpersonate
               return (
                 <div 
                   key={t.id} 
-                  className={`p-5 flex flex-col gap-4 transition-colors ${user.role === 'admin' && t.isReadByAdmin ? 'bg-blue-100' : ''}`}
+                  className={`p-5 flex flex-col gap-5 transition-colors ${user.role === 'admin' && t.isReadByAdmin ? 'bg-blue-100' : ''}`}
                   onContextMenu={(e) => {
                     if (user.role === 'admin' && updateTask && t.isReadByAdmin) {
                       e.preventDefault();
@@ -275,7 +275,7 @@ export function RecentAlertsTab({ user, tasks, jumpToTask, users, setImpersonate
                     </div>
                     <button
                       onClick={() => handleShowTask(t)}
-                      className="px-4 py-2 bg-[#FEE2E2] hover:bg-red-200 text-[#EF4444] rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-sm flex items-center gap-1 shrink-0"
+                      className="px-4 py-2 bg-[#FEE2E2] hover:bg-red-200 text-[#EF4444] rounded-2xl text-xs font-bold uppercase tracking-wider transition-all shadow-sm flex items-center gap-1 shrink-0"
                     >
                       SHOW TASK <ChevronRight size={12} />
                     </button>

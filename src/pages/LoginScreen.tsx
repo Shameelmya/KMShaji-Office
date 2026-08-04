@@ -13,23 +13,8 @@ export function LoginScreen({ onLogin, users }: LoginScreenProps) {
   const [selectedUser, setSelectedUser] = useState<UserType | null>(null);
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [quoteIdx, setQuoteIdx] = useState(0);
   const [showPass, setShowPass] = useState(false);
-
   const activeUsers = users.filter(u => u.enabled);
-
-  // Auto rotate quotes dynamically based on translation text length to give proper gap
-  useEffect(() => {
-    const currentText = ISLAMIC_QUOTES[quoteIdx]?.malayalam || '';
-    // Scaled gap: 90ms per character plus a baseline of 6 seconds (6000ms)
-    const readDelay = Math.max(6000, currentText.length * 90);
-    
-    const timer = setTimeout(() => {
-      setQuoteIdx(prev => (prev + 1) % ISLAMIC_QUOTES.length);
-    }, readDelay);
-    
-    return () => clearTimeout(timer);
-  }, [quoteIdx]);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -56,26 +41,7 @@ export function LoginScreen({ onLogin, users }: LoginScreenProps) {
         <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-200/40 blur-[150px]"></div>
       </div>
 
-      {/* Top Header Banner */}
-      <div className="w-full bg-white/70 backdrop-blur-2xl pt-8 pb-4 px-4 text-center border-b border-slate-200/60 shadow-[0_4px_30px_rgba(0,0,0,0.03)] select-none">
-        <div className="max-w-4xl mx-auto space-y-1 transition-all duration-500 animate-in fade-in">
-          {/* Elegant Arabic verse, small size, matched color with Malaylam translation */}
-          <h1 
-            className="text-sm sm:text-base md:text-2xl text-slate-700 leading-relaxed font-medium tracking-wide text-center" 
-            style={{ fontFamily: "'Scheherazade New', serif", direction: 'rtl' }}
-          >
-            {ISLAMIC_QUOTES[quoteIdx].arabic}
-          </h1>
-          
-          {/* Malayalam meaning translation */}
-          <p 
-            className="text-[10px] sm:text-xs md:text-sm text-slate-500 max-w-2xl mx-auto leading-normal font-medium min-h-[28px] sm:min-h-[18px] flex items-center justify-center mt-3"
-            style={{ fontFamily: "'Anek Malayalam', sans-serif" }}
-          >
-            {ISLAMIC_QUOTES[quoteIdx].malayalam}
-          </p>
-        </div>
-      </div>
+
 
       <div className="flex-1 w-full flex items-center justify-center p-4 sm:p-6 md:p-10 z-10">
         

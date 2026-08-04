@@ -176,7 +176,7 @@ export function PrintTaskDetailsReport({ task, users }: PrintTaskDetailsReportPr
           <p className="text-lg font-bold uppercase text-black">{task.status}</p>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-6 mb-6">
+      <div className="grid grid-cols-2 gap-8 mb-6">
         <div>
           <h3 className="text-sm font-bold uppercase text-black border-b border-gray-400 pb-1 mb-2">
             {task.isSelfMode ? 'Application Info' : 'Citizen Info'}
@@ -205,7 +205,7 @@ export function PrintTaskDetailsReport({ task, users }: PrintTaskDetailsReportPr
         <h3 className="text-sm font-bold uppercase text-black border-b border-gray-400 pb-1 mb-2">Timeline & Updates</h3>
         <div className="space-y-2 mt-3">
           {task.timeline.map((item, idx) => (
-            <div key={idx} className="flex gap-4 pb-2 border-b border-gray-100 last:border-0">
+            <div key={idx} className="flex gap-5 pb-2 border-b border-gray-100 last:border-0">
               <div className="w-32 shrink-0 text-[10px] font-bold text-gray-600">
                 {formatDate(item.time)}<br/>{formatTime(item.time)}
               </div>
@@ -565,7 +565,7 @@ export function PrintUpdationReport({ config, tasks, users }: PrintUpdationRepor
               <p className="mt-1 text-[10px] font-bold text-gray-500 uppercase">
                 Status: {config.status} | Period: {config.dateRange === 'all' ? 'All Time' : config.dateRange === 'custom' ? `${config.customStartDate ? new Date(config.customStartDate).toLocaleDateString('en-GB') : 'Start'} to ${config.customEndDate ? new Date(config.customEndDate).toLocaleDateString('en-GB') : 'End'}` : config.dateRange === '7days' ? 'Last 7 Days' : config.dateRange === '1month' ? 'Last 1 Month' : config.dateRange === '6months' ? 'Last 6 Months' : 'Last 1 Year'}{config.followUpFrequency && config.followUpFrequency !== 'All' ? ` | Follow-up: ${config.followUpFrequency}` : ''}
               </p>
-              <div className="flex justify-center gap-4 mt-2 text-[10px] font-bold text-gray-800 uppercase">
+              <div className="flex justify-center gap-5 mt-2 text-[10px] font-bold text-gray-800 uppercase">
                 <span>Total: {total}</span>
                 <span>Pending: {pend}</span>
                 <span>Active (In Progress): {inprog}</span>
@@ -580,7 +580,7 @@ export function PrintUpdationReport({ config, tasks, users }: PrintUpdationRepor
             </div>
           )}
 
-          <div className="flex flex-col gap-6 flex-1">
+          <div className="flex flex-col gap-8 flex-1">
             {chunk.map((t, idx) => {
               // Get updates
               let updates = t.timeline.filter(tl => tl.type === 'update' || tl.type === 'comment' || tl.type === 'completed' || tl.type === 'draft');
@@ -592,7 +592,7 @@ export function PrintUpdationReport({ config, tasks, users }: PrintUpdationRepor
               const globalIndex = (pageIdx * 2) + idx + 1;
 
               return (
-                <div key={t.id} className="border border-black p-4 break-inside-avoid relative flex flex-col" style={{ minHeight: '400px' }}>
+                <div key={t.id} className="border border-black p-5 break-inside-avoid relative flex flex-col" style={{ minHeight: '400px' }}>
                   <div className="flex justify-between items-start mb-2 border-b border-gray-300 pb-2">
                     <div>
                       <span className="font-bold text-sm bg-black text-white px-2 py-0.5 mr-2">SL No: {globalIndex}</span>
@@ -603,7 +603,7 @@ export function PrintUpdationReport({ config, tasks, users }: PrintUpdationRepor
                       <p>Status: <span className="text-black uppercase">{t.status}</span></p>
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-4 mb-3">
+                  <div className="grid grid-cols-2 gap-5 mb-3">
                     <div>
                       <p className="text-sm font-bold mb-1">{t.subject}</p>
                       {config.addDescriptions && t.description && (

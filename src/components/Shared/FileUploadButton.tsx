@@ -53,7 +53,7 @@ export function FileUploadButton({ onUploadSuccess, onManualLinkAdd, uploaderId 
 
   if (useManualFallback) {
     return (
-      <div className="bg-red-50/50 p-3 rounded-xl border border-red-100 flex flex-col gap-2">
+      <div className="bg-red-50/50 p-3 rounded-2xl border border-red-100 flex flex-col gap-2">
         <div className="flex items-center gap-2 text-red-600 text-[10px] font-bold uppercase tracking-widest">
           <AlertCircle size={14}/> 
           Plan B: Manual Link Input
@@ -100,7 +100,7 @@ export function FileUploadButton({ onUploadSuccess, onManualLinkAdd, uploaderId 
           type="button"
           disabled={isUploading}
           onClick={() => fileInputRef.current?.click()}
-          className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 border-2 border-dashed rounded-xl font-bold text-sm transition-all ${
+          className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 border-2 border-dashed rounded-2xl font-bold text-sm transition-all ${
             isUploading 
               ? 'border-blue-300 bg-blue-50 text-blue-500 cursor-wait' 
               : 'border-slate-300 hover:border-blue-400 hover:bg-blue-50 text-slate-600 hover:text-blue-600 bg-[#F4F7FB]/50'
@@ -117,7 +117,7 @@ export function FileUploadButton({ onUploadSuccess, onManualLinkAdd, uploaderId 
           title="Use Manual Link (Plan B)"
           disabled={isUploading}
           onClick={() => setUseManualFallback(true)}
-          className="p-2.5 rounded-xl border-2 border-transparent hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors"
+          className="p-2.5 rounded-2xl border-2 border-transparent hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors"
         >
           <LinkIcon size={16} />
         </button>

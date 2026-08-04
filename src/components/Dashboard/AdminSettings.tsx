@@ -107,27 +107,27 @@ export function AdminSettings({
         {users.map(u => (
           <div 
             key={u.id} 
-            className={`p-6 rounded-2xl border transition-all relative ${!u.enabled ? 'bg-[#F4F7FB] border-slate-200 opacity-60' : 'bg-white border-slate-200 hover:border-indigo-300'}`}
+            className={`p-8 rounded-[20px] border transition-all relative ${!u.enabled ? 'bg-[#F4F7FB] border-slate-200 opacity-60' : 'bg-white border-slate-200 hover:border-indigo-300'}`}
           >
             {u.role === 'admin' && (
-              <div className="absolute top-4 right-4 bg-indigo-100 text-indigo-800 text-[10px] font-bold px-2 py-1 rounded uppercase">
+              <div className="absolute top-5 right-4 bg-indigo-100 text-indigo-800 text-[10px] font-bold px-2 py-1 rounded uppercase">
                 ADMIN
               </div>
             )}
-            <div className="flex flex-col lg:flex-row gap-6 justify-between items-start">
+            <div className="flex flex-col lg:flex-row gap-8 justify-between items-start">
               <div className="flex-1 space-y-4 w-full">
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-lg text-slate-800">{u.name}</span>
                   {u.role !== 'admin' && (
                     <button 
                       onClick={() => handleToggle(u.id, 'enabled')} 
-                      className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-widest border ${u.enabled ? 'bg-red-50 text-red-600 border-red-200' : 'bg-green-50 text-green-600 border-green-200'}`}
+                      className={`px-4 py-2 rounded-2xl text-xs font-bold uppercase tracking-widest border ${u.enabled ? 'bg-red-50 text-red-600 border-red-200' : 'bg-green-50 text-green-600 border-green-200'}`}
                     >
                       {u.enabled ? 'Disable' : 'Enable'}
                     </button>
                   )}
                 </div>
-                <div className="grid md:grid-cols-2 gap-4">
+                <div className="grid md:grid-cols-2 gap-5">
                   <div>
                     <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1 block">Display Name</label>
                     <input 
@@ -170,12 +170,12 @@ export function AdminSettings({
                   </div>
                 </div>
               </div>
-              <div className="flex-1 w-full lg:w-auto flex flex-col gap-4">
-                <div className="bg-[#F4F7FB] p-4 rounded-xl border border-slate-200 grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div className="flex-1 w-full lg:w-auto flex flex-col gap-5">
+                <div className="bg-[#F4F7FB] p-5 rounded-2xl border border-slate-200 grid grid-cols-1 md:grid-cols-2 gap-3">
                   <div className="col-span-1 md:col-span-2 border-b border-slate-200 pb-2">
                     <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Capabilities & Permissions</h4>
                   </div>
-                  <label className="flex items-center justify-between cursor-pointer p-1">
+                  <label className="flex items-center justify-between cursor-pointer transition-all duration-300 hover:bg-slate-50 p-1">
                     <span className="text-xs font-bold text-slate-700">Can Register input</span>
                     <input 
                       type="checkbox" 
@@ -184,7 +184,7 @@ export function AdminSettings({
                       className="w-4 h-4 disabled:opacity-50"
                     />
                   </label>
-                  <label className="flex items-center justify-between cursor-pointer p-1">
+                  <label className="flex items-center justify-between cursor-pointer transition-all duration-300 hover:bg-slate-50 p-1">
                     <span className="text-xs font-bold text-slate-700">Detailed Reports</span>
                     <input 
                       type="checkbox" 
@@ -193,7 +193,7 @@ export function AdminSettings({
                       className="w-4 h-4 disabled:opacity-50"
                     />
                   </label>
-                  <label className="flex items-center justify-between cursor-pointer p-1">
+                  <label className="flex items-center justify-between cursor-pointer transition-all duration-300 hover:bg-slate-50 p-1">
                     <span className="text-xs font-bold text-slate-700">Global Overview Tab</span>
                     <input 
                       type="checkbox" 
@@ -202,7 +202,7 @@ export function AdminSettings({
                       className="w-4 h-4 disabled:opacity-50"
                     />
                   </label>
-                  <label className="flex items-center justify-between cursor-pointer p-1">
+                  <label className="flex items-center justify-between cursor-pointer transition-all duration-300 hover:bg-slate-50 p-1">
                     <span className="text-xs font-bold text-slate-700">Drafts View / Worker</span>
                     <input 
                       type="checkbox" 
@@ -211,7 +211,7 @@ export function AdminSettings({
                       className="w-4 h-4 disabled:opacity-50"
                     />
                   </label>
-                  <label className="flex items-center justify-between cursor-pointer p-1">
+                  <label className="flex items-center justify-between cursor-pointer transition-all duration-300 hover:bg-slate-50 p-1">
                     <span className="text-xs font-bold text-slate-700">Edit Global Overview</span>
                     <input 
                       type="checkbox" 
@@ -220,7 +220,7 @@ export function AdminSettings({
                       className="w-4 h-4 disabled:opacity-50"
                     />
                   </label>
-                  <label className="flex items-center justify-between cursor-pointer p-1">
+                  <label className="flex items-center justify-between cursor-pointer transition-all duration-300 hover:bg-slate-50 p-1">
                     <span className="text-xs font-bold text-slate-700">Edit Own Inputs (Staff)</span>
                     <input 
                       type="checkbox" 
@@ -229,7 +229,7 @@ export function AdminSettings({
                       className="w-4 h-4 disabled:opacity-50"
                     />
                   </label>
-                  <label className="flex items-center justify-between cursor-pointer p-1">
+                  <label className="flex items-center justify-between cursor-pointer transition-all duration-300 hover:bg-slate-50 p-1">
                     <span className="text-xs font-bold text-slate-700">Can Re-assign Tasks</span>
                     <input 
                       type="checkbox" 
@@ -238,7 +238,7 @@ export function AdminSettings({
                       className="w-4 h-4 disabled:opacity-50"
                     />
                   </label>
-                  <label className="flex items-center gap-2 cursor-pointer bg-[#F4F7FB] p-2 rounded-lg border border-slate-200">
+                  <label className="flex items-center gap-2 cursor-pointer transition-all duration-300 hover:bg-slate-50 bg-[#F4F7FB] p-2 rounded-lg border border-slate-200">
                     <input 
                       type="checkbox" 
                       checked={!!u.canGenerateUpdationReport} 
@@ -247,7 +247,7 @@ export function AdminSettings({
                     />
                     <span className="text-xs font-bold text-slate-700">Updation Report Access</span>
                   </label>
-                  <label className="flex items-center gap-2 cursor-pointer bg-[#F4F7FB] p-2 rounded-lg border border-slate-200">
+                  <label className="flex items-center gap-2 cursor-pointer transition-all duration-300 hover:bg-slate-50 bg-[#F4F7FB] p-2 rounded-lg border border-slate-200">
                     <input 
                       type="checkbox" 
                       checked={!!u.canSeeRecentUpdations} 
@@ -286,9 +286,9 @@ export function AdminSettings({
           </div>
         ))}
       </div>
-      <div className="bg-indigo-50 border border-indigo-200 p-6 rounded-2xl">
+      <div className="bg-indigo-50 border border-indigo-200 p-8 rounded-[20px]">
         <h3 className="text-lg font-bold text-indigo-900 mb-4 flex items-center gap-2"><Plus size={18}/> Create New Officer</h3>
-        <form onSubmit={handleAddOfficer} className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
+        <form onSubmit={handleAddOfficer} className="grid grid-cols-1 md:grid-cols-5 gap-5 items-end">
           <div className="col-span-1 md:col-span-1">
             <label className="text-[10px] font-bold text-indigo-700 uppercase block mb-1">Display Name</label>
             <input 
@@ -311,9 +311,9 @@ export function AdminSettings({
               placeholder="Secure Password" 
             />
           </div>
-          <div className="col-span-1 md:col-span-3 flex flex-wrap items-center gap-4 bg-white p-2.5 rounded-lg border border-indigo-200 h-full justify-between">
+          <div className="col-span-1 md:col-span-3 flex flex-wrap items-center gap-5 bg-white p-2.5 rounded-lg border border-indigo-200 h-full justify-between">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-2.5 w-full">
-              <label className="flex items-center gap-2 cursor-pointer text-xs font-bold text-indigo-900">
+              <label className="flex items-center gap-2 cursor-pointer transition-all duration-300 hover:bg-slate-50 text-xs font-bold text-indigo-900">
                 <input 
                   type="checkbox" 
                   checked={newOffForm.canInput} 
@@ -322,7 +322,7 @@ export function AdminSettings({
                 /> 
                 Can Register Input
               </label>
-              <label className="flex items-center gap-2 cursor-pointer text-xs font-bold text-indigo-900">
+              <label className="flex items-center gap-2 cursor-pointer transition-all duration-300 hover:bg-slate-50 text-xs font-bold text-indigo-900">
                 <input 
                   type="checkbox" 
                   checked={newOffForm.canSeeReports} 
@@ -331,7 +331,7 @@ export function AdminSettings({
                 /> 
                 Detailed Reports
               </label>
-              <label className="flex items-center gap-2 cursor-pointer text-xs font-bold text-indigo-900">
+              <label className="flex items-center gap-2 cursor-pointer transition-all duration-300 hover:bg-slate-50 text-xs font-bold text-indigo-900">
                 <input 
                   type="checkbox" 
                   checked={newOffForm.canSeeGlobalOverview} 
@@ -340,7 +340,7 @@ export function AdminSettings({
                 /> 
                 Global Overview Tab
               </label>
-              <label className="flex items-center gap-2 cursor-pointer text-xs font-bold text-indigo-900">
+              <label className="flex items-center gap-2 cursor-pointer transition-all duration-300 hover:bg-slate-50 text-xs font-bold text-indigo-900">
                 <input 
                   type="checkbox" 
                   checked={newOffForm.canSeeDraftsView} 
@@ -349,7 +349,7 @@ export function AdminSettings({
                 /> 
                 Drafts View / Worker
               </label>
-              <label className="flex items-center gap-2 cursor-pointer text-xs font-bold text-indigo-900">
+              <label className="flex items-center gap-2 cursor-pointer transition-all duration-300 hover:bg-slate-50 text-xs font-bold text-indigo-900">
                 <input 
                   type="checkbox" 
                   checked={newOffForm.canEditGlobalOverview} 
@@ -358,7 +358,7 @@ export function AdminSettings({
                 /> 
                 Edit Global Overview
               </label>
-              <label className="flex items-center gap-2 cursor-pointer text-xs font-bold text-indigo-900">
+              <label className="flex items-center gap-2 cursor-pointer transition-all duration-300 hover:bg-slate-50 text-xs font-bold text-indigo-900">
                 <input 
                   type="checkbox" 
                   checked={newOffForm.canEditOwnInputs} 
@@ -367,7 +367,7 @@ export function AdminSettings({
                 /> 
                 Edit Own Inputs
               </label>
-              <label className="flex items-center gap-2 cursor-pointer text-xs font-bold text-indigo-900">
+              <label className="flex items-center gap-2 cursor-pointer transition-all duration-300 hover:bg-slate-50 text-xs font-bold text-indigo-900">
                 <input 
                   type="checkbox" 
                   checked={newOffForm.canReassign} 
@@ -376,7 +376,7 @@ export function AdminSettings({
                 /> 
                 Can Re-assign Tasks
               </label>
-              <label className="flex items-center gap-2 cursor-pointer">
+              <label className="flex items-center gap-2 cursor-pointer transition-all duration-300 hover:bg-slate-50">
                 <input 
                   type="checkbox" 
                   checked={newOffForm.canGenerateUpdationReport} 
@@ -387,7 +387,7 @@ export function AdminSettings({
                   Updation Report Access
                 </span>
               </label>
-              <label className="flex items-center gap-2 cursor-pointer">
+              <label className="flex items-center gap-2 cursor-pointer transition-all duration-300 hover:bg-slate-50">
                 <input 
                   type="checkbox" 
                   checked={newOffForm.canSeeRecentUpdations} 
@@ -402,7 +402,7 @@ export function AdminSettings({
             <div className="w-full flex justify-end mt-2 pt-2 border-t border-slate-100">
               <button 
                 type="submit" 
-                className="bg-indigo-600 text-white px-5 py-2 rounded-xl font-bold text-sm hover:bg-indigo-700 transition-colors shadow"
+                className="bg-indigo-600 text-white px-5 py-2 rounded-2xl font-bold text-sm hover:bg-indigo-700 transition-colors shadow"
               >
                 Create Officer Profile
               </button>

@@ -38,7 +38,7 @@ export const SearchableCategorySelect = React.memo(({
     <div ref={wrapperRef} className="relative w-full">
       <div 
         onClick={() => setIsOpen(!isOpen)} 
-        className="w-full px-4 py-3 border border-slate-300 rounded-xl font-bold text-slate-700 bg-white cursor-pointer flex justify-between items-center shadow-sm hover:border-slate-400 transition-all text-sm"
+        className="w-full px-4 py-3 border border-slate-300 rounded-2xl font-bold text-slate-700 bg-white cursor-pointer transition-all duration-300 hover:bg-slate-50 flex justify-between items-center shadow-sm hover:border-slate-400 transition-all text-sm"
       >
         <span className={selected ? "text-slate-800" : "text-slate-400"}>
           {selected || "Select or Search Category..."}
@@ -46,7 +46,7 @@ export const SearchableCategorySelect = React.memo(({
         <Filter size={16} className="text-slate-400" />
       </div>
       {isOpen && (
-        <div className="absolute z-50 mt-1 w-full bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden animate-in fade-in slide-in-from-top-2 duration-100">
+        <div className="absolute z-50 mt-1 w-full bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden animate-in fade-in slide-in-from-top-2 duration-100">
           <div className="p-2 border-b border-slate-100 bg-[#F4F7FB]">
             <input 
               type="text" 
@@ -66,7 +66,7 @@ export const SearchableCategorySelect = React.memo(({
                   setIsOpen(false); 
                   setSearch(''); 
                 }} 
-                className={`px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-100 cursor-pointer flex justify-between items-center ${selected === c ? 'bg-blue-50 text-blue-700' : ''}`}
+                className={`px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-100 cursor-pointer transition-all duration-300 hover:bg-slate-50 flex justify-between items-center ${selected === c ? 'bg-blue-50 text-blue-700' : ''}`}
               >
                 <span>{c}</span>
                 {selected === c && <Check size={14} className="text-blue-600" />}

@@ -80,7 +80,7 @@ export function WorkerTab({
   return (
     <div className="space-y-6">
       <AwarenessGraph total={myAssignedAll.length} completed={compStat} drafted={draftStat} />
-      <div className="flex gap-4 mb-6">
+      <div className="flex gap-5 mb-6">
         <div className="relative flex-1">
           <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
           <input 
@@ -88,11 +88,11 @@ export function WorkerTab({
             placeholder="Search tasks by subject, name, ID, mobile..." 
             value={search} 
             onChange={e => setSearch(e.target.value)} 
-            className="w-full pl-12 pr-4 py-3 bg-white border border-slate-200 rounded-xl font-medium focus:ring-2 focus:ring-blue-500 outline-none shadow-sm text-slate-800" 
+            className="w-full pl-12 pr-4 py-3 bg-white border border-slate-200 rounded-2xl font-medium focus:ring-2 focus:ring-blue-500 outline-none shadow-sm text-slate-800" 
           />
         </div>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
         <Column title="New / Pending" count={todo.length} color="slate">
           {todo.map((t, idx) => (
             <WorkerTaskCard 
@@ -191,7 +191,7 @@ function Column({ title, count, color, children, onTogglePartially, showPartiall
     purple: 'border-purple-200 text-purple-700 bg-purple-100' 
   };
   return (
-    <div className="bg-[#F4F7FB] rounded-xl p-3 border border-slate-200 flex flex-col h-[800px] overflow-hidden">
+    <div className="bg-[#F4F7FB] rounded-2xl p-3 border border-slate-200 flex flex-col h-[800px] overflow-hidden">
       <h3 className="font-bold text-base mb-4 flex items-center justify-between pb-3 border-b border-slate-200">
         <div className="flex items-center gap-2">
           <span className="text-slate-800">{title}</span>
@@ -328,7 +328,7 @@ const WorkerTaskCard = React.memo(({
   const cardBgColor = task.isSelfMode ? 'bg-yellow-50/70' : 'bg-white';
 
   return (
-    <div className={`${cardBgColor} p-4 rounded-2xl shadow-sm border ${isUnsolved ? 'border-slate-300 opacity-60 bg-[#F4F7FB] grayscale' : status === 'Pending' ? 'border-red-200' : task.isSelfMode ? 'border-yellow-300' : 'border-slate-200'} relative`}>
+    <div className={`${cardBgColor} p-5 rounded-[20px] shadow-sm border ${isUnsolved ? 'border-slate-300 opacity-60 bg-[#F4F7FB] grayscale' : status === 'Pending' ? 'border-red-200' : task.isSelfMode ? 'border-yellow-300' : 'border-slate-200'} relative`}>
       <div className="flex justify-between items-start mb-3">
         <div className="flex flex-wrap gap-2">
           <span className="bg-slate-800 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm uppercase tracking-wider">
@@ -358,7 +358,7 @@ const WorkerTaskCard = React.memo(({
       )}
 
       {(task.attachment || (task.attachments && task.attachments.length > 0)) && (
-        <div className="mb-3 bg-indigo-50 border border-indigo-100 rounded-xl p-2 flex flex-col gap-2">
+        <div className="mb-3 bg-indigo-50 border border-indigo-100 rounded-2xl p-2 flex flex-col gap-2">
           <div className="flex items-center gap-2 text-indigo-900 truncate">
             <ExternalLink size={12} className="shrink-0 text-indigo-600" />
             <span className="text-[10px] font-bold truncate" title={task.attachments && task.attachments.length > 0 ? `${task.attachments.length} Attached Docs` : task.attachment?.name}>
@@ -398,7 +398,7 @@ const WorkerTaskCard = React.memo(({
             <div className="w-full space-y-2">
               <button 
                 onClick={() => setShowProgressModal(true)} 
-                className="w-full bg-blue-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-blue-700 transition-colors shadow-sm flex items-center justify-center gap-2"
+                className="w-full bg-blue-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-blue-700 hover:-translate-y-0.5 transition-all duration-300 transition-colors shadow-sm flex items-center justify-center gap-2"
               >
                 <Activity size={14}/> {status === 'Received' ? 'Start Progress' : 'Add Update'}
               </button>
@@ -472,7 +472,7 @@ const WorkerTaskCard = React.memo(({
       <div className="flex gap-2 mt-3 pt-3 border-t border-slate-100/50">
         <button 
           onClick={() => triggerViewDetails(task)} 
-          className="flex-1 bg-slate-100 text-slate-700 font-bold py-2 rounded-xl text-xs hover:bg-slate-200 transition-colors flex items-center justify-center gap-1"
+          className="flex-1 bg-slate-100 text-slate-700 font-bold py-2 rounded-2xl text-xs hover:bg-slate-200 transition-colors flex items-center justify-center gap-1"
         >
           <Eye size={14}/> View Full Details
         </button>
@@ -518,19 +518,19 @@ const WorkerTaskCard = React.memo(({
         </div>
       )}
       {showProgressModal && (
-        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[200] flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-sm w-full max-w-lg overflow-hidden animate-in zoom-in-95 duration-150">
-            <div className="bg-blue-600 p-4 text-white flex justify-between items-center">
+        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[200] flex items-center justify-center p-5">
+          <div className="bg-white rounded-[20px] shadow-sm w-full max-w-lg overflow-hidden animate-in zoom-in-95 duration-150">
+            <div className="bg-blue-600 p-5 text-white flex justify-between items-center">
               <h3 className="font-bold text-lg">Enter Progress Update</h3>
               <button onClick={() => setShowProgressModal(false)} className="text-white hover:text-blue-100 transition-colors"><X size={20}/></button>
             </div>
-            <div className="p-6">
+            <div className="p-8">
                <textarea 
                  autoFocus 
                  value={updateText} 
                  onChange={e => setUpdateText(e.target.value)} 
                  placeholder="What action did you take?..." 
-                 className="w-full px-4 py-3 border border-slate-300 rounded-xl font-medium outline-none focus:border-blue-500 h-32 mb-3 bg-white text-slate-800"
+                 className="w-full px-4 py-3 border border-slate-300 rounded-2xl font-medium outline-none focus:border-blue-500 h-32 mb-3 bg-white text-slate-800"
                ></textarea>
                {updateAttachment ? (
                  <div className="mb-4">
@@ -553,7 +553,7 @@ const WorkerTaskCard = React.memo(({
                )}
                <button 
                  onClick={handleSaveUpdate} 
-                 className="w-full bg-blue-600 text-white font-bold py-3 rounded-xl hover:bg-blue-700 transition-colors shadow"
+                 className="w-full bg-blue-600 text-white font-bold py-3 rounded-2xl hover:bg-blue-700 hover:-translate-y-0.5 transition-all duration-300 transition-colors shadow"
                >
                  Save Update
                </button>

@@ -116,8 +116,8 @@ export function InputFormTab({
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      el.classList.add('ring-2', 'ring-red-400', 'rounded-xl', 'transition-all');
-      setTimeout(() => el.classList.remove('ring-2', 'ring-red-400', 'rounded-xl'), 3000);
+      el.classList.add('ring-2', 'ring-red-400', 'rounded-2xl', 'transition-all');
+      setTimeout(() => el.classList.remove('ring-2', 'ring-red-400', 'rounded-2xl'), 3000);
     }
     setTimeout(() => setFormError({ field: '', msg: '' }), 5000);
   };
@@ -307,29 +307,29 @@ export function InputFormTab({
 
   if (lastTask) {
     return (
-      <div className="bg-white p-10 rounded-2xl shadow-sm text-center max-w-2xl mx-auto border border-green-200 animate-in zoom-in-95">
+      <div className="bg-white p-10 rounded-[20px] shadow-sm text-center max-w-2xl mx-auto border border-green-200 animate-in zoom-in-95">
         <CheckCircle size={60} className="text-green-500 mx-auto mb-4" />
         <h2 className="text-3xl font-bold text-green-800 mb-2">Input Registered Successfully</h2>
-        <div className="bg-[#F4F7FB] p-6 rounded-xl my-6 inline-block border border-slate-200">
+        <div className="bg-[#F4F7FB] p-8 rounded-2xl my-6 inline-block border border-slate-200">
           <p className="text-sm font-bold text-slate-500 uppercase">Reference ID</p>
           <p className="text-4xl font-bold text-slate-800 tracking-widest">{lastTask.id}</p>
         </div>
-        <div className="flex flex-wrap gap-4 justify-center mt-4">
+        <div className="flex flex-wrap gap-5 justify-center mt-4">
           <button 
             onClick={() => triggerPrint(lastTask)} 
-            className="px-5 py-3 bg-slate-800 text-white font-bold rounded-xl flex items-center gap-2 hover:bg-slate-900 transition-colors"
+            className="px-5 py-3 bg-slate-800 text-white font-bold rounded-2xl flex items-center gap-2 hover:bg-slate-900 transition-colors"
           >
             <Printer size={18}/> Print Slip
           </button>
           <button 
             onClick={() => triggerDownloadPDF(lastTask)} 
-            className="px-5 py-3 bg-indigo-600 text-white font-bold rounded-xl flex items-center gap-2 hover:bg-indigo-700 transition-colors"
+            className="px-5 py-3 bg-indigo-600 text-white font-bold rounded-2xl flex items-center gap-2 hover:bg-indigo-700 transition-colors"
           >
             <Download size={18}/> Download PDF
           </button>
           <button 
             onClick={() => { setLastTask(null); setForm(initForm); setSendWaMsgSame(false); }} 
-            className="px-5 py-3 bg-blue-600 text-white font-bold rounded-xl flex items-center gap-2 hover:bg-blue-700 transition-colors"
+            className="px-5 py-3 bg-blue-600 text-white font-bold rounded-2xl flex items-center gap-2 hover:bg-blue-700 hover:-translate-y-0.5 transition-all duration-300 transition-colors"
           >
             <Plus size={18}/> Register New Input
           </button>
@@ -342,12 +342,12 @@ export function InputFormTab({
     <form 
       onSubmit={handleSubmit} 
       noValidate 
-      className={`bg-white rounded-2xl shadow-sm border overflow-hidden ${form.isSelfMode ? 'border-yellow-300' : 'border-slate-200'}`}
+      className={`bg-white rounded-[20px] shadow-sm border overflow-hidden ${form.isSelfMode ? 'border-yellow-300' : 'border-slate-200'}`}
     >
-      <div className="bg-white px-8 py-4 flex justify-between items-center text-slate-800 border-b border-slate-200 shadow-sm">
+      <div className="bg-white/90 backdrop-blur-xl px-10 py-4 flex justify-between items-center text-slate-800 border-b border-slate-200 shadow-sm">
         <h2 className="font-bold text-lg flex items-center gap-2"><Plus size={20}/> New Registration</h2>
         <div className="flex gap-3">
-          <label className="flex items-center gap-2 cursor-pointer bg-blue-600 hover:bg-blue-700 text-white shadow-sm px-4 py-2 rounded-xl border border-slate-600 transition-colors">
+          <label className="flex items-center gap-2 cursor-pointer transition-all duration-300 hover:bg-slate-50 bg-blue-600 hover:bg-blue-700 hover:-translate-y-0.5 transition-all duration-300 text-white shadow-sm px-4 py-2 rounded-2xl border border-slate-600 transition-colors">
             <input 
               type="checkbox" 
               checked={form.isLocalWork || false} 
@@ -356,7 +356,7 @@ export function InputFormTab({
             />
             <span className="font-bold text-sm text-green-400">Local Work</span>
           </label>
-          <label className="flex items-center gap-2 cursor-pointer bg-blue-600 hover:bg-blue-700 text-white shadow-sm px-4 py-2 rounded-xl border border-slate-600 transition-colors">
+          <label className="flex items-center gap-2 cursor-pointer transition-all duration-300 hover:bg-slate-50 bg-blue-600 hover:bg-blue-700 hover:-translate-y-0.5 transition-all duration-300 text-white shadow-sm px-4 py-2 rounded-2xl border border-slate-600 transition-colors">
             <input 
               type="checkbox" 
               checked={form.isSelfMode} 
@@ -383,7 +383,7 @@ export function InputFormTab({
               {INPUT_TYPES.map(type => (
                 <label 
                   key={type} 
-                  className={`flex items-center gap-3 cursor-pointer px-4 py-3 rounded-xl border transition-all font-bold text-sm ${form.types.includes(type) ? 'bg-blue-50 border-blue-400 text-blue-800 shadow-sm' : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300'}`}
+                  className={`flex items-center gap-3 cursor-pointer transition-all duration-300 hover:bg-slate-50 px-4 py-3 rounded-2xl border transition-all font-bold text-sm ${form.types.includes(type) ? 'bg-blue-50 border-blue-400 text-blue-800 shadow-sm' : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300'}`}
                 >
                   <input 
                     type="radio" 
@@ -422,20 +422,20 @@ export function InputFormTab({
                 placeholder="Type new category name..." 
                 value={form.newCategory} 
                 onChange={(e) => setForm(f => ({ ...f, newCategory: e.target.value }))} 
-                className="w-full px-4 py-3 border border-slate-300 rounded-xl font-bold outline-none focus:border-blue-500 bg-white" 
+                className="w-full px-4 py-3 border border-slate-300 rounded-2xl font-bold outline-none focus:border-blue-500 bg-white" 
               />
               <div className="flex gap-2">
                 <button 
                   type="button" 
                   onClick={handleAddCustomCategory} 
-                  className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700"
+                  className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-2xl font-bold hover:bg-blue-700 hover:-translate-y-0.5 transition-all duration-300"
                 >
                   Save & Select
                 </button>
                 <button 
                   type="button" 
                   onClick={() => setShowNewCat(false)} 
-                  className="px-4 py-2 bg-slate-100 text-slate-600 rounded-xl font-bold hover:bg-slate-200"
+                  className="px-4 py-2 bg-slate-100 text-slate-600 rounded-2xl font-bold hover:bg-slate-200"
                 >
                   Cancel
                 </button>
@@ -456,7 +456,7 @@ export function InputFormTab({
             </span>
           )}
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {!form.isSelfMode && (
             <>
               <div id="field-mobileNumber" className="p-2 -m-2">
@@ -473,7 +473,7 @@ export function InputFormTab({
                   value={form.personal.mobileNumber} 
                   onChange={handlePersChange} 
                   onBlur={handleMobileBlur} 
-                  className="w-full px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none transition-all text-slate-800" 
+                  className="w-full px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-2xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none transition-all text-slate-800" 
                   placeholder="Enter to auto-fill..." 
                 />
               </div>
@@ -489,13 +489,13 @@ export function InputFormTab({
                   name="name" 
                   value={form.personal.name} 
                   onChange={handlePersChange} 
-                  className="w-full px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none transition-all text-slate-800" 
+                  className="w-full px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-2xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none transition-all text-slate-800" 
                 />
               </div>
               <div>
                 <label className="flex justify-between items-center text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">
                   <span>WhatsApp Number</span>
-                  <label className="flex items-center gap-1 cursor-pointer text-blue-600 normal-case tracking-normal text-[10px] font-bold">
+                  <label className="flex items-center gap-1 cursor-pointer transition-all duration-300 hover:bg-slate-50 text-blue-600 normal-case tracking-normal text-[10px] font-bold">
                     <input 
                       type="checkbox" 
                       checked={sendWaMsgSame} 
@@ -520,7 +520,7 @@ export function InputFormTab({
                   value={form.personal.whatsappNumber} 
                   onChange={handlePersChange} 
                   disabled={sendWaMsgSame} 
-                  className="w-full px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none transition-all disabled:opacity-60 text-slate-800" 
+                  className="w-full px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-2xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none transition-all disabled:opacity-60 text-slate-800" 
                 />
               </div>
               <div>
@@ -531,7 +531,7 @@ export function InputFormTab({
                   name="gender" 
                   value={form.personal.gender} 
                   onChange={handlePersChange} 
-                  className="w-full px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none transition-all text-slate-850"
+                  className="w-full px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-2xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none transition-all text-slate-850"
                 >
                   <option value="">Select Gender...</option>
                   <option value="Male">Male</option>
@@ -545,7 +545,7 @@ export function InputFormTab({
                   name="houseName" 
                   value={form.personal.houseName} 
                   onChange={handlePersChange} 
-                  className="w-full px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none transition-all text-slate-800" 
+                  className="w-full px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-2xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none transition-all text-slate-800" 
                 />
               </div>
             </>
@@ -561,7 +561,7 @@ export function InputFormTab({
                     name="designation" 
                     value={form.personal.designation} 
                     onChange={handlePersChange} 
-                    className="w-full px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none transition-all text-slate-850"
+                    className="w-full px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-2xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none transition-all text-slate-850"
                   >
                     <option value="">Select Designation...</option>
                     {designations.map(d => <option key={d} value={d}>{d}</option>)}
@@ -569,7 +569,7 @@ export function InputFormTab({
                   <button 
                     type="button" 
                     onClick={() => setShowNewDesig(true)} 
-                    className="bg-blue-50 text-blue-600 px-3 rounded-xl hover:bg-blue-100 transition-colors"
+                    className="bg-blue-50 text-blue-600 px-3 rounded-2xl hover:bg-blue-100 transition-colors"
                   >
                     <Plus size={16}/>
                   </button>
@@ -582,7 +582,7 @@ export function InputFormTab({
                     placeholder="New Designation" 
                     value={form.personal.newDesignation} 
                     onChange={handlePersChange} 
-                    className="w-full px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none text-slate-800" 
+                    className="w-full px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-2xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none text-slate-800" 
                   />
                   <button 
                     type="button" 
@@ -590,7 +590,7 @@ export function InputFormTab({
                       setShowNewDesig(false);
                       setForm(f => ({ ...f, personal: { ...f.personal, newDesignation: '' } }));
                     }} 
-                    className="px-3 bg-red-50 text-red-600 rounded-xl hover:bg-red-100 transition-colors"
+                    className="px-3 bg-red-50 text-red-600 rounded-2xl hover:bg-red-100 transition-colors"
                   >
                     <X size={16}/>
                   </button>
@@ -606,7 +606,7 @@ export function InputFormTab({
               name="referralPerson" 
               value={form.personal.referralPerson} 
               onChange={handlePersChange} 
-              className="w-full px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none transition-all text-slate-800" 
+              className="w-full px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-2xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none transition-all text-slate-800" 
             />
           </div>
           <div>
@@ -615,7 +615,7 @@ export function InputFormTab({
               name="place" 
               value={form.personal.place} 
               onChange={handlePersChange} 
-              className="w-full px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none transition-all text-slate-800" 
+              className="w-full px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-2xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none transition-all text-slate-800" 
             />
           </div>
           <div>
@@ -624,7 +624,7 @@ export function InputFormTab({
               name="localBody" 
               value={form.personal.localBody} 
               onChange={handlePersChange} 
-              className="w-full px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none transition-all text-slate-850"
+              className="w-full px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-2xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none transition-all text-slate-850"
             >
               <option value="">Select Local Body...</option>
               {LOCAL_BODIES.map(lb => <option key={lb} value={lb}>{lb}</option>)}
@@ -636,7 +636,7 @@ export function InputFormTab({
                 placeholder="Specify local body..." 
                 value={form.personal.otherLocalBody} 
                 onChange={handlePersChange} 
-                className="w-full mt-2 px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none transition-all text-slate-800" 
+                className="w-full mt-2 px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-2xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none transition-all text-slate-800" 
               />
             )}
           </div>
@@ -646,7 +646,7 @@ export function InputFormTab({
               name="wardNumber" 
               value={form.personal.wardNumber} 
               onChange={handlePersChange} 
-              className="w-full px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none transition-all text-slate-800" 
+              className="w-full px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-2xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none transition-all text-slate-800" 
             />
           </div>
           <div>
@@ -655,7 +655,7 @@ export function InputFormTab({
               name="postOffice" 
               value={form.personal.postOffice} 
               onChange={handlePersChange} 
-              className="w-full px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none transition-all text-slate-800" 
+              className="w-full px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-2xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none transition-all text-slate-800" 
             />
           </div>
           <div>
@@ -664,7 +664,7 @@ export function InputFormTab({
               name="pinCode" 
               value={form.personal.pinCode} 
               onChange={handlePersChange} 
-              className="w-full px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none transition-all text-slate-800" 
+              className="w-full px-4 py-2.5 bg-[#F4F7FB] border border-slate-200 rounded-2xl text-sm font-semibold focus:bg-white focus:border-blue-500 outline-none transition-all text-slate-800" 
             />
           </div>
         </div>
@@ -686,7 +686,7 @@ export function InputFormTab({
                 required 
                 value={form.subject} 
                 onChange={(e) => setForm(f => ({ ...f, subject: e.target.value }))} 
-                className="w-full px-4 py-3 border border-slate-300 rounded-xl text-sm font-bold outline-none focus:border-blue-500 bg-white text-slate-800" 
+                className="w-full px-4 py-3 border border-slate-300 rounded-2xl text-sm font-bold outline-none focus:border-blue-500 bg-white text-slate-800" 
                 placeholder="Briefly state the subject..." 
               />
             </div>
@@ -697,12 +697,12 @@ export function InputFormTab({
               <textarea 
                 value={form.description} 
                 onChange={(e) => setForm(f => ({ ...f, description: e.target.value }))} 
-                className="w-full px-4 py-3 border border-slate-300 rounded-xl text-sm font-medium h-32 outline-none focus:border-blue-500 bg-white text-slate-850" 
+                className="w-full px-4 py-3 border border-slate-300 rounded-2xl text-sm font-medium h-32 outline-none focus:border-blue-500 bg-white text-slate-850" 
                 placeholder="Write full details here if necessary..."
               ></textarea>
             </div>
             
-            <div className="mb-6 p-5 bg-white border border-slate-300 rounded-xl">
+            <div className="mb-6 p-5 bg-white border border-slate-300 rounded-2xl">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="font-bold text-slate-800 flex items-center gap-2 text-sm">
                   <ExternalLink className="text-indigo-600"/> Attach Documents (Optional)
@@ -714,7 +714,7 @@ export function InputFormTab({
                   const name = isString ? `Link ${idx + 1}` : att.name;
                   const url = isString ? att : att.url;
                   return (
-                    <div key={idx} className="flex items-center justify-between p-3 bg-[#F4F7FB] border border-slate-200 rounded-xl">
+                    <div key={idx} className="flex items-center justify-between p-3 bg-[#F4F7FB] border border-slate-200 rounded-2xl">
                       <span className="text-sm font-medium text-slate-700 truncate max-w-[60%]">{name}</span>
                       <div className="flex gap-2">
                         <a href={url} target="_blank" rel="noreferrer" className="p-2 text-blue-600 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors">
@@ -745,7 +745,7 @@ export function InputFormTab({
                 onManualLinkAdd={(url) => setForm(f => ({ ...f, attachments: [...f.attachments, url] }))}
               />
               {form.attachments.length === 0 && (
-                <label className="mt-3 flex items-center gap-2 cursor-pointer bg-slate-100 p-2.5 rounded-lg border border-slate-200">
+                <label className="mt-3 flex items-center gap-2 cursor-pointer transition-all duration-300 hover:bg-slate-50 bg-slate-100 p-2.5 rounded-lg border border-slate-200">
                   <input 
                     type="checkbox" 
                     checked={addLinkLater}
@@ -758,7 +758,7 @@ export function InputFormTab({
             </div>
 
             {isInvitation && (
-              <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-xl">
+              <div className="mt-4 p-5 bg-blue-50 border border-blue-200 rounded-2xl">
                 <label className="block text-xs font-bold text-blue-800 uppercase tracking-widest mb-2 flex items-center gap-2">
                   <CalendarPlus size={16}/> Program Date
                 </label>
@@ -767,7 +767,7 @@ export function InputFormTab({
                   required 
                   value={form.programDate} 
                   onChange={(e) => setForm(f => ({ ...f, programDate: e.target.value }))} 
-                  className="w-full px-4 py-3 border border-blue-300 rounded-xl font-bold outline-none focus:border-blue-500 bg-white text-slate-800" 
+                  className="w-full px-4 py-3 border border-blue-300 rounded-2xl font-bold outline-none focus:border-blue-500 bg-white text-slate-800" 
                 />
               </div>
             )}
@@ -784,11 +784,11 @@ export function InputFormTab({
                 )}
               </h3>
               {form.isLocalWork ? (
-                <div className="bg-green-50 border border-green-200 p-4 rounded-xl flex items-center gap-3 text-green-800 font-bold mb-6">
+                <div className="bg-green-50 border border-green-200 p-5 rounded-2xl flex items-center gap-3 text-green-800 font-bold mb-6">
                   <Plus size={24} className="text-green-600"/> Local Work: No officers assigned.
                 </div>
               ) : isInvitation ? (
-                <div className="bg-indigo-50 border border-indigo-200 p-4 rounded-xl flex items-center gap-3 text-indigo-800 font-bold mb-6">
+                <div className="bg-indigo-50 border border-indigo-200 p-5 rounded-2xl flex items-center gap-3 text-indigo-800 font-bold mb-6">
                   <Plus size={24} className="text-indigo-600"/> Auto-Assigned exclusively to KM Shaji (MLA)
                 </div>
               ) : (
@@ -796,7 +796,7 @@ export function InputFormTab({
                   {users.map(u => (
                     <label 
                       key={u.id} 
-                      className={`flex items-center gap-3 cursor-pointer p-3 rounded-xl border transition-all font-bold text-sm ${form.assignedTo.includes(u.id) ? 'bg-indigo-50 border-indigo-400 text-indigo-800 shadow-sm' : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300'}`}
+                      className={`flex items-center gap-3 cursor-pointer transition-all duration-300 hover:bg-slate-50 p-3 rounded-2xl border transition-all font-bold text-sm ${form.assignedTo.includes(u.id) ? 'bg-indigo-50 border-indigo-400 text-indigo-800 shadow-sm' : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300'}`}
                     >
                       <input 
                         type="checkbox" 
@@ -814,7 +814,7 @@ export function InputFormTab({
                   ))}
                 </div>
               )}
-              <div className="bg-amber-50 border border-amber-200 p-4 rounded-xl">
+              <div className="bg-amber-50 border border-amber-200 p-5 rounded-2xl">
                 <label className="block text-xs font-bold text-amber-800 uppercase tracking-widest mb-2 flex items-center gap-2">
                   <Clock size={16}/> Target Deadline (Optional)
                 </label>
@@ -822,7 +822,7 @@ export function InputFormTab({
                   type="datetime-local" 
                   value={form.customDeadline} 
                   onChange={(e) => setForm(f => ({ ...f, customDeadline: e.target.value }))} 
-                  className="w-full px-4 py-3 border border-amber-300 rounded-xl font-bold outline-none focus:border-amber-500 bg-white text-sm text-slate-800" 
+                  className="w-full px-4 py-3 border border-amber-300 rounded-2xl font-bold outline-none focus:border-amber-500 bg-white text-sm text-slate-800" 
                 />
                 <p className="text-[10px] font-bold text-amber-600 mt-2">
                   If left blank, deadline defaults to exactly 24 hours from now.
@@ -831,14 +831,14 @@ export function InputFormTab({
             </div>
 
             {EXT_LINKS[form.category] && (
-              <div className="mt-8 bg-blue-50 border border-blue-200 rounded-2xl p-6 text-center shadow-sm">
+              <div className="mt-8 bg-blue-50 border border-blue-200 rounded-[20px] p-8 text-center shadow-sm">
                 <h4 className="text-blue-900 font-bold mb-2 flex items-center justify-center gap-2">Official Portal Registration</h4>
                 <p className="text-blue-700 text-sm font-medium mb-4">Ensure this request is also registered on the official {form.category} website if required.</p>
                 <a 
                   href={EXT_LINKS[form.category]} 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="inline-flex items-center gap-2 bg-blue-600 text-white px-5 py-3 rounded-xl font-bold hover:bg-blue-700 transition-colors shadow-sm"
+                  className="inline-flex items-center gap-2 bg-blue-600 text-white px-5 py-3 rounded-2xl font-bold hover:bg-blue-700 hover:-translate-y-0.5 transition-all duration-300 transition-colors shadow-sm"
                 >
                   <ExternalLink size={18}/> Go to {form.category} Official Portal
                 </a>
@@ -848,9 +848,9 @@ export function InputFormTab({
         </div>
       </div>
 
-      <div className="p-8 border-t border-slate-200 bg-white flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="p-8 border-t border-slate-200 bg-white flex flex-col md:flex-row items-center justify-between gap-8">
         {!form.isSelfMode ? (
-          <label className="flex items-center gap-3 cursor-pointer bg-green-50 px-5 py-3 rounded-xl border border-green-200">
+          <label className="flex items-center gap-3 cursor-pointer transition-all duration-300 hover:bg-slate-50 bg-green-50 px-5 py-3 rounded-2xl border border-green-200">
             <input 
               type="checkbox" 
               checked={sendWaMsg} 
@@ -867,7 +867,7 @@ export function InputFormTab({
         <button 
           type="submit" 
           disabled={isSubmitting} 
-          className={`w-full md:w-auto font-bold py-4 px-10 rounded-xl shadow-sm transition-transform transform ${isSubmitting ? 'bg-slate-500 cursor-not-allowed opacity-80' : 'bg-slate-900 hover:bg-black hover:-translate-y-1'} text-white text-lg flex items-center justify-center gap-2`}
+          className={`w-full md:w-auto font-bold py-4 px-10 rounded-2xl shadow-sm transition-transform transform ${isSubmitting ? 'bg-slate-500 cursor-not-allowed opacity-80' : 'bg-slate-900 hover:bg-black hover:-translate-y-1'} text-white text-lg flex items-center justify-center gap-2`}
         >
           {isSubmitting ? 'Uploading & Submitting...' : <><Check size={24} /> Submit Input</>}
         </button>
