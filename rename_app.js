@@ -15,9 +15,7 @@ function walk(dir, callback) {
 }
 
 const replaceRules = [
-  { match: /E-Office/g, replace: 'Vengara Connect' },
-  { match: /E Office/g, replace: 'Vengara Connect' },
-  { match: /e-office/gi, replace: 'Vengara Connect' }
+  { match: /Vengara Connect/g, replace: 'MLA Squad' }
 ];
 
 walk('.', function(filePath) {

@@ -37,8 +37,8 @@ export function LoginScreen({ onLogin, users }: LoginScreenProps) {
       
       {/* Subtle light ambient blobs */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none opacity-60">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-blue-200/50 blur-[120px]"></div>
-        <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-200/40 blur-[150px]"></div>
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-amber-200/40 blur-[120px]"></div>
+        <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-orange-200/30 blur-[150px]"></div>
       </div>
 
 
@@ -48,8 +48,8 @@ export function LoginScreen({ onLogin, users }: LoginScreenProps) {
         {/* Main Login Card Wrapper */}
         <div className="bg-white/90 backdrop-blur-2xl rounded-[32px] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.08)] border border-white max-w-5xl w-full overflow-hidden grid grid-cols-1 md:grid-cols-12 min-h-[450px] transition-all">
           
-          {/* Left Column: Premium Corporate Blue Gradient */}
-          <div className="md:col-span-5 col-span-1 bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#334155] text-white p-10 flex flex-col justify-between relative overflow-hidden backdrop-blur-3xl">
+          {/* Left Column: Premium Corporate Brown Gradient */}
+          <div className="md:col-span-5 col-span-1 bg-gradient-to-br from-[#2E1610] via-[#52291E] to-[#7A4031] text-white p-10 flex flex-col justify-between relative overflow-hidden backdrop-blur-3xl">
             
             {/* Geometric wireframe layout graphics */}
             <div className="absolute inset-0 opacity-15 pointer-events-none">
@@ -68,7 +68,7 @@ export function LoginScreen({ onLogin, users }: LoginScreenProps) {
                 <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight drop-shadow-sm font-['Outfit'] text-white">
                   Vengara Connect
                 </h2>
-                <div className="h-1 w-12 bg-blue-500 rounded-full"></div>
+                <div className="h-1 w-12 bg-amber-500 rounded-full"></div>
                 <p className="text-sm sm:text-base font-medium text-slate-300 tracking-wider">
                   KM Shaji • Vengara Constituency
                 </p>
@@ -118,13 +118,13 @@ export function LoginScreen({ onLogin, users }: LoginScreenProps) {
                           }}
                           className={`w-full p-5 flex items-center gap-5 border rounded-[28px] text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(0,0,0,0.06)] cursor-pointer group ${
                             isAdmin 
-                              ? 'bg-blue-50/50 border-blue-100 hover:bg-blue-50 hover:border-blue-200' 
+                              ? 'bg-amber-50/50 border-amber-100 hover:bg-amber-50 hover:border-amber-200' 
                               : 'bg-slate-50 border-slate-100 hover:bg-slate-100'
                           }`}
                         >
                           {/* Profile rounded icon area */}
                           <div className={`h-14 w-14 rounded-[20px] flex items-center justify-center shrink-0 shadow-sm transition-transform group-hover:scale-110 ${
-                            isAdmin ? 'bg-blue-600 text-white' : 'bg-white text-slate-400 border border-slate-200'
+                            isAdmin ? 'bg-gradient-to-br from-amber-600 to-orange-700 text-white' : 'bg-white text-slate-400 border border-slate-200'
                           }`}>
                             {isAdmin ? <Shield size={24} /> : <UserIcon size={24} />}
                           </div>
@@ -164,7 +164,7 @@ export function LoginScreen({ onLogin, users }: LoginScreenProps) {
 
                   {/* Profile Indicator Card */}
                   <div className="bg-slate-50 border border-slate-100 p-5 rounded-[28px] flex items-center gap-5 shadow-sm">
-                    <div className="h-14 w-14 rounded-[20px] flex items-center justify-center shrink-0 bg-blue-600 text-white shadow-sm">
+                    <div className="h-14 w-14 rounded-[20px] flex items-center justify-center shrink-0 bg-gradient-to-br from-amber-600 to-orange-700 text-white shadow-sm">
                       {selectedUser.role === 'admin' ? <Shield size={24} /> : <UserIcon size={24} />}
                     </div>
                     <div className="text-left">
@@ -196,14 +196,14 @@ export function LoginScreen({ onLogin, users }: LoginScreenProps) {
                           setError('');
                         }}
                         autoFocus
-                        className="w-full px-6 py-5 bg-slate-50 border border-slate-200 rounded-[24px] font-bold text-slate-800 outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-lg tracking-widest text-center sm:text-left shadow-inner placeholder:text-slate-300" 
+                        className="w-full px-6 py-5 bg-slate-50 border border-slate-200 rounded-[24px] font-bold text-slate-800 outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-all text-lg tracking-widest text-center sm:text-left shadow-inner placeholder:text-slate-300" 
                       />
                       
                       {password && (
                         <button 
                           type="button" 
                           onClick={() => setShowPass(!showPass)} 
-                          className="absolute right-5 top-1/2 -translate-y-1/2 text-sm font-bold text-blue-600 hover:text-blue-700 outline-none cursor-pointer px-3 py-1 bg-blue-50 rounded-lg"
+                          className="absolute right-5 top-1/2 -translate-y-1/2 text-sm font-bold text-amber-600 hover:text-amber-700 outline-none cursor-pointer px-3 py-1 bg-amber-50 rounded-lg"
                         >
                           {showPass ? 'Hide' : 'Show'}
                         </button>
@@ -212,10 +212,10 @@ export function LoginScreen({ onLogin, users }: LoginScreenProps) {
 
                     <button 
                       type="submit" 
-                      className="w-full bg-blue-600 hover:bg-blue-700 active:scale-[0.98] text-white font-bold py-5 px-6 rounded-[24px] transition-all flex items-center justify-center gap-2 text-sm uppercase tracking-[0.15em] cursor-pointer shadow-[0_8px_20px_rgb(37,99,235,0.25)] mt-8"
+                      className="w-full bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 active:scale-[0.98] text-white font-bold py-5 px-6 rounded-[24px] transition-all flex items-center justify-center gap-2 text-sm uppercase tracking-[0.15em] cursor-pointer shadow-[0_8px_20px_rgba(217,119,6,0.25)] mt-8"
                     >
                       <span>Secure Login</span>
-                      <ChevronRight size={18} className="text-blue-100" />
+                      <ChevronRight size={18} className="text-amber-100" />
                     </button>
                   </form>
 
