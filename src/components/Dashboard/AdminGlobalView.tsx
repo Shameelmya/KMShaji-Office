@@ -163,14 +163,14 @@ export function AdminGlobalView({
         <div className="flex bg-slate-100 p-1 rounded-2xl border border-slate-200 h-fit">
           <button 
             onClick={() => setViewMode('grid')} 
-            className={`p-2 rounded-lg transition-colors ${viewMode === 'grid' ? 'bg-white shadow-sm text-blue-600' : 'text-slate-500 hover:text-slate-700'}`} 
+            className={`p-2 rounded-lg transition-colors ${viewMode === 'grid' ? 'bg-white shadow-sm text-purple-600' : 'text-slate-500 hover:text-slate-700'}`} 
             title="Grid View"
           >
             <LayoutGrid size={18}/>
           </button>
           <button 
             onClick={() => setViewMode('list')} 
-            className={`p-2 rounded-lg transition-colors ${viewMode === 'list' ? 'bg-white shadow-sm text-blue-600' : 'text-slate-500 hover:text-slate-700'}`} 
+            className={`p-2 rounded-lg transition-colors ${viewMode === 'list' ? 'bg-white shadow-sm text-purple-600' : 'text-slate-500 hover:text-slate-700'}`} 
             title="List View"
           >
             <LayoutList size={18}/>
@@ -279,7 +279,7 @@ export function AdminGlobalView({
                       <button 
                         onClick={() => quickCompleteTask(t)} 
                         title="Quick Complete" 
-                        className="text-blue-600 hover:bg-blue-100 p-2 rounded-lg transition-colors bg-blue-50"
+                        className="text-purple-600 hover:bg-blue-100 p-2 rounded-lg transition-colors bg-blue-50"
                       >
                         <CheckSquare size={16}/>
                       </button>
@@ -479,7 +479,7 @@ const AdminTaskCard = React.memo(({
           {!t.isSelfMode && t.personalDetails?.mobileNumber && (
             <a 
               href={`tel:${t.personalDetails.mobileNumber}`} 
-              className="bg-slate-100 p-1.5 rounded-lg text-slate-600 hover:bg-blue-100 hover:text-blue-600 transition-colors"
+              className="bg-slate-100 p-1.5 rounded-lg text-slate-600 hover:bg-blue-100 hover:text-purple-600 transition-colors"
             >
               <Phone size={14}/>
             </a>

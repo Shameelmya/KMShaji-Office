@@ -53,7 +53,7 @@ export const SearchableCategorySelect = React.memo(({
               value={search} 
               onChange={e => setSearch(e.target.value)} 
               placeholder="Search categories..." 
-              className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm font-semibold outline-none focus:border-blue-500 bg-white" 
+              className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm font-semibold outline-none focus:border-purple-500 bg-white" 
               onClick={e => e.stopPropagation()} 
             />
           </div>
@@ -69,7 +69,7 @@ export const SearchableCategorySelect = React.memo(({
                 className={`px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-100 cursor-pointer transition-all duration-300 hover:bg-slate-50 flex justify-between items-center ${selected === c ? 'bg-blue-50 text-blue-700' : ''}`}
               >
                 <span>{c}</span>
-                {selected === c && <Check size={14} className="text-blue-600" />}
+                {selected === c && <Check size={14} className="text-purple-600" />}
               </div>
             ))}
             {sortedAndFiltered.length === 0 && (
@@ -86,7 +86,7 @@ export const SearchableCategorySelect = React.memo(({
                 onAddNewClick(); 
                 setIsOpen(false); 
               }} 
-              className="w-full text-xs font-bold text-blue-600 flex items-center justify-center gap-1 hover:text-blue-800 py-1.5 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
+              className="w-full text-xs font-bold text-purple-600 flex items-center justify-center gap-1 hover:text-blue-800 py-1.5 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
             >
               <Plus size={14}/> Add Custom Category
             </button>

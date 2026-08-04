@@ -9,7 +9,7 @@ interface TimelineIconProps {
 export function TimelineIcon({ type }: TimelineIconProps) {
   switch(type) {
     case 'created': 
-      return <div className="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0"><Plus size={12}/></div>;
+      return <div className="w-6 h-6 rounded-full bg-blue-100 text-purple-600 flex items-center justify-center shrink-0"><Plus size={12}/></div>;
     case 'received': 
       return <div className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center shrink-0"><Check size={12}/></div>;
     case 'update': 

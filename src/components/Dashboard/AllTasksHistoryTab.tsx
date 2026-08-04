@@ -66,7 +66,7 @@ export function AllTasksHistoryTab({
           placeholder="Search history by Subject, Name, ID, Mobile..." 
           value={search} 
           onChange={e => setSearch(e.target.value)} 
-          className="flex-1 min-w-[250px] px-4 py-2 border border-slate-300 rounded-2xl font-medium outline-none focus:border-blue-500 bg-white text-slate-800" 
+          className="flex-1 min-w-[250px] px-4 py-2 border border-slate-300 rounded-2xl font-medium outline-none focus:border-purple-500 bg-white text-slate-800" 
         />
         <select 
           value={catFilter} 
@@ -134,7 +134,7 @@ export function AllTasksHistoryTab({
                   <button 
                     onClick={() => triggerPrint(t)} 
                     title="Print Slip" 
-                    className="text-blue-600 hover:bg-blue-100 p-2 rounded-lg transition-colors bg-blue-50"
+                    className="text-purple-600 hover:bg-blue-100 p-2 rounded-lg transition-colors bg-blue-50"
                   >
                     <Printer size={16}/>
                   </button>

@@ -122,7 +122,7 @@ export function AdminDatabase({
     <div id="admin-database" className="space-y-6 animate-in fade-in">
       <div className="bg-white rounded-3xl shadow-sm border border-slate-200 p-8">
         <h2 className="text-2xl font-bold text-slate-800 flex items-center gap-2 mb-6">
-          <Download className="text-blue-600"/> Data Backup (Export JSON)
+          <Download className="text-purple-600"/> Data Backup (Export JSON)
         </h2>
         <div className="grid md:grid-cols-2 gap-8 items-start">
           <div>
@@ -137,7 +137,7 @@ export function AdminDatabase({
             </select>
             <button 
               onClick={handleBackup} 
-              className="bg-blue-600 text-white font-bold py-3 px-6 rounded-2xl hover:bg-blue-700 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2 shadow transition-colors"
+              className="bg-purple-600 text-white font-bold py-3 px-6 rounded-2xl hover:bg-purple-700 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2 shadow transition-colors"
             >
               <Download size={18}/> Generate & Download JSON
             </button>

@@ -398,7 +398,7 @@ const WorkerTaskCard = React.memo(({
             <div className="w-full space-y-2">
               <button 
                 onClick={() => setShowProgressModal(true)} 
-                className="w-full bg-blue-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-blue-700 hover:-translate-y-0.5 transition-all duration-300 transition-colors shadow-sm flex items-center justify-center gap-2"
+                className="w-full bg-purple-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-purple-700 hover:-translate-y-0.5 transition-all duration-300 transition-colors shadow-sm flex items-center justify-center gap-2"
               >
                 <Activity size={14}/> {status === 'Received' ? 'Start Progress' : 'Add Update'}
               </button>
@@ -520,7 +520,7 @@ const WorkerTaskCard = React.memo(({
       {showProgressModal && (
         <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[200] flex items-center justify-center p-5">
           <div className="bg-white rounded-[20px] shadow-sm w-full max-w-lg overflow-hidden animate-in zoom-in-95 duration-150">
-            <div className="bg-blue-600 p-5 text-white flex justify-between items-center">
+            <div className="bg-purple-600 p-5 text-white flex justify-between items-center">
               <h3 className="font-bold text-lg">Enter Progress Update</h3>
               <button onClick={() => setShowProgressModal(false)} className="text-white hover:text-blue-100 transition-colors"><X size={20}/></button>
             </div>
@@ -530,7 +530,7 @@ const WorkerTaskCard = React.memo(({
                  value={updateText} 
                  onChange={e => setUpdateText(e.target.value)} 
                  placeholder="What action did you take?..." 
-                 className="w-full px-4 py-3 border border-slate-300 rounded-2xl font-medium outline-none focus:border-blue-500 h-32 mb-3 bg-white text-slate-800"
+                 className="w-full px-4 py-3 border border-slate-300 rounded-2xl font-medium outline-none focus:border-purple-500 h-32 mb-3 bg-white text-slate-800"
                ></textarea>
                {updateAttachment ? (
                  <div className="mb-4">
@@ -553,7 +553,7 @@ const WorkerTaskCard = React.memo(({
                )}
                <button 
                  onClick={handleSaveUpdate} 
-                 className="w-full bg-blue-600 text-white font-bold py-3 rounded-2xl hover:bg-blue-700 hover:-translate-y-0.5 transition-all duration-300 transition-colors shadow"
+                 className="w-full bg-purple-600 text-white font-bold py-3 rounded-2xl hover:bg-purple-700 hover:-translate-y-0.5 transition-all duration-300 transition-colors shadow"
                >
                  Save Update
                </button>

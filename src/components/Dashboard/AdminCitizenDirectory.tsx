@@ -115,13 +115,13 @@ export function AdminCitizenDirectory({
           </button>
           <button 
             onClick={() => triggerCitizenPrint(citizensData)} 
-            className="bg-blue-600 text-white hover:bg-blue-700 hover:-translate-y-0.5 transition-all duration-300 shadow-sm px-4 py-2 rounded-2xl text-sm font-bold flex items-center gap-2 transition-colors"
+            className="bg-purple-600 text-white hover:bg-purple-700 hover:-translate-y-0.5 transition-all duration-300 shadow-sm px-4 py-2 rounded-2xl text-sm font-bold flex items-center gap-2 transition-colors"
           >
             <Printer size={16}/> Print
           </button>
           <button 
             onClick={() => triggerDownloadPDF(citizensData)} 
-            className="bg-indigo-600 text-white hover:bg-indigo-700 px-4 py-2 rounded-2xl text-sm font-bold flex items-center gap-2 transition-colors"
+            className="bg-purple-600 text-white hover:bg-purple-700 px-4 py-2 rounded-2xl text-sm font-bold flex items-center gap-2 transition-colors"
           >
             <Download size={16}/> PDF
           </button>
@@ -187,7 +187,7 @@ export function AdminCitizenDirectory({
                 <td className="px-4 py-3 text-center">
                   <button 
                     onClick={() => onCitizenClick?.(c.mobileNumber)}
-                    className="bg-blue-600 hover:bg-blue-700 hover:-translate-y-0.5 transition-all duration-300 text-white shadow-sm hover:scale-105 active:scale-95 transition-all text-white font-bold px-3 py-1 rounded-full cursor-pointer transition-all duration-300 hover:bg-slate-50 shadow-sm"
+                    className="bg-purple-600 hover:bg-purple-700 hover:-translate-y-0.5 transition-all duration-300 text-white shadow-sm hover:scale-105 active:scale-95 transition-all text-white font-bold px-3 py-1 rounded-full cursor-pointer transition-all duration-300 hover:bg-slate-50 shadow-sm"
                     title="View inputs by this citizen"
                   >
                     {c.visits}

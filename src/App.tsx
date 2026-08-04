@@ -615,7 +615,7 @@ export default function App() {
          <select
            value={globalFilters.followUpFrequency || 'All'}
            onChange={e => setGlobalFilters(p => ({...p, followUpFrequency: e.target.value}))}
-           className="px-3 py-1.5 border border-slate-300 rounded-lg font-bold text-slate-700 outline-none bg-blue-50 focus:border-blue-500 transition-all font-sans"
+           className="px-3 py-1.5 border border-slate-300 rounded-lg font-bold text-slate-700 outline-none bg-blue-50 focus:border-purple-500 transition-all font-sans"
          >
            <option value="All">All Follow-ups</option>
            <option value="1W">1 Week</option>

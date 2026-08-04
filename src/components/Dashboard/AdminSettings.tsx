@@ -402,7 +402,7 @@ export function AdminSettings({
             <div className="w-full flex justify-end mt-2 pt-2 border-t border-slate-100">
               <button 
                 type="submit" 
-                className="bg-indigo-600 text-white px-5 py-2 rounded-2xl font-bold text-sm hover:bg-indigo-700 transition-colors shadow"
+                className="bg-purple-600 text-white px-5 py-2 rounded-2xl font-bold text-sm hover:bg-purple-700 transition-colors shadow"
               >
                 Create Officer Profile
               </button>

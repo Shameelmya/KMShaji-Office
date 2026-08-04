@@ -113,7 +113,7 @@ export function AdminDirectAssignments({
                 </label>
               ))}
             </div>
-            <button type="submit" className="w-full bg-indigo-600 text-white font-bold py-3 rounded-2xl shadow hover:bg-indigo-700 transition-colors">
+            <button type="submit" className="w-full bg-purple-600 text-white font-bold py-3 rounded-2xl shadow hover:bg-purple-700 transition-colors">
               Assign Work
             </button>
           </div>

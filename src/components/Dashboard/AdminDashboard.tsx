@@ -63,7 +63,7 @@ interface AdminDashboardProps {
 
 const StatCard = ({ title, value, color, icon, onClick }: any) => {
   const colors = {
-    blue: 'bg-blue-50 text-blue-600 border-blue-200',
+    blue: 'bg-blue-50 text-purple-600 border-blue-200',
     indigo: 'bg-indigo-50 text-indigo-600 border-indigo-200',
     green: 'bg-green-50 text-green-600 border-green-200',
     purple: 'bg-purple-50 text-purple-600 border-purple-200',
@@ -172,7 +172,7 @@ export function AdminDashboard({
         </button>
         <button 
           onClick={() => { setActiveTab('overview'); setGlobalSearch(''); setInitialOfficerFilter(''); }} 
-          className={`flex-1 justify-center px-3 py-1.5 md:px-4 md:py-2.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1 whitespace-nowrap ${activeTab === 'overview' ? 'bg-blue-600 text-white shadow-md' : 'text-slate-600 hover:bg-[#F4F7FB]'}`}
+          className={`flex-1 justify-center px-3 py-1.5 md:px-4 md:py-2.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1 whitespace-nowrap ${activeTab === 'overview' ? 'bg-purple-600 text-white shadow-md' : 'text-slate-600 hover:bg-[#F4F7FB]'}`}
         >
           Global Overview
         </button>
@@ -184,7 +184,7 @@ export function AdminDashboard({
         </button>
         <button 
           onClick={() => { setActiveTab('input'); setGlobalSearch(''); }} 
-          className={`flex-1 justify-center px-3 py-1.5 md:px-4 md:py-2.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1 whitespace-nowrap ${activeTab === 'input' ? 'bg-blue-600 text-white shadow' : 'text-slate-600 hover:bg-[#F4F7FB]'}`}
+          className={`flex-1 justify-center px-3 py-1.5 md:px-4 md:py-2.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1 whitespace-nowrap ${activeTab === 'input' ? 'bg-purple-600 text-white shadow' : 'text-slate-600 hover:bg-[#F4F7FB]'}`}
         >
           <Plus size={13}/> Register Input
         </button>
@@ -196,7 +196,7 @@ export function AdminDashboard({
         </button>
         <button 
           onClick={() => { setActiveTab('direct'); setGlobalSearch(''); }} 
-          className={`flex-1 justify-center px-3 py-1.5 md:px-4 md:py-2.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1 whitespace-nowrap ${activeTab === 'direct' ? 'bg-indigo-600 text-white shadow' : 'text-slate-600 hover:bg-[#F4F7FB]'}`}
+          className={`flex-1 justify-center px-3 py-1.5 md:px-4 md:py-2.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1 whitespace-nowrap ${activeTab === 'direct' ? 'bg-purple-600 text-white shadow' : 'text-slate-600 hover:bg-[#F4F7FB]'}`}
         >
           <Zap size={13}/> Direct Desk
         </button>
@@ -268,7 +268,7 @@ export function AdminDashboard({
                 )}
                 <button 
                   onClick={() => { setReportModalOpen(true); loadArchive(); }} 
-                  className="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2.5 rounded-2xl text-sm font-bold shadow flex items-center gap-2 transition-colors"
+                  className="bg-purple-600 hover:bg-purple-700 text-white px-5 py-2.5 rounded-2xl text-sm font-bold shadow flex items-center gap-2 transition-colors"
                 >
                   <FileOutput size={18}/> Generate Master Report
                 </button>

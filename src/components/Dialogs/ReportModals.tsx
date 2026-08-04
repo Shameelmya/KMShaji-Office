@@ -71,7 +71,7 @@ export function ReportConfigModal({ onClose, onGenerate, triggerDownloadPDF, loa
           <div className="flex gap-3">
             <button 
               onClick={() => handleGenerate(false)} 
-              className="flex-1 bg-indigo-600 text-white font-bold py-3 rounded-2xl hover:bg-indigo-700 flex items-center justify-center gap-2 shadow transition-colors"
+              className="flex-1 bg-purple-600 text-white font-bold py-3 rounded-2xl hover:bg-purple-700 flex items-center justify-center gap-2 shadow transition-colors"
             >
               <Printer size={18}/> Print
             </button>
@@ -157,7 +157,7 @@ export function OfficerReportConfigModal({ officer, onClose, onGenerate, trigger
           <div className="flex gap-3">
             <button 
               onClick={() => handleGenerate(false)} 
-              className="flex-1 bg-indigo-600 text-white font-bold py-3 rounded-2xl hover:bg-indigo-700 flex items-center justify-center gap-2 shadow transition-colors"
+              className="flex-1 bg-purple-600 text-white font-bold py-3 rounded-2xl hover:bg-purple-700 flex items-center justify-center gap-2 shadow transition-colors"
             >
               <Printer size={18}/> Print
             </button>

@@ -102,8 +102,8 @@ export function FileUploadButton({ onUploadSuccess, onManualLinkAdd, uploaderId 
           onClick={() => fileInputRef.current?.click()}
           className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 border-2 border-dashed rounded-2xl font-bold text-sm transition-all ${
             isUploading 
-              ? 'border-blue-300 bg-blue-50 text-blue-500 cursor-wait' 
-              : 'border-slate-300 hover:border-blue-400 hover:bg-blue-50 text-slate-600 hover:text-blue-600 bg-[#F4F7FB]/50'
+              ? 'border-blue-300 bg-blue-50 text-purple-500 cursor-wait' 
+              : 'border-slate-300 hover:border-blue-400 hover:bg-blue-50 text-slate-600 hover:text-purple-600 bg-[#F4F7FB]/50'
           }`}
         >
           {isUploading ? (

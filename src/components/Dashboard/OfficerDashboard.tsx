@@ -50,7 +50,7 @@ interface OfficerDashboardProps {
 
 const StatCard = ({ title, value, color, icon, onClick }: any) => {
   const colors = {
-    blue: 'bg-blue-50 text-blue-600 border-blue-200',
+    blue: 'bg-blue-50 text-purple-600 border-blue-200',
     indigo: 'bg-indigo-50 text-indigo-600 border-indigo-200',
     green: 'bg-green-50 text-green-600 border-green-200',
     purple: 'bg-purple-50 text-purple-600 border-purple-200',
@@ -158,7 +158,7 @@ export function OfficerDashboard({
         {hasGlobalOverviewPermission && (
           <button 
             onClick={() => { setActiveTab('overview'); setGlobalSearch(''); }} 
-          className={`flex-1 px-2 py-2 md:py-3 rounded-2xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 ${activeTab === 'overview' ? 'bg-blue-600 text-white shadow-md' : 'text-slate-600 hover:bg-[#F4F7FB]'}`}
+          className={`flex-1 px-2 py-2 md:py-3 rounded-2xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 ${activeTab === 'overview' ? 'bg-purple-600 text-white shadow-md' : 'text-slate-600 hover:bg-[#F4F7FB]'}`}
           >
             <Eye size={15} /> Global Overview
           </button>

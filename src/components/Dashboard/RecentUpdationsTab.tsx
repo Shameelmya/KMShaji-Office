@@ -250,7 +250,7 @@ export function RecentUpdationsTab({ tasks, users, triggerRecentUpdationsDownloa
                   <div className="flex-1 bg-white border border-slate-100 rounded-lg p-3 my-2 text-sm font-semibold text-slate-800 shadow-sm relative">
                     <div className="absolute top-0 left-0 w-1 h-full bg-amber-400 rounded-l-lg"></div>
                     <div className="flex gap-2">
-                      {item.updation.type === 'update' && <FileEdit size={14} className="text-blue-500 mt-0.5 shrink-0" />}
+                      {item.updation.type === 'update' && <FileEdit size={14} className="text-purple-500 mt-0.5 shrink-0" />}
                       {item.updation.type === 'completed' && <CheckCircle size={14} className="text-green-500 mt-0.5 shrink-0" />}
                       {item.updation.type === 'draft' && <FileText size={14} className="text-purple-500 mt-0.5 shrink-0" />}
                       <span className="leading-snug">{item.updation.text}</span>

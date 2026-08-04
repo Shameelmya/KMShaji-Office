@@ -66,7 +66,7 @@ export function StatusFixerModal({ tasks, updateTask, onClose }: StatusFixerModa
               <button 
                 onClick={handleSaveAll} 
                 disabled={isSaving} 
-                className="bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-400 text-white px-4 py-2 rounded-2xl text-sm font-bold shadow transition-all"
+                className="bg-purple-600 hover:bg-purple-700 disabled:bg-indigo-400 text-white px-4 py-2 rounded-2xl text-sm font-bold shadow transition-all"
               >
                 {isSaving ? 'Saving...' : `Save ${Object.keys(pendingChanges).length} Changes`}
               </button>
