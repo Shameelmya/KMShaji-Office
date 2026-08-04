@@ -66,7 +66,7 @@ export function LoginScreen({ onLogin, users }: LoginScreenProps) {
               
               <div className="space-y-2">
                 <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight drop-shadow-sm font-['Outfit'] text-white">
-                  Vengara Connect
+                  MLA Squad
                 </h2>
                 <div className="h-1 w-12 bg-amber-500 rounded-full"></div>
                 <p className="text-sm sm:text-base font-medium text-slate-300 tracking-wider">
