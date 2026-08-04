@@ -119,11 +119,11 @@ export function OfficerDashboard({
 
   const baseTasks = useMemo(() => tasks.filter(t => !t.isTrashed && t.taskType !== 'direct'), [tasks]);
   const total = baseTasks.length;
-  const comp = baseTasks.filter(t => t.status === 'Completed').length;
+  const comp = baseTasks.filter(t => t.status === 'Cmpltd').length;
   const dFinished = baseTasks.filter(t => t.status === 'D Finished').length;
-  const draft = baseTasks.filter(t => t.status === 'Draft').length;
+  const draft = baseTasks.filter(t => t.status === 'Drfts').length;
   const pend = baseTasks.filter(t => t.status === 'Pending').length;
-  const inProg = baseTasks.filter(t => t.status === 'In Progress').length;
+  const inProg = baseTasks.filter(t => t.status === 'Progress').length;
   const localW = baseTasks.filter(t => t.status === 'Local Work').length;
   const rej = baseTasks.filter(t => t.status === 'Rejected').length;
 
@@ -273,11 +273,11 @@ export function OfficerDashboard({
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-5">
             <StatCard title="Total Inputs" value={total} color="blue" icon={<FileText size={24}/>} onClick={() => handleStatClick('All')}/>
-            <StatCard title="Completed" value={comp} color="green" icon={<CheckCircle size={24}/>} onClick={() => handleStatClick('Completed')}/>
+            <StatCard title="Cmpltd" value={comp} color="green" icon={<CheckCircle size={24}/>} onClick={() => handleStatClick('Cmpltd')}/>
             <StatCard title="D Finished" value={dFinished} color="green" icon={<CheckCircle size={24}/>} onClick={() => handleStatClick('D Finished')}/>
             <StatCard title="Pending" value={pend} color="red" icon={<Bell size={24}/>} onClick={() => handleStatClick('Pending')}/>
-            <StatCard title="In Progress" value={inProg} color="indigo" icon={<Activity size={24}/>} onClick={() => handleStatClick('In Progress')}/>
-            <StatCard title="Drafts" value={draft} color="purple" icon={<FileText size={24}/>} onClick={() => handleStatClick('Draft')}/>
+            <StatCard title="Progress" value={inProg} color="indigo" icon={<Activity size={24}/>} onClick={() => handleStatClick('Progress')}/>
+            <StatCard title="Drafts" value={draft} color="purple" icon={<FileText size={24}/>} onClick={() => handleStatClick('Drfts')}/>
             <StatCard title="Local Works" value={localW} color="blue" icon={<Database size={24}/>} onClick={() => handleStatClick('Local Work')}/>
             <StatCard title="Rejected" value={rej} color="red" icon={<Ban size={24}/>} onClick={() => handleStatClick('Rejected')}/>
           </div>

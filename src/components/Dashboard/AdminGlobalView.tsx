@@ -89,14 +89,14 @@ export function AdminGlobalView({
       (note: string) => {
         const newOffStat: Record<string, string> = { ...task.officerStatuses };
         task.assignedTo.forEach(id => {
-          newOffStat[id] = 'Completed';
+          newOffStat[id] = 'Cmpltd';
         });
         const evs = [];
         if (note && note.trim()) {
           evs.push({ id: generateUid(), type: 'update', time: getNow(), by: 'KM Shaji (Admin)', text: `Completion Note: ${note}` });
         }
         evs.push({ id: generateUid(), type: 'completed', time: getNow(), by: 'KM Shaji (Admin)', text: 'Task marked as fully completed directly by Admin.' });
-        updateTask(task.id, { status: 'Completed', officerStatuses: newOffStat, timeline: [...(task.timeline || []), ...evs] });
+        updateTask(task.id, { status: 'Cmpltd', officerStatuses: newOffStat, timeline: [...(task.timeline || []), ...evs] });
       }, 
       false, 
       "Mark Completed", 
@@ -234,7 +234,7 @@ export function AdminGlobalView({
                     <span className="bg-slate-100 px-2 py-0.5 rounded text-xs text-slate-700">{t.category}</span>
                   </td>
                   <td className="px-4 py-3">
-                    <span className={`px-2 py-1 rounded text-xs font-bold uppercase ${t.status==='Completed'?'bg-green-100 text-green-700':t.status==='Partially Completed'?'bg-emerald-100 text-emerald-700':t.status==='In Progress'?'bg-amber-100 text-amber-700':t.status==='Draft'?'bg-purple-100 text-purple-700':t.status==='Unsolved'?'bg-slate-200 text-slate-500':'bg-red-100 text-red-700'}`}>
+                    <span className={`px-2 py-1 rounded text-xs font-bold uppercase ${t.status==='Cmpltd'?'bg-green-100 text-green-700':t.status==='Partially Completed'?'bg-emerald-100 text-emerald-700':t.status==='Progress'?'bg-amber-100 text-amber-700':t.status==='Drfts'?'bg-purple-100 text-purple-700':t.status==='Unsolved'?'bg-slate-200 text-slate-500':'bg-red-100 text-red-700'}`}>
                       {t.status}
                     </span>
                   </td>
@@ -275,7 +275,7 @@ export function AdminGlobalView({
                         <Send size={16}/>
                       </button>
                     )}
-                    {t.status !== 'Completed' && t.status !== 'Unsolved' && (
+                    {t.status !== 'Cmpltd' && t.status !== 'Unsolved' && (
                       <button 
                         onClick={() => quickCompleteTask(t)} 
                         title="Quick Complete" 
@@ -353,10 +353,10 @@ const AdminTaskCard = React.memo(({
   };
 
   const getStatusColor = (s: string) => {
-    if (s === 'Completed') return 'text-green-600';
+    if (s === 'Cmpltd') return 'text-green-600';
     if (s === 'D Finished') return 'text-emerald-600';
-    if (s === 'In Progress') return 'text-amber-600';
-    if (s === 'Draft') return 'text-purple-600';
+    if (s === 'Progress') return 'text-amber-600';
+    if (s === 'Drfts') return 'text-purple-600';
     return 'text-red-600';
   };
 
@@ -413,8 +413,8 @@ const AdminTaskCard = React.memo(({
         <div className="text-right flex flex-col items-end gap-2">
           <div className="flex flex-wrap justify-end items-center gap-2 lg:gap-1">
             <div className="flex gap-3 lg:gap-1 items-center">
-              {t.status !== 'Draft' && (
-                <button onClick={(e) => { e.stopPropagation(); triggerConfirm('Confirm Action', 'Change status to Draft?', () => { const newOffStat = {...t.officerStatuses}; (t.assignedTo || []).forEach(id => newOffStat[id] = 'Draft'); updateTask(t.id, { status: 'Draft', officerStatuses: newOffStat }); }, false, 'Yes, Change'); }} title="Mark as Draft" className="group flex items-center justify-center transition-colors">
+              {t.status !== 'Drfts' && (
+                <button onClick={(e) => { e.stopPropagation(); triggerConfirm('Confirm Action', 'Change status to Draft?', () => { const newOffStat = {...t.officerStatuses}; (t.assignedTo || []).forEach(id => newOffStat[id] = 'Drfts'); updateTask(t.id, { status: 'Drfts', officerStatuses: newOffStat }); }, false, 'Yes, Change'); }} title="Mark as Draft" className="group flex items-center justify-center transition-colors">
                   <span className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-purple-300 text-purple-600 text-[9px] sm:text-[10px] font-bold lg:hidden group-hover:bg-purple-50">DR</span>
                   <span className="hidden lg:flex text-purple-400 group-hover:text-purple-600 group-hover:bg-purple-50 p-1 rounded"><FileEdit size={12}/></span>
                 </button>
@@ -437,7 +437,7 @@ const AdminTaskCard = React.memo(({
                   <span className="hidden lg:flex text-emerald-400 group-hover:text-emerald-600 group-hover:bg-emerald-50 p-1 rounded"><CheckCircle2 size={12}/></span>
                 </button>
               )}
-              {t.status !== 'Completed' && t.status !== 'Unsolved' && (
+              {t.status !== 'Cmpltd' && t.status !== 'Unsolved' && (
                 <button 
                   onClick={(e) => { e.stopPropagation(); quickCompleteTask(t); }} 
                   title="Quick Mark as Completed" 

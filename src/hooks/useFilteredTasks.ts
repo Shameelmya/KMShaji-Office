@@ -11,13 +11,13 @@ export const useFilteredTasks = (
   return useMemo(() => {
     let result = allTasks;
     
-    if (globalFilters.status === 'Trash') {
+    if (globalFilters.status === 'Trshs') {
       result = result.filter(t => t.isTrashed);
     } else {
       result = result.filter(t => !t.isTrashed);
       
       if (globalFilters.status === 'Active') {
-        result = result.filter(t => t.status === 'Pending' || t.status === 'In Progress');
+        result = result.filter(t => t.status === 'Pending' || t.status === 'Progress');
       } else if (globalFilters.status !== 'All') {
         result = result.filter(t => t.status === globalFilters.status);
       }

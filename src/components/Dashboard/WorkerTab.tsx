@@ -57,11 +57,11 @@ export function WorkerTab({
   }, [tasks, user.id]);
 
   const compStat = useMemo(() => {
-    return myAssignedAll.filter(t => t.officerStatuses && t.officerStatuses[user.id] === 'Completed').length;
+    return myAssignedAll.filter(t => t.officerStatuses && t.officerStatuses[user.id] === 'Cmpltd').length;
   }, [myAssignedAll, user.id]);
 
   const draftStat = useMemo(() => {
-    return myAssignedAll.filter(t => t.officerStatuses && t.officerStatuses[user.id] === 'Draft').length;
+    return myAssignedAll.filter(t => t.officerStatuses && t.officerStatuses[user.id] === 'Drfts').length;
   }, [myAssignedAll, user.id]);
 
   const filtered = useFilteredTasks(myAssignedAll, globalFilters, search, null, null);
@@ -71,10 +71,10 @@ export function WorkerTab({
   }, [filtered, taskTypeFilter]);
 
   const todo = typeFiltered.filter(t => t.status !== 'Unsolved' && (!t.officerStatuses[user.id] || t.officerStatuses[user.id] === 'Pending'));
-  const inProg = typeFiltered.filter(t => t.status !== 'Unsolved' && (t.officerStatuses[user.id] === 'Received' || t.officerStatuses[user.id] === 'In Progress'));
-  const draft = typeFiltered.filter(t => t.status !== 'Unsolved' && t.officerStatuses[user.id] === 'Draft');
-  const comp = typeFiltered.filter(t => t.status !== 'Unsolved' && (t.officerStatuses[user.id] === 'Completed' || t.officerStatuses[user.id] === 'D Finished'));
-  const displayedComp = comp.filter(t => showPartiallyCompleted ? t.officerStatuses[user.id] === 'D Finished' : t.officerStatuses[user.id] === 'Completed');
+  const inProg = typeFiltered.filter(t => t.status !== 'Unsolved' && (t.officerStatuses[user.id] === 'Received' || t.officerStatuses[user.id] === 'Progress'));
+  const draft = typeFiltered.filter(t => t.status !== 'Unsolved' && t.officerStatuses[user.id] === 'Drfts');
+  const comp = typeFiltered.filter(t => t.status !== 'Unsolved' && (t.officerStatuses[user.id] === 'Cmpltd' || t.officerStatuses[user.id] === 'D Finished'));
+  const displayedComp = comp.filter(t => showPartiallyCompleted ? t.officerStatuses[user.id] === 'D Finished' : t.officerStatuses[user.id] === 'Cmpltd');
   const unsolved = typeFiltered.filter(t => t.status === 'Unsolved');
 
   return (
@@ -106,7 +106,7 @@ export function WorkerTab({
             />
           ))}
         </Column>
-        <Column title="In Progress" count={inProg.length} color="blue">
+        <Column title="Progress" count={inProg.length} color="blue">
           {inProg.map((t, idx) => (
             <WorkerTaskCard 
               key={`${t.id}-${idx}`} 
@@ -133,7 +133,7 @@ export function WorkerTab({
           ))}
         </Column>
         <Column 
-          title={showPartiallyCompleted ? "D Finished" : "Completed"} 
+          title={showPartiallyCompleted ? "D Finished" : "Cmpltd"} 
           count={comp.length} 
           color="green"
           onTogglePartially={() => setShowPartiallyCompleted(!showPartiallyCompleted)}
@@ -259,18 +259,18 @@ const WorkerTaskCard = React.memo(({
     const allAssigned = task.assignedTo.map(id => newOffStat[id] || 'Pending');
     let globStat = task.status;
     
-    if (newStatus === 'Completed' || newStatus === 'D Finished') {
-      globStat = allAssigned.every(s => s === 'Completed' || s === 'D Finished') 
+    if (newStatus === 'Cmpltd' || newStatus === 'D Finished') {
+      globStat = allAssigned.every(s => s === 'Cmpltd' || s === 'D Finished') 
         ? newStatus 
-        : allAssigned.some(s => s === 'Draft') 
-          ? 'Draft' 
-          : 'In Progress';
-    } else if (newStatus === 'Draft') {
-      globStat = allAssigned.every(s => s === 'Completed' || s === 'Draft') 
-        ? 'Draft' 
-        : 'In Progress';
-    } else if (newStatus === 'In Progress' || newStatus === 'Received') {
-      if (globStat === 'Pending' || globStat === 'Draft') globStat = 'In Progress';
+        : allAssigned.some(s => s === 'Drfts') 
+          ? 'Drfts' 
+          : 'Progress';
+    } else if (newStatus === 'Drfts') {
+      globStat = allAssigned.every(s => s === 'Cmpltd' || s === 'Drfts') 
+        ? 'Drfts' 
+        : 'Progress';
+    } else if (newStatus === 'Progress' || newStatus === 'Received') {
+      if (globStat === 'Pending' || globStat === 'Drfts') globStat = 'Progress';
     }
 
     const evs = [];
@@ -299,8 +299,8 @@ const WorkerTaskCard = React.memo(({
       text: updateText,
       attachment: updateAttachment || undefined
     };
-    if (status !== 'In Progress' && status !== 'Draft') {
-      changeStatus('In Progress', ev);
+    if (status !== 'Progress' && status !== 'Drfts') {
+      changeStatus('Progress', ev);
     } else {
       updateTask(task.id, { timeline: [...task.timeline, ev] });
     }
@@ -394,7 +394,7 @@ const WorkerTaskCard = React.memo(({
       {!isUnsolved && status !== 'Pending' && (
         <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-slate-100/50">
           {/* Receive and Reject buttons have been moved to TaskDetailsModal */}
-          {(status === 'Received' || status === 'In Progress' || status === 'Draft') && (
+          {(status === 'Received' || status === 'Progress' || status === 'Drfts') && (
             <div className="w-full space-y-2">
               <button 
                 onClick={() => setShowProgressModal(true)} 
@@ -402,9 +402,9 @@ const WorkerTaskCard = React.memo(({
               >
                 <Activity size={14}/> {status === 'Received' ? 'Start Progress' : 'Add Update'}
               </button>
-              {status !== 'Draft' && (
+              {status !== 'Drfts' && (
                 <button 
-                  onClick={() => changeStatus('Draft')} 
+                  onClick={() => changeStatus('Drfts')} 
                   className="w-full bg-purple-100 text-purple-700 border border-purple-300 px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-purple-200 transition-colors shadow-sm flex items-center justify-center gap-2"
                 >
                   <Paperclip size={14}/> Send to Draft
@@ -438,7 +438,7 @@ const WorkerTaskCard = React.memo(({
                         const evs = [];
                         if (note && note.trim()) evs.push({ id: generateUid(), type: 'update', time: getNow(), by: user.name, text: `Completion Note: ${note}` });
                         evs.push({ id: generateUid(), type: 'completed', time: getNow(), by: user.name, text: 'Task marked as fully completed.' });
-                        changeStatus('Completed', evs);
+                        changeStatus('Cmpltd', evs);
                       }, 
                       false, "Mark Completed", true, "Enter optional completion note here..."
                     );
@@ -450,16 +450,16 @@ const WorkerTaskCard = React.memo(({
               </div>
             </div>
           )}
-          {(status === 'Completed' || status === 'D Finished') && (
+          {(status === 'Cmpltd' || status === 'D Finished') && (
             <div className="w-full space-y-2">
                <button 
-                 onClick={() => changeStatus('Draft', { id: generateUid(), type: 'reverted', time: getNow(), by: user.name, text: 'Reverted to Draft Box' })} 
+                 onClick={() => changeStatus('Drfts', { id: generateUid(), type: 'reverted', time: getNow(), by: user.name, text: 'Reverted to Draft Box' })} 
                  className="w-full bg-purple-50 text-purple-700 border border-purple-200 px-2 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-purple-100 transition-colors flex items-center justify-center gap-1"
                >
                  <Paperclip size={12}/> Revert to Draft
                </button>
                <button 
-                 onClick={() => changeStatus('In Progress', { id: generateUid(), type: 'reverted', time: getNow(), by: user.name, text: 'Reverted to Progress' })} 
+                 onClick={() => changeStatus('Progress', { id: generateUid(), type: 'reverted', time: getNow(), by: user.name, text: 'Reverted to Progress' })} 
                  className="w-full bg-orange-50 text-orange-700 border border-orange-200 px-2 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-orange-100 transition-colors flex items-center justify-center gap-1"
                >
                  <ArrowDownUp size={12}/> Revert to Progress

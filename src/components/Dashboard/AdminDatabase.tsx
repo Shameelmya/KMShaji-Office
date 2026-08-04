@@ -70,7 +70,7 @@ export function AdminDatabase({
             let count = 0;
             for (const task of data) {
               if (task.id) {
-                const targetCol = (task.status === 'Completed' || task.status === 'Unsolved') ? 'archived_tasks' : 'tasks';
+                const targetCol = (task.status === 'Cmpltd' || task.status === 'Unsolved') ? 'archived_tasks' : 'tasks';
                 await setDoc(getDocRef(targetCol, task.id), task);
                 count++; 
               }
@@ -106,7 +106,7 @@ export function AdminDatabase({
           : tasks.filter(t => t.assignedTo.includes(resetTarget));
         let count = 0;
         for (const t of tasksToDelete) {
-          const targetCol = (t.status === 'Completed' || t.status === 'Unsolved') ? 'archived_tasks' : 'tasks';
+          const targetCol = (t.status === 'Cmpltd' || t.status === 'Unsolved') ? 'archived_tasks' : 'tasks';
           await deleteDoc(getDocRef(targetCol, t.id));
           count++;
         }

@@ -255,10 +255,10 @@ export function PrintMasterReport({ config, tasks, users, categories }: PrintMas
   }
 
   const total = filteredTasks.length;
-  const comp = filteredTasks.filter(t => t.status === 'Completed').length;
+  const comp = filteredTasks.filter(t => t.status === 'Cmpltd').length;
   const pend = filteredTasks.filter(t => t.status === 'Pending').length;
-  const inprog = filteredTasks.filter(t => t.status === 'In Progress').length;
-  const draft = filteredTasks.filter(t => t.status === 'Draft').length;
+  const inprog = filteredTasks.filter(t => t.status === 'Progress').length;
+  const draft = filteredTasks.filter(t => t.status === 'Drfts').length;
   const unsolv = filteredTasks.filter(t => t.status === 'Unsolved').length;
   const sortedCategories = [...categories].sort((a, b) => a.localeCompare(b));
 
@@ -277,7 +277,7 @@ export function PrintMasterReport({ config, tasks, users, categories }: PrintMas
           <p className="text-2xl font-bold text-black">{total}</p>
         </div>
         <div>
-          <p className="text-[10px] font-bold uppercase text-gray-600 mb-1">Completed</p>
+          <p className="text-[10px] font-bold uppercase text-gray-600 mb-1">Cmpltd</p>
           <p className="text-2xl font-bold text-black">{comp}</p>
         </div>
         <div>
@@ -285,7 +285,7 @@ export function PrintMasterReport({ config, tasks, users, categories }: PrintMas
           <p className="text-2xl font-bold text-black">{draft}</p>
         </div>
         <div>
-          <p className="text-[10px] font-bold uppercase text-gray-600 mb-1">In Progress</p>
+          <p className="text-[10px] font-bold uppercase text-gray-600 mb-1">Progress</p>
           <p className="text-2xl font-bold text-black">{inprog}</p>
         </div>
         <div>
@@ -303,7 +303,7 @@ export function PrintMasterReport({ config, tasks, users, categories }: PrintMas
           <tr className="border-b-2 border-black">
             <th className="py-2 text-left font-bold text-black">Category</th>
             <th className="py-2 text-center font-bold text-black">Total</th>
-            <th className="py-2 text-center font-bold text-black">Completed</th>
+            <th className="py-2 text-center font-bold text-black">Cmpltd</th>
             <th className="py-2 text-center font-bold text-black">Pending</th>
           </tr>
         </thead>
@@ -315,7 +315,7 @@ export function PrintMasterReport({ config, tasks, users, categories }: PrintMas
               <tr key={cat} className="break-inside-avoid border-b border-gray-350">
                 <td className="py-2 text-black text-left">{cat}</td>
                 <td className="py-2 text-center text-black">{catTasks.length}</td>
-                <td className="py-2 text-center text-black">{catTasks.filter(t => t.status === 'Completed').length}</td>
+                <td className="py-2 text-center text-black">{catTasks.filter(t => t.status === 'Cmpltd').length}</td>
                 <td className="py-2 text-center text-black">{catTasks.filter(t => t.status === 'Pending').length}</td>
               </tr>
             );
@@ -336,7 +336,7 @@ export function PrintMasterReport({ config, tasks, users, categories }: PrintMas
             .filter(u => u.role !== 'admin')
             .map(u => {
               const assigned = filteredTasks.filter(t => t.assignedTo.includes(u.id));
-              const done = assigned.filter(t => t.officerStatuses && t.officerStatuses[u.id] === 'Completed');
+              const done = assigned.filter(t => t.officerStatuses && t.officerStatuses[u.id] === 'Cmpltd');
               return (
                 <tr key={u.id} className="border-b border-gray-300">
                   <td className="py-2 text-black text-left">{u.name}</td>
@@ -378,9 +378,9 @@ export function PrintOfficerReport({ config, tasks }: PrintOfficerReportProps) {
   }
 
   const total = filteredTasks.length;
-  const comp = filteredTasks.filter(t => t.officerStatuses[officer.id] === 'Completed').length;
+  const comp = filteredTasks.filter(t => t.officerStatuses[officer.id] === 'Cmpltd').length;
   const inprog = filteredTasks.filter(
-    t => t.officerStatuses[officer.id] === 'In Progress' || t.officerStatuses[officer.id] === 'Received'
+    t => t.officerStatuses[officer.id] === 'Progress' || t.officerStatuses[officer.id] === 'Received'
   ).length;
   const pend = total - comp - inprog;
 
@@ -400,11 +400,11 @@ export function PrintOfficerReport({ config, tasks }: PrintOfficerReportProps) {
           <p className="text-2xl font-bold text-black">{total}</p>
         </div>
         <div>
-          <p className="text-[10px] font-bold uppercase text-gray-600 mb-1">Completed</p>
+          <p className="text-[10px] font-bold uppercase text-gray-600 mb-1">Cmpltd</p>
           <p className="text-2xl font-bold text-black">{comp}</p>
         </div>
         <div>
-          <p className="text-[10px] font-bold uppercase text-gray-600 mb-1">In Progress</p>
+          <p className="text-[10px] font-bold uppercase text-gray-600 mb-1">Progress</p>
           <p className="text-2xl font-bold text-black">{inprog}</p>
         </div>
         <div>
@@ -503,7 +503,7 @@ export function PrintUpdationReport({ config, tasks, users }: PrintUpdationRepor
 
   // Filter Status
   if (config.status === 'Active') {
-    filteredTasks = filteredTasks.filter(t => t.status === 'In Progress' || t.status === 'Pending');
+    filteredTasks = filteredTasks.filter(t => t.status === 'Progress' || t.status === 'Pending');
   } else if (config.status !== 'All') {
     filteredTasks = filteredTasks.filter(t => t.status === config.status);
   }
@@ -543,10 +543,10 @@ export function PrintUpdationReport({ config, tasks, users }: PrintUpdationRepor
   filteredTasks.sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true, sensitivity: 'base' }));
 
   const total = filteredTasks.length;
-  const comp = filteredTasks.filter(t => t.status === 'Completed').length;
+  const comp = filteredTasks.filter(t => t.status === 'Cmpltd').length;
   const pend = filteredTasks.filter(t => t.status === 'Pending').length;
-  const inprog = filteredTasks.filter(t => t.status === 'In Progress').length;
-  const draft = filteredTasks.filter(t => t.status === 'Draft').length;
+  const inprog = filteredTasks.filter(t => t.status === 'Progress').length;
+  const draft = filteredTasks.filter(t => t.status === 'Drfts').length;
 
   const chunks = [];
   for (let i = 0; i < filteredTasks.length; i += 2) {

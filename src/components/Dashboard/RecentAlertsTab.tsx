@@ -18,12 +18,12 @@ export function RecentAlertsTab({ user, tasks, jumpToTask, users, setImpersonate
   const activeTasks = useMemo(() => {
     if (user.role === 'admin') {
       return tasks
-        .filter(t => t.status === 'Pending' || t.status === 'In Progress' || t.status === 'Rejected')
+        .filter(t => t.status === 'Pending' || t.status === 'Progress' || t.status === 'Rejected')
         .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
     } else {
       return tasks
         .filter(t => 
-          (t.assignedTo.includes(user.id) && (t.officerStatuses?.[user.id] === 'Pending' || t.officerStatuses?.[user.id] === 'In Progress' || !t.officerStatuses?.[user.id])) ||
+          (t.assignedTo.includes(user.id) && (t.officerStatuses?.[user.id] === 'Pending' || t.officerStatuses?.[user.id] === 'Progress' || !t.officerStatuses?.[user.id])) ||
           (t.status === 'Rejected' && t.createdByUid === user.id)
         )
         .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
@@ -31,13 +31,13 @@ export function RecentAlertsTab({ user, tasks, jumpToTask, users, setImpersonate
   }, [tasks, user]);
 
   const pendingCount = activeTasks.filter(t => user.role === 'admin' ? t.status === 'Pending' : (t.status !== 'Rejected' && (t.officerStatuses?.[user.id] === 'Pending' || !t.officerStatuses?.[user.id]))).length;
-  const inProgressCount = activeTasks.filter(t => user.role === 'admin' ? t.status === 'In Progress' : (t.status !== 'Rejected' && t.officerStatuses?.[user.id] === 'In Progress')).length;
+  const inProgressCount = activeTasks.filter(t => user.role === 'admin' ? t.status === 'Progress' : (t.status !== 'Rejected' && t.officerStatuses?.[user.id] === 'Progress')).length;
   const rejectedCount = activeTasks.filter(t => t.status === 'Rejected').length;
 
   const overdueCount = useMemo(() => {
     // Tasks are overdue if deadline is in the past, excluding Completed/Draft/Unsolved tasks
     return activeTasks.filter(t => {
-      if (t.status === 'Completed' || t.status === 'Draft' || t.status === 'Unsolved') return false;
+      if (t.status === 'Cmpltd' || t.status === 'Drfts' || t.status === 'Unsolved') return false;
       const d = t.deadline ? new Date(t.deadline).getTime() : 0;
       return d > 0 && d < Date.now();
     }).length;
@@ -116,7 +116,7 @@ export function RecentAlertsTab({ user, tasks, jumpToTask, users, setImpersonate
               ).length;
               const uInProgress = tasks.filter(t => 
                 t.assignedTo.includes(u.id) && 
-                t.officerStatuses?.[u.id] === 'In Progress'
+                t.officerStatuses?.[u.id] === 'Progress'
               ).length;
               const uActive = uPending + uInProgress;
 
@@ -194,7 +194,7 @@ export function RecentAlertsTab({ user, tasks, jumpToTask, users, setImpersonate
               </thead>
               <tbody>
                 {activeTasks.map((t) => {
-                  const isTaskOverdue = t.status !== 'Completed' && t.status !== 'Draft' && t.status !== 'Unsolved' && t.deadline && new Date(t.deadline).getTime() < Date.now();
+                  const isTaskOverdue = t.status !== 'Cmpltd' && t.status !== 'Drfts' && t.status !== 'Unsolved' && t.deadline && new Date(t.deadline).getTime() < Date.now();
                   return (
                     <tr 
                       key={t.id} 
@@ -248,7 +248,7 @@ export function RecentAlertsTab({ user, tasks, jumpToTask, users, setImpersonate
           {/* Mobile Card-style View */}
           <div className="block md:hidden divide-y divide-[#F1F5F9]">
             {activeTasks.map((t) => {
-              const isTaskOverdue = t.status !== 'Completed' && t.status !== 'Draft' && t.status !== 'Unsolved' && t.deadline && new Date(t.deadline).getTime() < Date.now();
+              const isTaskOverdue = t.status !== 'Cmpltd' && t.status !== 'Drfts' && t.status !== 'Unsolved' && t.deadline && new Date(t.deadline).getTime() < Date.now();
               return (
                 <div 
                   key={t.id} 

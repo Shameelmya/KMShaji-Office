@@ -221,11 +221,11 @@ export function UpdationReportConfigModal({ onClose, onGenerate, users }: Updati
               className="w-full px-3 py-2 bg-[#F4F7FB] border border-slate-200 rounded-lg font-bold text-slate-700 outline-none focus:ring-2 focus:ring-emerald-500"
             >
               <option value="Active">Active Actions</option>
-              <option value="Completed">Completed</option>
+              <option value="Cmpltd">Cmpltd</option>
               <option value="Partially Completed">Partially Completed</option>
-              <option value="Draft">Drafts</option>
+              <option value="Drfts">Drafts</option>
               <option value="Pending">Pending</option>
-              <option value="In Progress">In Progress</option>
+              <option value="Progress">Progress</option>
               <option value="Unsolved">Unsolved</option>
               <option value="Local Work">Local Work</option>
               <option value="All">All Statuses</option>
