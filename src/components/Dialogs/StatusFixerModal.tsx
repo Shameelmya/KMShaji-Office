@@ -112,10 +112,10 @@ export function StatusFixerModal({ tasks, updateTask, onClose }: StatusFixerModa
                       className="px-2 py-1 w-full bg-white border border-slate-300 rounded text-xs font-bold text-slate-700 outline-none focus:border-indigo-500"
                     >
                       <option value="Pending">Pending</option>
-                      <option value="Progress">Progress</option>
-                      <option value="Cmpltd">Cmpltd</option>
+                      <option value="In Progress">In Progress</option>
+                      <option value="Completed">Completed</option>
                       <option value="D Finished">D Finished</option>
-                      <option value="Drfts">Drfts</option>
+                      <option value="Draft">Draft</option>
                       <option value="Local Work">Local Work</option>
                       <option value="Rejected">Rejected</option>
                     </select>

@@ -160,9 +160,9 @@ export function TaskDetailsModal({
         updatedOfficerStatuses[id] = editData.status;
       });
       let actionType = 'update';
-      if (editData.status === 'Cmpltd' || editData.status === 'Partially Completed') actionType = 'completed';
+      if (editData.status === 'Completed' || editData.status === 'Partially Completed') actionType = 'completed';
       if (editData.status === 'Unsolved') actionType = 'unsolved';
-      else if (task.status === 'Cmpltd' || task.status === 'Partially Completed' || task.status === 'Unsolved') actionType = 'reverted';
+      else if (task.status === 'Completed' || task.status === 'Partially Completed' || task.status === 'Unsolved') actionType = 'reverted';
       
       updatedTimeline.push({
         id: generateUid(),
@@ -428,11 +428,11 @@ export function TaskDetailsModal({
         </div>
 
         <div className="p-8 space-y-8 flex-1">
-          {(task.status === 'Cmpltd' || task.status === 'Partially Completed') && (
-             <div className={`${task.status === 'Cmpltd' ? 'bg-green-50 border-green-200' : 'bg-emerald-50 border-emerald-200'} border p-5 rounded-2xl flex flex-wrap justify-between items-center gap-5`}>
+          {(task.status === 'Completed' || task.status === 'Partially Completed') && (
+             <div className={`${task.status === 'Completed' ? 'bg-green-50 border-green-200' : 'bg-emerald-50 border-emerald-200'} border p-5 rounded-2xl flex flex-wrap justify-between items-center gap-5`}>
                 <div>
-                  <h4 className={`font-bold ${task.status === 'Cmpltd' ? 'text-green-900' : 'text-emerald-900'} flex items-center gap-2`}><CheckCircle size={18}/> {task.status === 'Cmpltd' ? 'Task is Completed' : 'Task is Partially Completed'}</h4>
-                  <p className={`text-xs ${task.status === 'Cmpltd' ? 'text-green-700' : 'text-emerald-700'} font-medium mt-1`}>This issue has been {task.status === 'Cmpltd' ? 'successfully resolved.' : 'partially resolved.'}</p>
+                  <h4 className={`font-bold ${task.status === 'Completed' ? 'text-green-900' : 'text-emerald-900'} flex items-center gap-2`}><CheckCircle size={18}/> {task.status === 'Completed' ? 'Task is Completed' : 'Task is Partially Completed'}</h4>
+                  <p className={`text-xs ${task.status === 'Completed' ? 'text-green-700' : 'text-emerald-700'} font-medium mt-1`}>This issue has been {task.status === 'Completed' ? 'successfully resolved.' : 'partially resolved.'}</p>
                 </div>
                 <div className="flex gap-2">
                    {canUserEdit && (
@@ -482,14 +482,14 @@ export function TaskDetailsModal({
                  >
                    <option value="Pending">Pending</option>
                    <option value="Received">Received</option>
-                   <option value="Progress">Progress</option>
-                   <option value="Drfts">Drfts</option>
-                   <option value="Cmpltd">Cmpltd</option>
+                   <option value="In Progress">In Progress</option>
+                   <option value="Draft">Draft</option>
+                   <option value="Completed">Completed</option>
                    <option value="D Finished">D Finished</option>
                    <option value="Local Work">Local Work</option>
                  </select>
                ) : (
-                 <span className={`px-3 py-1 rounded font-bold text-sm uppercase tracking-wider ${task.status==='Cmpltd'?'bg-green-100 text-green-700':task.status==='D Finished'?'bg-emerald-100 text-emerald-700':task.status==='Progress'?'bg-amber-100 text-amber-700':task.status==='Drfts'?'bg-purple-100 text-purple-700':task.status==='Unsolved'?'bg-slate-200 text-slate-500':'bg-red-100 text-red-700'}`}>
+                 <span className={`px-3 py-1 rounded font-bold text-sm uppercase tracking-wider ${task.status==='Completed'?'bg-green-100 text-green-700':task.status==='D Finished'?'bg-emerald-100 text-emerald-700':task.status==='In Progress'?'bg-amber-100 text-amber-700':task.status==='Draft'?'bg-purple-100 text-purple-700':task.status==='Unsolved'?'bg-slate-200 text-slate-500':'bg-red-100 text-red-700'}`}>
                    {task.status}
                  </span>
                )}
@@ -717,13 +717,13 @@ export function TaskDetailsModal({
                           return (
                             <div key={id} className="flex justify-between items-center bg-[#F4F7FB] px-2 py-1 rounded text-xs">
                               <span className="font-bold">{name}</span>
-                              <span className={`font-bold uppercase tracking-wider ${stat==='Cmpltd'?'text-green-600':stat==='Partially Completed'?'text-emerald-600':stat==='Progress'?'text-amber-600':stat==='Drfts'?'text-purple-600':'text-red-500'}`}>
+                              <span className={`font-bold uppercase tracking-wider ${stat==='Completed'?'text-green-600':stat==='Partially Completed'?'text-emerald-600':stat==='In Progress'?'text-amber-600':stat==='Draft'?'text-purple-600':'text-red-500'}`}>
                                 {stat}
                               </span>
                             </div>
                           );
                         })}
-                        {isAssigned && task.status !== 'Cmpltd' && task.status !== 'Partially Completed' && task.status !== 'Unsolved' && currentUser.canReassign !== false && (
+                        {isAssigned && task.status !== 'Completed' && task.status !== 'Partially Completed' && task.status !== 'Unsolved' && currentUser.canReassign !== false && (
                           <div className="mt-2 flex gap-2">
                             <button 
                               onClick={() => { setReassignAssignedTo([...task.assignedTo]); setShowReassign(true); }}
@@ -1020,7 +1020,7 @@ export function TaskDetailsModal({
              </div>
             </div>
           )}
-          {!isPendingForCurrentUser && ((isAssigned && task.status !== 'Cmpltd' && task.status !== 'Partially Completed' && task.status !== 'Unsolved') || canUserEdit) && !isEditMode && (
+          {!isPendingForCurrentUser && ((isAssigned && task.status !== 'Completed' && task.status !== 'Partially Completed' && task.status !== 'Unsolved') || canUserEdit) && !isEditMode && (
             <div className="bg-blue-50 border border-blue-200 p-5 rounded-2xl mt-8">
               <h4 className="font-bold text-blue-900 mb-3 flex items-center gap-2"><MessageSquare size={16}/> Add Progress Note</h4>
               <div className="flex flex-col gap-3">
@@ -1120,9 +1120,9 @@ export function TaskDetailsModal({
                     "Confirm Assignment",
                     "You are taking this assignment. Did you read all details and do you confirm that this assignment is right for you?",
                     () => {
-                      const newOffStat = { ...task.officerStatuses, [currentUser.id]: 'Progress' };
+                      const newOffStat = { ...task.officerStatuses, [currentUser.id]: 'In Progress' };
                       let globStat = task.status;
-                      if (globStat === 'Pending') globStat = 'Progress';
+                      if (globStat === 'Pending') globStat = 'In Progress';
                       const ev = { id: generateUid(), type: 'update', time: getNow(), by: currentUser.name, text: 'Task Received and Started' };
                       updateTask(task.id, {
                         officerStatuses: newOffStat,

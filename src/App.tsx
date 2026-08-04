@@ -413,8 +413,8 @@ export default function App() {
       merged.officerStatuses = {};
     }
     
-    const wasArchived = currentTask.status === 'Cmpltd' || currentTask.status === 'Unsolved';
-    const willBeArchived = merged.status === 'Cmpltd' || merged.status === 'Unsolved';
+    const wasArchived = currentTask.status === 'Completed' || currentTask.status === 'Unsolved';
+    const willBeArchived = merged.status === 'Completed' || merged.status === 'Unsolved';
     
     if (!wasArchived && willBeArchived) { 
       await setDoc(getDocRef('archived_tasks', taskId), merged); 
@@ -550,13 +550,13 @@ export default function App() {
          onChange={e => setGlobalFilters(p => ({...p, status: e.target.value}))} 
          className="px-3 py-1.5 border border-slate-300 rounded-lg font-bold text-slate-700 outline-none bg-white focus:border-indigo-500 transition-all font-sans"
        >
-         <option value="Active">Active</option>
-         <option value="Pending">Pending</option>
-         <option value="Progress">Progress</option>
-         <option value="Cmpltd">Cmpltd</option>
-         <option value="Drfts">Drfts</option>
-         <option value="Trshs">Trshs</option>
-         <option value="All">All</option>
+         <option value="Active">Active Actions</option>
+         <option value="Pending">Pending Only</option>
+         <option value="In Progress">In Progress Only</option>
+         <option value="Completed">Completed Only</option>
+         <option value="Draft">Drafts Only</option>
+         <option value="Trash">Trash</option>
+         <option value="All">All Statuses</option>
        </select>
        <select 
          value={globalFilters.dateRange} 
